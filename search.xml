@@ -1,60 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/12/29/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Mac的快捷键</title>
-    <url>/2021/12/29/Mac%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<h1 id="Mac的快捷键"><a href="#Mac的快捷键" class="headerlink" title="Mac的快捷键"></a>Mac的快捷键</h1><p><a href="https://zhuanlan.zhihu.com/p/83863239">https://zhuanlan.zhihu.com/p/83863239</a> </p>
-<p><a href="https://support.apple.com/zh-cn/HT201236">https://support.apple.com/zh-cn/HT201236</a></p>
-<h2 id="剪切、拷贝、粘贴和其他常用快捷键"><a href="#剪切、拷贝、粘贴和其他常用快捷键" class="headerlink" title="剪切、拷贝、粘贴和其他常用快捷键"></a>剪切、拷贝、粘贴和其他常用快捷键</h2><ul>
-<li><strong>Command-X</strong>：剪切所选项并拷贝到剪贴板。</li>
-<li><strong>Command-C</strong>：将所选项拷贝到剪贴板。这同样适用于“访达”中的文件。</li>
-<li><strong>Command-V</strong>：将剪贴板的内容粘贴到当前文稿或应用中。这同样适用于“访达”中的文件。</li>
-<li><strong>Command-Z</strong>：撤销上一个命令。随后您可以按 Shift-Command-Z 来重做，从而反向执行撤销命令。在某些应用中，您可以撤销和重做多个命令。</li>
-<li><strong>Command-A</strong>：全选各项。</li>
-<li><strong>Command-F</strong>：查找文稿中的项目或打开“查找”窗口。</li>
-<li><strong>Command-G</strong>：再次查找：查找之前所找到项目出现的下一个位置。要查找出现的上一个位置，请按 Shift-Command-G。</li>
-<li><strong>Command-H</strong>：隐藏最前面的应用的窗口。要查看最前面的应用但隐藏所有其他应用，请按 Option-Command-H。</li>
-<li><strong>Command-M</strong>：将最前面的窗口最小化至“程序坞”。要最小化最前面的应用的所有窗口，请按 Option-Command-M。</li>
-<li><strong>Command-O：</strong>打开所选项，或打开一个对话框以选择要打开的文件。</li>
-<li><strong>Command-P</strong>：打印当前文稿。</li>
-<li><strong>Command-S</strong>：存储当前文稿。</li>
-<li><strong>Command-T</strong>：打开新标签页。</li>
-<li><strong>Command-W</strong>：关闭最前面的窗口。要关闭应用的所有窗口，请按下 Option-Command-W。</li>
-<li><strong>Option-Command-Esc</strong>：<a href="https://support.apple.com/zh-cn/HT201276">强制退出</a>应用。</li>
-<li><strong>Command-空格键</strong>：显示或隐藏“<a href="https://support.apple.com/zh-cn/HT204014">聚焦</a>”搜索栏。要从“访达”窗口进行“聚焦”搜索，请按 Command–Option–空格键。（如果您<a href="https://support.apple.com/zh-cn/guide/mac-help/type-language-mac-input-sources-mchlp1406/mac">使用多个输入源</a>以便用不同的语言键入内容，这些快捷键会更改输入源而非显示“聚焦”。了解如何<a href="https://support.apple.com/zh-cn/guide/mac-help/change-a-conflicting-keyboard-shortcut-on-mac-mh35591/mac">更改冲突的键盘快捷键</a>。）</li>
-<li><strong>Control-Command–空格键</strong>：显示字符检视器，您可以从中选择<a href="https://support.apple.com/zh-cn/HT201586">表情符号和其他符号</a>。</li>
-<li><strong>Control-Command-F</strong>：全屏使用应用（如果应用支持）。</li>
-<li><strong>空格键</strong>：使用“<a href="https://support.apple.com/zh-cn/guide/mac-help/view-and-edit-files-with-quick-look-mh14119/mac">快速查看</a>”来预览所选项。</li>
-<li><strong>Command-Tab</strong>：在多个打开的 App 之间切换到下一个最近使用的 App。 </li>
-<li><strong>Shift-Command-5</strong>：在 <a href="https://support.apple.com/zh-cn/HT201260">macOS Mojave 或更高版本</a>中，拍摄截屏或录制屏幕。也可以使用 Shift-Command-3 或 Shift-Command-4 来拍摄截屏。<a href="https://support.apple.com/zh-cn/HT201361">进一步了解截屏</a>。</li>
-<li><strong>Shift-Command-N：</strong>在“访达”中创建一个新文件夹。</li>
-<li>**Command-逗号 (,)**：打开最前面的应用的偏好设置。</li>
-</ul>
-]]></content>
+    <title>Test</title>
+    <url>/2021/12/29/Test/</url>
+    <content><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1>]]></content>
       <categories>
-        <category>快捷键</category>
+        <category>Hexo</category>
       </categories>
       <tags>
-        <tag>快捷键</tag>
-        <tag>mac</tag>
+        <tag>blog</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -103,15 +58,59 @@
       </tags>
   </entry>
   <entry>
-    <title>Test</title>
-    <url>/2021/12/29/Test/</url>
-    <content><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1>]]></content>
+    <title>Mac的快捷键</title>
+    <url>/2021/12/29/Mac%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<h1 id="Mac的快捷键"><a href="#Mac的快捷键" class="headerlink" title="Mac的快捷键"></a>Mac的快捷键</h1><p><a href="https://zhuanlan.zhihu.com/p/83863239">https://zhuanlan.zhihu.com/p/83863239</a> </p>
+<p><a href="https://support.apple.com/zh-cn/HT201236">https://support.apple.com/zh-cn/HT201236</a></p>
+<h2 id="剪切、拷贝、粘贴和其他常用快捷键"><a href="#剪切、拷贝、粘贴和其他常用快捷键" class="headerlink" title="剪切、拷贝、粘贴和其他常用快捷键"></a>剪切、拷贝、粘贴和其他常用快捷键</h2><ul>
+<li><strong>Command-X</strong>：剪切所选项并拷贝到剪贴板。</li>
+<li><strong>Command-C</strong>：将所选项拷贝到剪贴板.</li>
+<li><strong>Command-V</strong>：将剪贴板的内容粘贴到当前文稿或应用中。</li>
+<li><strong>Command-Z</strong>：撤销上一个命令。随后您可以按 Shift-Command-Z 来重做，从而反向执行撤销命令。在某些应用中，您可以撤销和重做多个命令。</li>
+<li><strong>Command-A</strong>：全选各项。</li>
+<li><strong>Command-F</strong>：查找文稿中的项目或打开“查找”窗口。</li>
+<li><strong>Command-G</strong>：再次查找：查找之前所找到项目出现的下一个位置。要查找出现的上一个位置，请按 Shift-Command-G。</li>
+<li><strong>Command-H</strong>：隐藏最前面的应用的窗口。要查看最前面的应用但隐藏所有其他应用，请按 Option-Command-H。</li>
+<li><strong>Command-M</strong>：将最前面的窗口最小化至“程序坞”。要最小化最前面的应用的所有窗口，请按 Option-Command-M。</li>
+<li><strong>Command-O：</strong>打开所选项，或打开一个对话框以选择要打开的文件。</li>
+<li><strong>Command-S</strong>：存储当前文稿。</li>
+<li><strong>Command-T</strong>：打开新标签页。</li>
+<li><strong>Command-W</strong>：关闭最前面的窗口。要关闭应用的所有窗口，请按下 Option-Command-W。</li>
+<li><strong>Option-Command-Esc</strong>：<a href="https://support.apple.com/zh-cn/HT201276">强制退出</a>应用。</li>
+<li><strong>Command-空格键</strong>：显示或隐藏“<a href="https://support.apple.com/zh-cn/HT204014">聚焦</a>”搜索栏。要从“访达”窗口进行“聚焦”搜索，请按 Command–Option–空格键。（如果您<a href="https://support.apple.com/zh-cn/guide/mac-help/type-language-mac-input-sources-mchlp1406/mac">使用多个输入源</a>以便用不同的语言键入内容，这些快捷键会更改输入源而非显示“聚焦”。了解如何<a href="https://support.apple.com/zh-cn/guide/mac-help/change-a-conflicting-keyboard-shortcut-on-mac-mh35591/mac">更改冲突的键盘快捷键</a>。）</li>
+<li><strong>Control-Command–空格键</strong>：显示字符检视器，您可以从中选择<a href="https://support.apple.com/zh-cn/HT201586">表情符号和其他符号</a>。</li>
+<li><strong>Control-Command-F</strong>：全屏使用应用（如果应用支持）。</li>
+<li><strong>空格键</strong>：使用“<a href="https://support.apple.com/zh-cn/guide/mac-help/view-and-edit-files-with-quick-look-mh14119/mac">快速查看</a>”来预览所选项。</li>
+<li><strong>Command-Tab</strong>：在多个打开的 App 之间切换到下一个最近使用的 App。 </li>
+<li><strong>Shift-Command-5</strong>：在 <a href="https://support.apple.com/zh-cn/HT201260">macOS Mojave 或更高版本</a>中，拍摄截屏或录制屏幕。也可以使用 Shift-Command-3 或 Shift-Command-4 来拍摄截屏。<a href="https://support.apple.com/zh-cn/HT201361">进一步了解截屏</a>。</li>
+<li><strong>Shift-Command-N：</strong>在“访达”中创建一个新文件夹。</li>
+<li>**Command-逗号 (,)**：打开最前面的应用的偏好设置。</li>
+</ul>
+]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>快捷键</category>
       </categories>
       <tags>
-        <tag>blog</tag>
-        <tag>hexo</tag>
+        <tag>快捷键</tag>
+        <tag>mac</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/12/29/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>
