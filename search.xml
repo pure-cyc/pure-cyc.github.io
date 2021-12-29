@@ -19,18 +19,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Test</title>
-    <url>/2021/12/29/Test/</url>
-    <content><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1>]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac的快捷键</title>
     <url>/2021/12/29/Mac%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<h1 id="Mac的快捷键"><a href="#Mac的快捷键" class="headerlink" title="Mac的快捷键"></a>Mac的快捷键</h1><p><a href="https://zhuanlan.zhihu.com/p/83863239">https://zhuanlan.zhihu.com/p/83863239</a> </p>
@@ -70,7 +58,7 @@
       </tags>
   </entry>
   <entry>
-    <title>阿里云+Typo ra+PicGo+Github+Hexo+Next主题搭建个人博客</title>
+    <title>阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客</title>
     <url>/2021/12/29/%E9%98%BF%E9%87%8C%E4%BA%91+Typo%20ra+PicGo+Github+Hexo+Next%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h1 id="阿里云-Typora-PicGo-Github-Hexo-Next主题搭建个人博客"><a href="#阿里云-Typora-PicGo-Github-Hexo-Next主题搭建个人博客" class="headerlink" title="阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客"></a>阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客</h1><ul>
 <li><p>开通阿里云对象存储</p>
@@ -106,6 +94,18 @@
 
 
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Test</title>
+    <url>/2021/12/29/Test/</url>
+    <content><![CDATA[<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1>]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
