@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2022/02/13/M1%E8%8A%AF%E7%89%87mac%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="M1芯片mac搭建前端开发环境"><a href="#M1芯片mac搭建前端开发环境" class="headerlink" title="M1芯片mac搭建前端开发环境"></a>M1芯片mac搭建前端开发环境</h1><p><a href="https://segmentfault.com/a/1190000039005726">M1芯片Mac搭建前端开发环境</a></p>
+<h2 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 Homebrew</h2><p>使用它来管理 Mac 中的各类环境依赖</p>
+<h4 id="Homebrew安装及使用"><a href="#Homebrew安装及使用" class="headerlink" title="Homebrew安装及使用"></a>Homebrew安装及使用</h4><p><a href="https://blog.csdn.net/weixin_41918841/article/details/112545539">https://blog.csdn.net/weixin_41918841/article/details/112545539</a></p>
+<p>Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径的情况，十分方便快捷。</p>
+<h4 id="Homebrew的使用"><a href="#Homebrew的使用" class="headerlink" title="Homebrew的使用"></a>Homebrew的使用</h4><p>1.查看Homebrew命令：brew help<br>2.安装任意包：brew install <packageName>，eg：brew install node<br>3.卸载任意包：brew uninstall <packageName>，eg：brew uninstall git<br>4.查询可用包：brew search <packageName><br>5.查询已安装包列表：brew list<br>6.查看任意包信息：brew info <packageName><br>7.更新Homebrew：brew update<br>8.Homebrew帮助信息：brew -h<br>8.查看brew版本：brew -v<br>10.更新brew版本：brew update<br>11.整理重复语句：open ~/.zshrc -e、open ~/.bash_profile -e</p>
+<h2 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h2><p>Nvm 是一个管理 Node 版本的工具，当项目多了以后，总会碰到需要切换 Node 环境的时候，所以推荐大家使用 Nvm 来安装 Node</p>
+<h4 id="Homebrew-安装-Nvm"><a href="#Homebrew-安装-Nvm" class="headerlink" title="Homebrew 安装 Nvm"></a>Homebrew 安装 Nvm</h4><p>若是你已经按上述步骤安装好了 Homebrew，那么你可以直接通过 Homebrew 的命令轻松安装 Nvm</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置-Nvm-的环境变量"><a href="#设置-Nvm-的环境变量" class="headerlink" title="设置 Nvm 的环境变量"></a>设置 Nvm 的环境变量</h4><p><a href="http://www.qiuhan218.com/2021/02/23/M1-MacBook-Config/">http://www.qiuhan218.com/2021/02/23/M1-MacBook-Config/</a></p>
+<h2 id="关于配置环境变量"><a href="#关于配置环境变量" class="headerlink" title="关于配置环境变量"></a>关于配置环境变量</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vim 编辑环境变量</span></span><br><span class="line">vim ~/.bash_profile</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存后使得环境变量生效</span></span><br><span class="line">source ~/.bash_profile</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一个坑</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在 ~/.bash_profile 中配置的环境变量，可是每次重启终端后配置的不生效，需要重新执行<span class="built_in">source</span> ~/.bash_profile</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后来发现直接加载的是 ~/.zshrc 文件，而 .zshrc 文件中并没有定义环境变量</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解决方法：在~/.zshrc文件最后增加一行：<span class="built_in">source</span> ~/.bash_profile</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 加入后使其生效</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Mac之终端Terminal命令"><a href="#Mac之终端Terminal命令" class="headerlink" title="Mac之终端Terminal命令"></a>Mac之终端Terminal命令</h1>]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/12/29/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Mac的快捷键</title>
     <url>/2021/12/29/Mac%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<h1 id="Mac的快捷键"><a href="#Mac的快捷键" class="headerlink" title="Mac的快捷键"></a>Mac的快捷键</h1><p><a href="https://zhuanlan.zhihu.com/p/83863239">https://zhuanlan.zhihu.com/p/83863239</a> </p>
@@ -37,48 +74,6 @@
         <tag>快捷键</tag>
         <tag>mac</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/12/29/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/01/05/%E5%85%B3%E4%BA%8E%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="关于软件"><a href="#关于软件" class="headerlink" title="关于软件"></a>关于软件</h1><p>激活webStorm  idea 等一些列软件，用这个macb插件</p>
-<h2 id="WebStorm入门速成"><a href="#WebStorm入门速成" class="headerlink" title="WebStorm入门速成"></a>WebStorm入门速成</h2><p><strong>打开到WebStorm界面后使用快捷键 Command+‘，’，直接调出settings窗口</strong></p>
-<p>下载激活：激活webStorm  idea 等一些列软件，用这个macb插件</p>
-<p>创建新的文件：<img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201111959662.png" alt="image-20220111195918639"></p>
-<p>字体的设置：</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112000900.png" alt="image-20220111200055874"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112002630.png" alt="image-20220111200203602"></p>
-<h2 id="Webstorm的一些常用快捷键"><a href="#Webstorm的一些常用快捷键" class="headerlink" title="Webstorm的一些常用快捷键"></a>Webstorm的一些常用快捷键</h2><p><a href="https://www.cnblogs.com/yangwenbo/p/11451766.html">Https://www.cnblogs.com/yangwenbo/p/11451766.html</a></p>
-<h2 id="用Webstorm写代码"><a href="#用Webstorm写代码" class="headerlink" title="用Webstorm写代码"></a>用Webstorm写代码</h2><h4 id="1、例如：直接打strong"><a href="#1、例如：直接打strong" class="headerlink" title="1、例如：直接打strong"></a>1、例如：直接打strong</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191202284.png" alt="image-20220119120209248"></p>
-<p>然后按下tab键，自动生成</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191202495.png" alt="image-20220119120259456"></p>
-<h4 id="2、注释"><a href="#2、注释" class="headerlink" title="2、注释"></a>2、注释</h4><p>单行注释：command+/</p>
-<p>多行注释：</p>
-<h4 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">dl&gt;</span><span class="bash">dt+dd</span></span><br><span class="line"><span class="meta">#</span><span class="bash">即dl里面包含着dt，dt与dd是并列关系</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="4、一些常用的快捷键"><a href="#4、一些常用的快捷键" class="headerlink" title="4、一些常用的快捷键"></a>4、一些常用的快捷键</h4><p><strong>1. 常用的一些好用快捷键，建议强迫多用最后到肌肉记住：</strong></p>
-<p><a href="https://zhuanlan.zhihu.com/p/373510139">https://zhuanlan.zhihu.com/p/373510139</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 查找替换操作</span><br><span class="line">shift 按两次             // 随处搜索，搜索文件、功能、代码很方便</span><br><span class="line">command + f              // 当前页搜索</span><br><span class="line">command + shift + f      // 全局搜索字段</span><br><span class="line">command + r              // 替换当前文档</span><br><span class="line">command + shift + r      // 全局替换字段</span><br><span class="line"></span><br><span class="line">## 视图展示</span><br><span class="line">command + 1              // 显示隐藏左侧文件树</span><br><span class="line">command + 0              // 显示当前待提交代码，用于提交前 diff</span><br><span class="line">command + 9              // 显示当前历史所有的提交记录</span><br><span class="line">command + 7              // 显示当前文件的结构，特别是看 Class 时候很方便</span><br><span class="line">command + 上箭头         // 跳转到导航栏</span><br><span class="line"></span><br><span class="line">## 代码操作</span><br><span class="line">command + option + l     // 格式化代码(常用)</span><br><span class="line">shift + f6               // 使文件、标签、变量名重命名</span><br><span class="line">f2, shift + f2           // 切换到上\下一个突出错误的位置</span><br><span class="line">shift + 回车             // 无论在什么位置，自动跳到下一行</span><br><span class="line">option + 回车            // 警告代码快速给出自动修正</span><br><span class="line">command + 点击            // 跳到当前调用文件</span><br><span class="line">command + delete         // 删除当前行，command + x也可以</span><br><span class="line">command + d              // 复制新增一行一样的代码</span><br><span class="line">command + w              // 关闭当前文件选项卡</span><br><span class="line">command + /              // 注释行代码</span><br><span class="line">command + b              // 跳转到变量声明处</span><br><span class="line">command + shift + c      // 复制文件的路径</span><br><span class="line">command + shift + [ ]    // 选项卡快速切换，很有用</span><br><span class="line">command + shift + u      // 大小写自动转</span><br><span class="line">command + shift + /      // 注释块代码</span><br><span class="line">command + shift + +/-    // 展开/折叠 当前选中的代码块</span><br><span class="line">command + shift + v      // 从剪切板里选择黏贴</span><br><span class="line"></span><br><span class="line">## git 操作</span><br><span class="line">command + k              // 填写代码提交记录</span><br><span class="line">command + option + k     // 提交代码</span><br><span class="line">command + option + z     // 撤销当前代码改动</span><br><span class="line">command + d              // 选中两个文件进行对比，充当文件夹 diff 工具</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -684,12 +679,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2021/12/30/%E5%85%B3%E4%BA%8EMac%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="关于Mac的一些软件"><a href="#关于Mac的一些软件" class="headerlink" title="关于Mac的一些软件"></a>关于Mac的一些软件</h1><h2 id="typora"><a href="#typora" class="headerlink" title="typora"></a>typora</h2><p>插入程序代码  ```和回车</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/2022/02/09/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF/</url>
     <content><![CDATA[<h1 id="学习前端"><a href="#学习前端" class="headerlink" title="学习前端"></a>学习前端</h1><h2 id="2D转换之移动translate"><a href="#2D转换之移动translate" class="headerlink" title="2D转换之移动translate"></a>2D转换之移动translate</h2><p>移动盒子的位置：定位 、盒子外边距、2d转换移动 </p>
 <p>最大的优点就是：不会影响到其他元素</p>
@@ -736,27 +725,6 @@
 <p><strong>所有运算符左右都要加一个空格</strong></p>
 <h3 id="Bootstrap简介"><a href="#Bootstrap简介" class="headerlink" title="Bootstrap简介"></a>Bootstrap简介</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202131334165.png" alt="image-20220213133455121"></p>
 <p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202131351995.png" alt="image-20220213135117946"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/02/09/%E6%8A%8A%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0gitee/</url>
-    <content><![CDATA[<h4 id="把修改过的代码上传到gitee"><a href="#把修改过的代码上传到gitee" class="headerlink" title="把修改过的代码上传到gitee"></a>把修改过的代码上传到gitee</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202090111395.png" alt="image-20220209011138362"></p>
-<p>在webstorm</p>
-<p>到左下角的terminal点进去写命令</p>
-<p>【命令】git add .</p>
-<p>【解释】添加当前目录下的所有文件到暂存区</p>
-<p>【命令】git commit -m “修改的内容”</p>
-<p>【解释】推上本地仓库</p>
-<p>【命令】git push</p>
-<p>【解释】推上远程仓库</p>
-<h4 id="把代码从gitee上拿到自己的电脑"><a href="#把代码从gitee上拿到自己的电脑" class="headerlink" title="把代码从gitee上拿到自己的电脑"></a>把代码从gitee上拿到自己的电脑</h4><p>在终端输入命令行</p>
-<p>命令间等等，都要用空格隔开</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202090106249.png" alt="image-20220209010611219"></p>
-<p>查看当前路径：pwd</p>
-<p>把路径改为Documents : cd Documents</p>
-<p>git clone 这里填gitee上复制的要下载的文档的链接</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202090104176.png" alt="image-20220209010419113"></p>
 ]]></content>
   </entry>
   <entry>
@@ -968,6 +936,335 @@
   </entry>
   <entry>
     <title></title>
+    <url>/2022/01/05/%E5%85%B3%E4%BA%8E%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="关于软件"><a href="#关于软件" class="headerlink" title="关于软件"></a>关于软件</h1><p>激活webStorm  idea 等一些列软件，用这个macb插件</p>
+<h2 id="WebStorm入门速成"><a href="#WebStorm入门速成" class="headerlink" title="WebStorm入门速成"></a>WebStorm入门速成</h2><p><strong>打开到WebStorm界面后使用快捷键 Command+‘，’，直接调出settings窗口</strong></p>
+<p>下载激活：激活webStorm  idea 等一些列软件，用这个macb插件</p>
+<p>创建新的文件：<img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201111959662.png" alt="image-20220111195918639"></p>
+<p>字体的设置：</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112000900.png" alt="image-20220111200055874"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112002630.png" alt="image-20220111200203602"></p>
+<h2 id="Webstorm的一些常用快捷键"><a href="#Webstorm的一些常用快捷键" class="headerlink" title="Webstorm的一些常用快捷键"></a>Webstorm的一些常用快捷键</h2><p><a href="https://www.cnblogs.com/yangwenbo/p/11451766.html">Https://www.cnblogs.com/yangwenbo/p/11451766.html</a></p>
+<h2 id="用Webstorm写代码"><a href="#用Webstorm写代码" class="headerlink" title="用Webstorm写代码"></a>用Webstorm写代码</h2><h4 id="1、例如：直接打strong"><a href="#1、例如：直接打strong" class="headerlink" title="1、例如：直接打strong"></a>1、例如：直接打strong</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191202284.png" alt="image-20220119120209248"></p>
+<p>然后按下tab键，自动生成</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191202495.png" alt="image-20220119120259456"></p>
+<h4 id="2、注释"><a href="#2、注释" class="headerlink" title="2、注释"></a>2、注释</h4><p>单行注释：command+/</p>
+<p>多行注释：</p>
+<h4 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">dl&gt;</span><span class="bash">dt+dd</span></span><br><span class="line"><span class="meta">#</span><span class="bash">即dl里面包含着dt，dt与dd是并列关系</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4、一些常用的快捷键"><a href="#4、一些常用的快捷键" class="headerlink" title="4、一些常用的快捷键"></a>4、一些常用的快捷键</h4><p><strong>1. 常用的一些好用快捷键，建议强迫多用最后到肌肉记住：</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/373510139">https://zhuanlan.zhihu.com/p/373510139</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 查找替换操作</span><br><span class="line">shift 按两次             // 随处搜索，搜索文件、功能、代码很方便</span><br><span class="line">command + f              // 当前页搜索</span><br><span class="line">command + shift + f      // 全局搜索字段</span><br><span class="line">command + r              // 替换当前文档</span><br><span class="line">command + shift + r      // 全局替换字段</span><br><span class="line"></span><br><span class="line">## 视图展示</span><br><span class="line">command + 1              // 显示隐藏左侧文件树</span><br><span class="line">command + 0              // 显示当前待提交代码，用于提交前 diff</span><br><span class="line">command + 9              // 显示当前历史所有的提交记录</span><br><span class="line">command + 7              // 显示当前文件的结构，特别是看 Class 时候很方便</span><br><span class="line">command + 上箭头         // 跳转到导航栏</span><br><span class="line"></span><br><span class="line">## 代码操作</span><br><span class="line">command + option + l     // 格式化代码(常用)</span><br><span class="line">shift + f6               // 使文件、标签、变量名重命名</span><br><span class="line">f2, shift + f2           // 切换到上\下一个突出错误的位置</span><br><span class="line">shift + 回车             // 无论在什么位置，自动跳到下一行</span><br><span class="line">option + 回车            // 警告代码快速给出自动修正</span><br><span class="line">command + 点击            // 跳到当前调用文件</span><br><span class="line">command + delete         // 删除当前行，command + x也可以</span><br><span class="line">command + d              // 复制新增一行一样的代码</span><br><span class="line">command + w              // 关闭当前文件选项卡</span><br><span class="line">command + /              // 注释行代码</span><br><span class="line">command + b              // 跳转到变量声明处</span><br><span class="line">command + shift + c      // 复制文件的路径</span><br><span class="line">command + shift + [ ]    // 选项卡快速切换，很有用</span><br><span class="line">command + shift + u      // 大小写自动转</span><br><span class="line">command + shift + /      // 注释块代码</span><br><span class="line">command + shift + +/-    // 展开/折叠 当前选中的代码块</span><br><span class="line">command + shift + v      // 从剪切板里选择黏贴</span><br><span class="line"></span><br><span class="line">## git 操作</span><br><span class="line">command + k              // 填写代码提交记录</span><br><span class="line">command + option + k     // 提交代码</span><br><span class="line">command + option + z     // 撤销当前代码改动</span><br><span class="line">command + d              // 选中两个文件进行对比，充当文件夹 diff 工具</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/02/09/%E6%8A%8A%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0gitee/</url>
+    <content><![CDATA[<h4 id="把修改过的代码上传到gitee"><a href="#把修改过的代码上传到gitee" class="headerlink" title="把修改过的代码上传到gitee"></a>把修改过的代码上传到gitee</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202090111395.png" alt="image-20220209011138362"></p>
+<p>在webstorm</p>
+<p>到左下角的terminal点进去写命令</p>
+<p>【命令】git add .</p>
+<p>【解释】添加当前目录下的所有文件到暂存区</p>
+<p>【命令】git commit -m “修改的内容”</p>
+<p>【解释】推上本地仓库</p>
+<p>【命令】git push</p>
+<p>【解释】推上远程仓库</p>
+<h4 id="把代码从gitee上拿到自己的电脑"><a href="#把代码从gitee上拿到自己的电脑" class="headerlink" title="把代码从gitee上拿到自己的电脑"></a>把代码从gitee上拿到自己的电脑</h4><p>在终端输入命令行</p>
+<p>命令间等等，都要用空格隔开</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202090106249.png" alt="image-20220209010611219"></p>
+<p>查看当前路径：pwd</p>
+<p>把路径改为Documents : cd Documents</p>
+<p>git clone 这里填gitee上复制的要下载的文档的链接</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202090104176.png" alt="image-20220209010419113"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客</title>
+    <url>/2021/12/29/%E9%98%BF%E9%87%8C%E4%BA%91+Typora+PicGo+Github+Hexo+Next%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="阿里云-Typora-PicGo-Github-Hexo-Next主题搭建个人博客"><a href="#阿里云-Typora-PicGo-Github-Hexo-Next主题搭建个人博客" class="headerlink" title="阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客"></a>阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客</h1><ul>
+<li><p>开通阿里云对象存储</p>
+</li>
+<li><p>下载Typora</p>
+</li>
+<li><p> 下载Picgo</p>
+</li>
+<li><p>typora配置图片通过picgo上传</p>
+</li>
+<li><p>picgo配置阿里云的secretKey和id</p>
+</li>
+<li><p>安装hexo（需要先安装npm和nodejs）</p>
+</li>
+<li><p>github新建仓库</p>
+</li>
+<li><p>配置hexo使用github发布</p>
+</li>
+<li><p>修改主题为Next主题</p>
+</li>
+</ul>
+<h2 id="安装Homebrew"><a href="#安装Homebrew" class="headerlink" title="安装Homebrew"></a>安装Homebrew</h2><p><a href="https://zhuanlan.zhihu.com/p/90508170">https://zhuanlan.zhihu.com/p/90508170</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)&quot;</span><br><span class="line"></span><br><span class="line">echo &#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27; &gt;&gt;</span><br><span class="line">/Users/chenxiechun/.zprofile</span><br><span class="line">    </span><br><span class="line">eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;</span><br><span class="line"></span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles&#x27; &gt;&gt; ~/.zprofile</span><br><span class="line"></span><br><span class="line">source ~/.zprofile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装PicGo"><a href="#安装PicGo" class="headerlink" title="安装PicGo"></a>安装PicGo</h2><p><a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a></p>
+<p>配置了阿里云图床</p>
+<h2 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install npm</span><br><span class="line"></span><br><span class="line">brew install node</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">github创建一个仓库</span></span><br><span class="line"><span class="meta">#</span><span class="bash">安装git</span></span><br><span class="line">brew install git</span><br><span class="line"></span><br><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br><span class="line"></span><br><span class="line">然后直接三个回车即可，默认不需要设置密码</span><br><span class="line">然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制到github</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">hexo init blog</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">访问不了github， 要翻墙</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改配置文件</span></span><br><span class="line"></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> github生成token，密码填token</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成Token的时候要设置权限</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置主题</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改配置文件blog/_config.yml</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Site</span></span><br><span class="line">title: YeChun</span><br><span class="line">subtitle: &#x27;I love mw.&#x27;</span><br><span class="line">description: &#x27;朝花夕拾 聊以记之&#x27;</span><br><span class="line">keywords:</span><br><span class="line">author: YeChunChen</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: &#x27;Asia/Shanghai&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/pure-cyc/pure-cyc.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置主题</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> clash重新设置代理</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br><span class="line">git clone https://github.com/next-theme/hexo-theme-next.git themes/next</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置next/_config.yml</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Remove unnecessary files after hexo generate.</span></span><br><span class="line">minify: true</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Schemes</span></span><br><span class="line"><span class="meta">#</span><span class="bash">scheme: Muse</span></span><br><span class="line"><span class="meta">#</span><span class="bash">scheme: Mist</span></span><br><span class="line"><span class="meta">#</span><span class="bash">scheme: Pisces</span></span><br><span class="line">scheme: Gemini</span><br><span class="line"></span><br><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line"><span class="meta">  #</span><span class="bash">about: /about/ || fa fa-user</span></span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line"><span class="meta">  #</span><span class="bash">schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">commonweal: /404/ || fa fa-heartbeat</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/pure-cyc || fab fa-github</span><br><span class="line"><span class="meta">  #</span><span class="bash">E-Mail: mailto:@gmail.com || fa fa-envelope</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Weibo: https://weibo.com/yourname || fab fa-weibo</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Google: https://plus.google.com/yourname || fab fa-google</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Twitter: https://twitter.com/yourname || fab fa-twitter</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">FB Page: https://www.facebook.com/yourname || fab fa-facebook</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">YouTube: https://youtube.com/yourname || fab fa-youtube</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Instagram: https://instagram.com/yourname || fab fa-instagram</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Skype: skype:yourname?call|chat || fab fa-skype</span></span><br><span class="line">  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Mermaid tag</span></span><br><span class="line">mermaid:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Available themes: default | dark | forest | neutral</span></span><br><span class="line">  theme:</span><br><span class="line">    light: default</span><br><span class="line">    dark: dark</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启search</span></span><br><span class="line">npm install hexo-generator-searchdb</span><br><span class="line"><span class="meta">#</span><span class="bash"> blog/_config.yml</span></span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  content: true</span><br><span class="line">  format: html</span><br><span class="line"><span class="meta"> </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> next/——config.yml</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> Local search</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Dependencies: https://github.com/next-theme/hexo-generator-searchdb</span></span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta">  #</span><span class="bash"> If auto, trigger search by changing input.</span></span><br><span class="line"><span class="meta">  #</span><span class="bash"> If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  trigger: auto</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  top_n_per_article: 1</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Unescape html strings to the readable one.</span></span><br><span class="line">  unescape: false</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Preload the search data when the page loads.</span></span><br><span class="line">  preload: false</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 绑定域名</span></span><br><span class="line">cd blog/source</span><br><span class="line">vi CNAME</span><br><span class="line">blog.yc0623.asia</span><br><span class="line"><span class="meta">#</span><span class="bash">github上填写blog.yc0623.asia</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编写脚本debug.sh</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s --debug</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 把本地blog上传到github</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> github创建仓库blog</span></span><br><span class="line">cd blog</span><br><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git rm -f --cached themes/next</span><br><span class="line">git submodule add https://github.com/next-theme/hexo-theme-next.git themes/next</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将本地项目与远程仓库关联</span></span><br><span class="line">git remote add origin https://github.com/pure-cyc/blog.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 第一次提交需要-u，该-u标志添加了对您推送到的上游服务器的跟踪引用。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一旦你做了一个git push -u origin master，你可以稍后调用git pull，git 就会知道你实际上是指git pull origin master.</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编写pushAndDeployment.sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">git add .</span><br><span class="line">time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line">echo &quot;Site updated: $&#123;time&#125;&quot;</span><br><span class="line">git commit -m &quot;Site updated: $&#123;time&#125;&quot;</span><br><span class="line">echo &quot;Commit success&quot;</span><br><span class="line">git push</span><br><span class="line">echo &quot;Push success&quot;</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">echo &quot;Deployment success&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 部署</span></span><br><span class="line">cd blog</span><br><span class="line">./pushAndDeployment.sh</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/12/30/%E5%85%B3%E4%BA%8EMac%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="关于Mac的一些软件"><a href="#关于Mac的一些软件" class="headerlink" title="关于Mac的一些软件"></a>关于Mac的一些软件</h1><h2 id="typora"><a href="#typora" class="headerlink" title="typora"></a>typora</h2><p>插入程序代码  ```和回车</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/01/09/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="学习前端（上）"><a href="#学习前端（上）" class="headerlink" title="学习前端（上）"></a>学习前端（上）</h1><h2 id="网页："><a href="#网页：" class="headerlink" title="网页："></a>网页：</h2><p>网站：网页集合</p>
+<p>网页：网站中的一页，HTML格式，通过浏览器阅读</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201091630840.png" alt="image-20220109163003802"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201091633659.png" alt="image-20220109163322635"></p>
+<h2 id="web标准"><a href="#web标准" class="headerlink" title="web标准"></a>web标准</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092016828.png" alt="image-20220109201608804"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092020349.png" alt="image-20220109202038322"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211644983.png" alt="image-20220121164413938"></p>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092029750.png" alt="image-20220109202958724"></p>
+<h2 id="HTML语法规范"><a href="#HTML语法规范" class="headerlink" title="HTML语法规范"></a>HTML语法规范</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">所有的标签都必须包含在&lt;&gt;里，大部分成对出现</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">   &lt;head&gt;&lt;/head&gt;</span><br><span class="line">   &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;br /&gt;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">包含、并列关系</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092057481.png" alt="image-20220109205727453"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092058721.png" alt="image-20220109205833697"></p>
+<h2 id="HTML的基本结构标签"><a href="#HTML的基本结构标签" class="headerlink" title="HTML的基本结构标签"></a>HTML的基本结构标签</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201111543890.png" alt="image-20220111154326862"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;显示在最上面&lt;title/&gt;</span><br><span class="line">		&lt;body&gt;</span><br><span class="line">			显示在页面上</span><br><span class="line">		&lt;/body&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201111545921.png" alt="image-20220111154528893"></p>
+<h2 id="HTML常用标签"><a href="#HTML常用标签" class="headerlink" title="HTML常用标签"></a>HTML常用标签</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112102667.png" alt="image-20220111210221638"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112105219.png" alt="image-20220111210545191"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112117832.png" alt="image-20220111211752804"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112135995.png" alt="image-20220111213552964"></p>
+<p> <img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201190954848.png" alt="image-20220119095419815"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191015666.png" alt="image-20220119101528636"></p>
+<h3 id="图像标签和路径（重点）"><a href="#图像标签和路径（重点）" class="headerlink" title="图像标签和路径（重点）"></a>图像标签和路径（重点）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191031745.png" alt="image-20220119103115716"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191031800.png" alt="image-20220119103148771"></p>
+<p>宽度和高度设一个，让他等比缩放</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191151619.png" alt="image-20220119115139582"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191154835.png" alt="image-20220119115413802"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191504761.png" alt="image-20220119150459730"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191513128.png" alt="image-20220119151301104"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191523414.png" alt="image-20220119152355376"></p>
+<p>电脑上的路径，因为每个人电脑不一样，所以只能在自己的电脑上使用</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191528805.png" alt="image-20220119152820779"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191529980.png" alt="image-20220119152928953"></p>
+<p>打开哪一个页面？怎么打开？</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">target	打开窗口的方式，默认值是_self（当前窗口打开页面）_blank(在新窗口打开)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191604357.png" alt="image-20220119160458331"></p>
+<p>空链接：需要链接但是暂时还没有目标时</p>
+<p>下载链接：地址链接是文件.exe或者是zip等压缩包形式</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191602466.png" alt="image-20220119160202436"></p>
+<p>网页元素链接：把网页元素当成文字</p>
+<h2 id="HTML中的注释标签和特殊字符"><a href="#HTML中的注释标签和特殊字符" class="headerlink" title="HTML中的注释标签和特殊字符"></a>HTML中的注释标签和特殊字符</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191630500.png" alt="image-20220119163025458"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191634456.png" alt="image-20220119163435425"></p>
+<h2 id="HTML的常用标签（下）"><a href="#HTML的常用标签（下）" class="headerlink" title="HTML的常用标签（下）"></a>HTML的常用标签（下）</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191645999.png" alt="image-20220119164542966"></p>
+<h3 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191706783.png" alt="image-20220119170615745"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191719628.png" alt="image-20220119171956587"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191727944.png" alt="image-20220119172704905"></p>
+<p>表格：展示数据</p>
+<p>有三个标签：table（表格标签），tr(行标签)，td（单元格）</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191734873.png" alt="image-20220119173459837"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191751428.png" alt="image-20220119175103385"></p>
+<p>这些属性要写在表格标签table里面去</p>
+<p>这些会通过css书写</p>
+<p>align：对齐、border：边框、cellpadding：设置边框和文字之间的距离、cellspacing：单元格与单元格之间 的距离</p>
+<h4 id="案例：小说排行榜"><a href="#案例：小说排行榜" class="headerlink" title="案例：小说排行榜"></a>案例：小说排行榜</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191808303.png" alt="image-20220119180843256"></p>
+<h4 id="表格结构标签"><a href="#表格结构标签" class="headerlink" title="表格结构标签"></a>表格结构标签</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191824306.png" alt="image-20220119182457266"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201201002302.png" alt="image-20220120100223263"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201201005836.png" alt="image-20220120100512801"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201202104274.png" alt="image-20220120210423236"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201202106334.png" alt="image-20220120210607291"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211052601.png" alt="image-20220121105240559"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211102862.png" alt="image-20220121110224825"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211103515.png" alt="image-20220121110343479"></p>
+<h3 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211108833.png" alt="image-20220121110805793"></p>
+<h4 id="无序列表（重点）"><a href="#无序列表（重点）" class="headerlink" title="无序列表（重点）"></a>无序列表（重点）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211112704.png" alt="image-20220121111226662"></p>
+<h4 id="有序列表（理解）"><a href="#有序列表（理解）" class="headerlink" title="有序列表（理解）"></a>有序列表（理解）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211119333.png" alt="image-20220121111938282"></p>
+<h4 id="自定义列表（重点）"><a href="#自定义列表（重点）" class="headerlink" title="自定义列表（重点）"></a>自定义列表（重点）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211121605.png" alt="image-20220121112125568"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211124732.png" alt="image-20220121112432684"></p>
+<h4 id="列表总结"><a href="#列表总结" class="headerlink" title="列表总结"></a>列表总结</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211129306.png" alt="image-20220121112918254"></p>
+<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><p>使用场景？语法规范？</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211131185.png" alt="image-20220121113143124"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211135284.png" alt="image-20220121113500235"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211137850.png" alt="image-20220121113717795"></p>
+<h4 id="input表单元素"><a href="#input表单元素" class="headerlink" title="input表单元素"></a>input表单元素</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211158930.png" alt="image-20220121115820892"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211154670.png" alt="image-20220121115458621"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211404922.png" alt="image-20220121140424890"></p>
+<h4 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211438151.png" alt="image-20220121143842115"></p>
+<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211445214.png" alt="image-20220121144509175"></p>
+<h4 id="textarea"><a href="#textarea" class="headerlink" title="textarea"></a>textarea</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211451617.png" alt="image-20220121145115578"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211451147.png" alt="image-20220121145155101"></p>
+<h4 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211455097.png" alt="image-20220121145548059"></p>
+<p>1、先想我应该怎么做，用什么做</p>
+<h3 id="查阅文档"><a href="#查阅文档" class="headerlink" title="查阅文档"></a>查阅文档</h3><p>W3C  <a href="http://www.w3school.com.cn/">http://www.w3school.com.cn/</a></p>
+<p>MDN <a href="https://developer.mozilla.org/zh-CN/">https://developer.mozilla.org/zh-CN/</a></p>
+<h1 id="CSS层叠样式表"><a href="#CSS层叠样式表" class="headerlink" title="CSS层叠样式表"></a>CSS层叠样式表</h1><h2 id="CSS简介"><a href="#CSS简介" class="headerlink" title="CSS简介"></a>CSS简介</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211648947.png" alt="image-20220121164847917"></p>
+<p>给谁改？改什么？</p>
+<p>选择器{样式}</p>
+<p>给谁改样式{改什么样式}</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211654557.png" alt="image-20220121165418520"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211656780.png" alt="image-20220121165618734"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211657223.png" alt="image-20220121165713178"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211658358.png" alt="image-20220121165839308"></p>
+<h2 id="CSS基础选择器"><a href="#CSS基础选择器" class="headerlink" title="CSS基础选择器"></a>CSS基础选择器</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211702801.png" alt="image-20220121170232763"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211705726.png" alt="image-20220121170527683"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211710796.png" alt="image-20220121171016747"></p>
+<h3 id="类选择器口诀："><a href="#类选择器口诀：" class="headerlink" title="类选择器口诀："></a>类选择器口诀：</h3><p>样式点定义，  结构类（class）调用，  一个或多个  ，开发最常用</p>
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211722924.png" alt="image-20220121172217871"></p>
+<p>多类名</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211736990.png" alt="image-20220121173611936"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211740648.png" alt="image-20220121174027594"></p>
+<h3 id="id选择器口诀："><a href="#id选择器口诀：" class="headerlink" title="id选择器口诀："></a>id选择器口诀：</h3><p>样式#定义，结构id调用，只能调用一次，别人切勿使用</p>
+<h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212039197.png" alt="image-20220121203924167"></p>
+<h3 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h3><h3 id="基础选择器总结"><a href="#基础选择器总结" class="headerlink" title="基础选择器总结"></a>基础选择器总结</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212047106.png" alt="image-20220121204720077"></p>
+<h2 id="CSS字体属性"><a href="#CSS字体属性" class="headerlink" title="CSS字体属性"></a>CSS字体属性</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212217136.png" alt="image-20220121221743100"></p>
+<p>标题标签比较特殊，需要单独指定文字大小</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212225765.png" alt="image-20220121222501730"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221020724.png" alt="image-20220122102022689"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221021663.png" alt="image-20220122102126628"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221026002.png" alt="image-20220122102654963"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221034415.png" alt="image-20220122103409378"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221040431.png"></p>
+<h2 id="文本属性"><a href="#文本属性" class="headerlink" title="文本属性"></a>文本属性</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221052068.png" alt="image-20220122105225022"></p>
+<p>文字居中对齐本质上是让h1盒子里面的文字水平居中对齐</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221119397.png" alt="image-20220122111905336"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221131081.png" alt="image-20220122113129035"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221141532.png" alt="image-20220122114144475"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221146948.png" alt="image-20220122114636907"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221150279.png" alt="image-20220122115044223"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221351536.png" alt="image-20220122135133487"></p>
+<h2 id="CSS的引入方式"><a href="#CSS的引入方式" class="headerlink" title="CSS的引入方式"></a>CSS的引入方式</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221354963.png" alt="image-20220122135404907"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221356431.png" alt="image-20220122135629381"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221400173.png" alt="image-20220122140038124"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221404126.png" alt="image-20220122140408060"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221406236.png" alt="image-20220122140604182"></p>
+<h2 id="综合案例（新闻页面）"><a href="#综合案例（新闻页面）" class="headerlink" title="综合案例（新闻页面）"></a>综合案例（新闻页面）</h2><h2 id="Chrome调试工具"><a href="#Chrome调试工具" class="headerlink" title="Chrome调试工具"></a>Chrome调试工具</h2><p>是给我们检查错误的，不是修改错误的</p>
+<p>右键  检查  Elements</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221426604.png" alt="image-20220122142627547"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221428391.png" alt="image-20220122142846331"></p>
+<h2 id="Emmet-语法"><a href="#Emmet-语法" class="headerlink" title="Emmet 语法"></a>Emmet 语法</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221431980.png" alt="image-20220122143130902"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221436699.png" alt="image-20220122143655626"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221439474.png" alt="image-20220122143918394"></p>
+<h3 id="快速格式化代码"><a href="#快速格式化代码" class="headerlink" title="快速格式化代码"></a>快速格式化代码</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221510511.png" alt="image-20220122151059446"></p>
+<h2 id="CSS的复合选择器"><a href="#CSS的复合选择器" class="headerlink" title="CSS的复合选择器"></a>CSS的复合选择器</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221518380.png" alt="image-20220122151811307"></p>
+<h3 id="后代选择器（重要）"><a href="#后代选择器（重要）" class="headerlink" title="后代选择器（重要）"></a>后代选择器（重要）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221534690.png" alt="image-20220122153445632"></p>
+<h3 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221552117.png" alt="image-20220122155234063"></p>
+<p>练习</p>
+<p>![](../../../Library/Application Support/typora-user-images/image-20220122155133413.png)</p>
+<h3 id="并集选择器（重要）"><a href="#并集选择器（重要）" class="headerlink" title="并集选择器（重要）"></a>并集选择器（重要）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221558622.png" alt="image-20220122155857547"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221559088.png" alt="image-20220122155944001"></p>
+<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221608796.png" alt="image-20220122160820705"></p>
+<h4 id="链接伪类选择器"><a href="#链接伪类选择器" class="headerlink" title="链接伪类选择器"></a>链接伪类选择器</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221654164.png" alt="image-20220122165408120"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221656586.png" alt="image-20220122165648529"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221657941.png" alt="image-20220122165749885"></p>
+<h4 id="focus-伪类选择器"><a href="#focus-伪类选择器" class="headerlink" title=":focus 伪类选择器"></a>:focus 伪类选择器</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231107149.png" alt="image-20220123110737091"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231124428.png" alt="image-20220123112441378"></p>
+<h2 id="CSS的元素显示模式"><a href="#CSS的元素显示模式" class="headerlink" title="CSS的元素显示模式"></a>CSS的元素显示模式</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231143929.png" alt="image-20220123114313887"></p>
+<h3 id="块元素（特点要重点记忆）"><a href="#块元素（特点要重点记忆）" class="headerlink" title="块元素（特点要重点记忆）"></a>块元素（特点要重点记忆）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231146455.png" alt="image-20220123114638396"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231152449.png" alt="image-20220123115232402"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231155249.png" alt="image-20220123115552205"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231157638.png" alt="image-20220123115755593"></p>
+<p>了解他们的特点</p>
+<h3 id="元素显示模式的转换"><a href="#元素显示模式的转换" class="headerlink" title="元素显示模式的转换"></a>元素显示模式的转换</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231203843.png" alt="image-20220123120344797"></p>
+<h3 id="案例：简洁小米侧边栏"><a href="#案例：简洁小米侧边栏" class="headerlink" title="案例：简洁小米侧边栏"></a>案例：简洁小米侧边栏</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231306445.png" alt="image-20220123130611392"></p>
+<h3 id="单行文字垂直居中"><a href="#单行文字垂直居中" class="headerlink" title="单行文字垂直居中"></a>单行文字垂直居中</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231321631.png" alt="image-20220123132128580"></p>
+<h2 id="CSS的背景"><a href="#CSS的背景" class="headerlink" title="CSS的背景"></a>CSS的背景</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231334321.png" alt="image-20220123133418275"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231341683.png" alt="image-20220123134101635"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231347175.png" alt="image-20220123134715126"></p>
+<p>默认情况下，背景图片是平铺的。</p>
+<p>页面元素既可以添加背景图片也可以添加背景颜色 只不过背景图片会压住背景颜色</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231457380.png" alt="image-20220123145700338"></p>
+<p>Background-position:</p>
+<p>超大的背景图片也喜欢用backgound-image做，可以让背景图片水平居中</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231447906.png" alt="image-20220123144731850"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231459809.png" alt="image-20220123145944760"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231508558.png" alt="image-20220123150812505"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231512299.png" alt="image-20220123151217246"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231514993.png" alt="image-20220123151449936"></p>
+<h2 id="CSS的三大特性"><a href="#CSS的三大特性" class="headerlink" title="CSS的三大特性"></a>CSS的三大特性</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231612716.png" alt="image-20220123161216659"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231614727.png" alt="image-20220123161453669"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231620627.png" alt="image-20220123162035568"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231724942.png" alt="image-20220123172418868"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231724174.png" alt="image-20220123172450118"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231733302.png" alt="image-20220123173345266"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231732903.png" alt="image-20220123173235832"></p>
+<p>所以以后看标签到底执行哪一个样式，就先看这个标签有没有被直接选出来</p>
+<h3 id="CSS权重的叠加"><a href="#CSS权重的叠加" class="headerlink" title="CSS权重的叠加"></a>CSS权重的叠加</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231739097.png" alt="image-20220123173942036"></p>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2>]]></content>
+  </entry>
+  <entry>
+    <title>毕业设计</title>
+    <url>/2021/12/29/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<h1 id="毕业设计"><a href="#毕业设计" class="headerlink" title="毕业设计"></a>毕业设计</h1><h3 id="关于服务器"><a href="#关于服务器" class="headerlink" title="关于服务器"></a>关于服务器</h3><p>1、在腾讯与买了3台服务器，用QQ登录</p>
+<p>2、两台8 16G  一台4 8G</p>
+<p>3、宽带19mbps，即下载速度最快为19mbps</p>
+<p>4、弹：就是固定不变，不管重新进去多少次都是这个IP地址</p>
+<p>公：就是全球唯一</p>
+<p>内：处于同一网络。方便内部通信，内部通信很快</p>
+<p>5、为什么按量计费？</p>
+<p>因为在云上用服务器很贵，我做毕设的话做8个月大概要4千，按量计费，关闭了就会停止计费，但是一天做10个小时也要大概45块，但是相对来说还是省钱的</p>
+<h3 id="kubesphere-k8s"><a href="#kubesphere-k8s" class="headerlink" title="kubesphere    k8s"></a>kubesphere    k8s</h3><p>1、是什么？</p>
+<p>运维平台，部署项目</p>
+<p>2、账号：dev-chen    admin    hr-chen</p>
+<p>以dev-chen进入演示</p>
+<p>3、为了模拟一个真实的环境，我们设置了两个地区深圳和武汉两个分公司</p>
+<p>4、IP地址+端口    地址定位到这台服务器，端口指明这个进程</p>
+<p>5、管理员界面    用户下单界面</p>
+<h3 id="gitee"><a href="#gitee" class="headerlink" title="gitee"></a>gitee</h3><p>所有代码都放在gitee，gitee就相当于一个仓库用来存放代码</p>
+<h3 id="Devops"><a href="#Devops" class="headerlink" title="Devops"></a>Devops</h3><p>没有用devops时要自己打包再到云上去部署，非常麻烦</p>
+<p>Devops 把开发和运维放在一起。流水线模拟运维人员</p>
+<p>流水线：</p>
+<p>1、拉下代码</p>
+<p>2、项目编译：但是还需要一些环境和配置文件才能运行</p>
+<p>3、构成镜像：把所有项目（环境与项目）打包形成一个可运行的东西，即一个盒子把这些都包起来（镜像存在阿里云）</p>
+<p>4、推送镜像</p>
+<p>5、部署到环境：配置文件，里面有镜像的存放位置，取出镜像，部署</p>
+<h3 id="在webstorm创建分支"><a href="#在webstorm创建分支" class="headerlink" title="在webstorm创建分支"></a>在webstorm创建分支</h3><h4 id="Git-分支-分支的新建与合并"><a href="#Git-分支-分支的新建与合并" class="headerlink" title="Git 分支 - 分支的新建与合并"></a>Git 分支 - 分支的新建与合并</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在webstorm的terminal中写</span></span><br><span class="line">git checkout -b feature/cyc</span><br><span class="line"><span class="meta">#</span><span class="bash">创建一个feature文件下名为cyc的文件</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>开发模式：master是主模式，开发更新的是一个分支</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202130127979.png" alt="image-20220213012707936"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202130132215.png" alt="image-20220213013240178"></p>
+<p>把新上传到gitee上面的代码合并，会有一个审查人审查。</p>
+<p>一般团队合作中都需要分开做然后最后合并到主干上</p>
+<h1 id="linux常见的命令行和快捷键"><a href="#linux常见的命令行和快捷键" class="headerlink" title="linux常见的命令行和快捷键"></a>linux常见的命令行和快捷键</h1><p><a href="https://blog.csdn.net/a2352159950/article/details/104776557?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-5-104776557.pc_agg_new_rank&amp;utm_term=%E5%91%BD%E4%BB%A4%E8%A1%8Ccd%E5%85%A8%E7%A7%B0&amp;spm=1000.2123.3001.4430">https://blog.csdn.net/a2352159950/article/details/104776557?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-5-104776557.pc_agg_new_rank&amp;utm_term=%E5%91%BD%E4%BB%A4%E8%A1%8Ccd%E5%85%A8%E7%A7%B0&amp;spm=1000.2123.3001.4430</a></p>
+<p>ls：显示当前目录下的文件</p>
+<p>ls -la：显示所有文件包括隐藏文件</p>
+<p>cd：change directory</p>
+<p>rm -rf 文件夹：用于删除文件或文件夹，-r表示删除目录（递归删除，从里到外），也可以用于删除文件，-f表示强制删除，不需要确认</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2022/02/09/%E6%AF%8F%E6%97%A5%E4%BD%9C%E4%B8%9A-%E5%93%81%E4%BC%98%E8%B4%AD%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h1 id="每日作业-品优购项目Day02"><a href="#每日作业-品优购项目Day02" class="headerlink" title="每日作业-品优购项目Day02"></a>每日作业-品优购项目Day02</h1><p>作业说明：</p>
 <ol>
@@ -1158,295 +1455,5 @@
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.detail</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">978px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.detail_tab_list</span> &#123;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">39px</span>;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="number">#f1f1f1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.detail_tab_list</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">	<span class="attribute">float</span>: left;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">39px</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">39px</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">0</span> <span class="number">20px</span>;</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">	<span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.detail_tab_list</span> <span class="selector-class">.current</span> &#123;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="number">#c81623</span>;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item_info</span> &#123;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">20px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item_info</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">22px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.more</span> &#123;</span><br><span class="line">	<span class="attribute">float</span>: right;</span><br><span class="line">	<span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">	<span class="attribute">font-family</span>: <span class="string">&#x27;icomoon&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/02/09/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/</url>
-    <content><![CDATA[<h1 id="毕业设计"><a href="#毕业设计" class="headerlink" title="毕业设计"></a>毕业设计</h1><h3 id="关于服务器"><a href="#关于服务器" class="headerlink" title="关于服务器"></a>关于服务器</h3><p>1、在腾讯与买了3台服务器，用QQ登录</p>
-<p>2、两台8 16G  一台4 8G</p>
-<p>3、宽带19mbps，即下载速度最快为19mbps</p>
-<p>4、弹：就是固定不变，不管重新进去多少次都是这个IP地址</p>
-<p>公：就是全球唯一</p>
-<p>内：处于同一网络。方便内部通信，内部通信很快</p>
-<p>5、为什么按量计费？</p>
-<p>因为在云上用服务器很贵，我做毕设的话做8个月大概要4千，按量计费，关闭了就会停止计费，但是一天做10个小时也要大概45块，但是相对来说还是省钱的</p>
-<h3 id="kubesphere-k8s"><a href="#kubesphere-k8s" class="headerlink" title="kubesphere    k8s"></a>kubesphere    k8s</h3><p>1、是什么？</p>
-<p>运维平台，部署项目</p>
-<p>2、账号：dev-chen    admin    hr-chen</p>
-<p>以dev-chen进入演示</p>
-<p>3、为了模拟一个真实的环境，我们设置了两个地区深圳和武汉两个分公司</p>
-<p>4、IP地址+端口    地址定位到这台服务器，端口指明这个进程</p>
-<p>5、管理员界面    用户下单界面</p>
-<h3 id="gitee"><a href="#gitee" class="headerlink" title="gitee"></a>gitee</h3><p>所有代码都放在gitee，gitee就相当于一个仓库用来存放代码</p>
-<h3 id="Devops"><a href="#Devops" class="headerlink" title="Devops"></a>Devops</h3><p>没有用devops时要自己打包再到云上去部署，非常麻烦</p>
-<p>Devops 把开发和运维放在一起。流水线模拟运维人员</p>
-<p>流水线：</p>
-<p>1、拉下代码</p>
-<p>2、项目编译：但是还需要一些环境和配置文件才能运行</p>
-<p>3、构成镜像：把所有项目（环境与项目）打包形成一个可运行的东西，即一个盒子把这些都包起来（镜像存在阿里云）</p>
-<p>4、推送镜像</p>
-<p>5、部署到环境：配置文件，里面有镜像的存放位置，取出镜像，部署</p>
-<h3 id="在webstorm创建分支"><a href="#在webstorm创建分支" class="headerlink" title="在webstorm创建分支"></a>在webstorm创建分支</h3><h4 id="Git-分支-分支的新建与合并"><a href="#Git-分支-分支的新建与合并" class="headerlink" title="Git 分支 - 分支的新建与合并"></a>Git 分支 - 分支的新建与合并</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在webstorm的terminal中写</span></span><br><span class="line">git checkout -b feature/cyc</span><br><span class="line"><span class="meta">#</span><span class="bash">创建一个feature文件下名为cyc的文件</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>开发模式：master是主模式，开发更新的是一个分支</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202130127979.png" alt="image-20220213012707936"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202130132215.png" alt="image-20220213013240178"></p>
-<p>把新上传到gitee上面的代码合并，会有一个审查人审查。</p>
-<p>一般团队合作中都需要分开做然后最后合并到主干上</p>
-<h1 id="linux常见的命令行和快捷键"><a href="#linux常见的命令行和快捷键" class="headerlink" title="linux常见的命令行和快捷键"></a>linux常见的命令行和快捷键</h1><p><a href="https://blog.csdn.net/a2352159950/article/details/104776557?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-5-104776557.pc_agg_new_rank&amp;utm_term=%E5%91%BD%E4%BB%A4%E8%A1%8Ccd%E5%85%A8%E7%A7%B0&amp;spm=1000.2123.3001.4430">https://blog.csdn.net/a2352159950/article/details/104776557?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-5-104776557.pc_agg_new_rank&amp;utm_term=%E5%91%BD%E4%BB%A4%E8%A1%8Ccd%E5%85%A8%E7%A7%B0&amp;spm=1000.2123.3001.4430</a></p>
-<p>ls：显示当前目录下的文件</p>
-<p>ls -la：显示所有文件包括隐藏文件</p>
-<p>cd：change directory</p>
-<p>rm -rf 文件夹：用于删除文件或文件夹，-r表示删除目录（递归删除，从里到外），也可以用于删除文件，-f表示强制删除，不需要确认</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/02/13/M1%E8%8A%AF%E7%89%87mac%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h1 id="M1芯片mac搭建前端开发环境"><a href="#M1芯片mac搭建前端开发环境" class="headerlink" title="M1芯片mac搭建前端开发环境"></a>M1芯片mac搭建前端开发环境</h1><p><a href="https://segmentfault.com/a/1190000039005726">M1芯片Mac搭建前端开发环境</a></p>
-<h2 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 Homebrew</h2><p>使用它来管理 Mac 中的各类环境依赖</p>
-<h4 id="Homebrew安装及使用"><a href="#Homebrew安装及使用" class="headerlink" title="Homebrew安装及使用"></a>Homebrew安装及使用</h4><p><a href="https://blog.csdn.net/weixin_41918841/article/details/112545539">https://blog.csdn.net/weixin_41918841/article/details/112545539</a></p>
-<p>Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径的情况，十分方便快捷。</p>
-<h4 id="Homebrew的使用"><a href="#Homebrew的使用" class="headerlink" title="Homebrew的使用"></a>Homebrew的使用</h4><p>1.查看Homebrew命令：brew help<br>2.安装任意包：brew install <packageName>，eg：brew install node<br>3.卸载任意包：brew uninstall <packageName>，eg：brew uninstall git<br>4.查询可用包：brew search <packageName><br>5.查询已安装包列表：brew list<br>6.查看任意包信息：brew info <packageName><br>7.更新Homebrew：brew update<br>8.Homebrew帮助信息：brew -h<br>8.查看brew版本：brew -v<br>10.更新brew版本：brew update<br>11.整理重复语句：open ~/.zshrc -e、open ~/.bash_profile -e</p>
-<h2 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h2><p>Nvm 是一个管理 Node 版本的工具，当项目多了以后，总会碰到需要切换 Node 环境的时候，所以推荐大家使用 Nvm 来安装 Node</p>
-<h4 id="Homebrew-安装-Nvm"><a href="#Homebrew-安装-Nvm" class="headerlink" title="Homebrew 安装 Nvm"></a>Homebrew 安装 Nvm</h4><p>若是你已经按上述步骤安装好了 Homebrew，那么你可以直接通过 Homebrew 的命令轻松安装 Nvm</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-
-<h4 id="设置-Nvm-的环境变量"><a href="#设置-Nvm-的环境变量" class="headerlink" title="设置 Nvm 的环境变量"></a>设置 Nvm 的环境变量</h4><p><a href="http://www.qiuhan218.com/2021/02/23/M1-MacBook-Config/">http://www.qiuhan218.com/2021/02/23/M1-MacBook-Config/</a></p>
-<h2 id="关于配置环境变量"><a href="#关于配置环境变量" class="headerlink" title="关于配置环境变量"></a>关于配置环境变量</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vim 编辑环境变量</span></span><br><span class="line">vim ~/.bash_profile</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存后使得环境变量生效</span></span><br><span class="line">source ~/.bash_profile</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一个坑</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在 ~/.bash_profile 中配置的环境变量，可是每次重启终端后配置的不生效，需要重新执行<span class="built_in">source</span> ~/.bash_profile</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后来发现直接加载的是 ~/.zshrc 文件，而 .zshrc 文件中并没有定义环境变量</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解决方法：在~/.zshrc文件最后增加一行：<span class="built_in">source</span> ~/.bash_profile</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 加入后使其生效</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Mac之终端Terminal命令"><a href="#Mac之终端Terminal命令" class="headerlink" title="Mac之终端Terminal命令"></a>Mac之终端Terminal命令</h1>]]></content>
-  </entry>
-  <entry>
-    <title>阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客</title>
-    <url>/2021/12/29/%E9%98%BF%E9%87%8C%E4%BA%91+Typora+PicGo+Github+Hexo+Next%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="阿里云-Typora-PicGo-Github-Hexo-Next主题搭建个人博客"><a href="#阿里云-Typora-PicGo-Github-Hexo-Next主题搭建个人博客" class="headerlink" title="阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客"></a>阿里云+Typora+PicGo+Github+Hexo+Next主题搭建个人博客</h1><ul>
-<li><p>开通阿里云对象存储</p>
-</li>
-<li><p>下载Typora</p>
-</li>
-<li><p> 下载Picgo</p>
-</li>
-<li><p>typora配置图片通过picgo上传</p>
-</li>
-<li><p>picgo配置阿里云的secretKey和id</p>
-</li>
-<li><p>安装hexo（需要先安装npm和nodejs）</p>
-</li>
-<li><p>github新建仓库</p>
-</li>
-<li><p>配置hexo使用github发布</p>
-</li>
-<li><p>修改主题为Next主题</p>
-</li>
-</ul>
-<h2 id="安装Homebrew"><a href="#安装Homebrew" class="headerlink" title="安装Homebrew"></a>安装Homebrew</h2><p><a href="https://zhuanlan.zhihu.com/p/90508170">https://zhuanlan.zhihu.com/p/90508170</a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install.sh)&quot;</span><br><span class="line"></span><br><span class="line">echo &#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27; &gt;&gt;</span><br><span class="line">/Users/chenxiechun/.zprofile</span><br><span class="line">    </span><br><span class="line">eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;</span><br><span class="line"></span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles&#x27; &gt;&gt; ~/.zprofile</span><br><span class="line"></span><br><span class="line">source ~/.zprofile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="安装PicGo"><a href="#安装PicGo" class="headerlink" title="安装PicGo"></a>安装PicGo</h2><p><a href="https://github.com/Molunerfinn/PicGo">https://github.com/Molunerfinn/PicGo</a></p>
-<p>配置了阿里云图床</p>
-<h2 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install npm</span><br><span class="line"></span><br><span class="line">brew install node</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">github创建一个仓库</span></span><br><span class="line"><span class="meta">#</span><span class="bash">安装git</span></span><br><span class="line">brew install git</span><br><span class="line"></span><br><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br><span class="line"></span><br><span class="line">然后直接三个回车即可，默认不需要设置密码</span><br><span class="line">然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制到github</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">hexo init blog</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">访问不了github， 要翻墙</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改配置文件</span></span><br><span class="line"></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> github生成token，密码填token</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成Token的时候要设置权限</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置主题</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改配置文件blog/_config.yml</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Site</span></span><br><span class="line">title: YeChun</span><br><span class="line">subtitle: &#x27;I love mw.&#x27;</span><br><span class="line">description: &#x27;朝花夕拾 聊以记之&#x27;</span><br><span class="line">keywords:</span><br><span class="line">author: YeChunChen</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: &#x27;Asia/Shanghai&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/pure-cyc/pure-cyc.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置主题</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> clash重新设置代理</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br><span class="line">git clone https://github.com/next-theme/hexo-theme-next.git themes/next</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置next/_config.yml</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Remove unnecessary files after hexo generate.</span></span><br><span class="line">minify: true</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Schemes</span></span><br><span class="line"><span class="meta">#</span><span class="bash">scheme: Muse</span></span><br><span class="line"><span class="meta">#</span><span class="bash">scheme: Mist</span></span><br><span class="line"><span class="meta">#</span><span class="bash">scheme: Pisces</span></span><br><span class="line">scheme: Gemini</span><br><span class="line"></span><br><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line"><span class="meta">  #</span><span class="bash">about: /about/ || fa fa-user</span></span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line"><span class="meta">  #</span><span class="bash">schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">commonweal: /404/ || fa fa-heartbeat</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/pure-cyc || fab fa-github</span><br><span class="line"><span class="meta">  #</span><span class="bash">E-Mail: mailto:@gmail.com || fa fa-envelope</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Weibo: https://weibo.com/yourname || fab fa-weibo</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Google: https://plus.google.com/yourname || fab fa-google</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Twitter: https://twitter.com/yourname || fab fa-twitter</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">FB Page: https://www.facebook.com/yourname || fab fa-facebook</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">YouTube: https://youtube.com/yourname || fab fa-youtube</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Instagram: https://instagram.com/yourname || fab fa-instagram</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">Skype: skype:yourname?call|chat || fab fa-skype</span></span><br><span class="line">  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Mermaid tag</span></span><br><span class="line">mermaid:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Available themes: default | dark | forest | neutral</span></span><br><span class="line">  theme:</span><br><span class="line">    light: default</span><br><span class="line">    dark: dark</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启search</span></span><br><span class="line">npm install hexo-generator-searchdb</span><br><span class="line"><span class="meta">#</span><span class="bash"> blog/_config.yml</span></span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  content: true</span><br><span class="line">  format: html</span><br><span class="line"><span class="meta"> </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> next/——config.yml</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> Local search</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Dependencies: https://github.com/next-theme/hexo-generator-searchdb</span></span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta">  #</span><span class="bash"> If auto, trigger search by changing input.</span></span><br><span class="line"><span class="meta">  #</span><span class="bash"> If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  trigger: auto</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  top_n_per_article: 1</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Unescape html strings to the readable one.</span></span><br><span class="line">  unescape: false</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Preload the search data when the page loads.</span></span><br><span class="line">  preload: false</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 绑定域名</span></span><br><span class="line">cd blog/source</span><br><span class="line">vi CNAME</span><br><span class="line">blog.yc0623.asia</span><br><span class="line"><span class="meta">#</span><span class="bash">github上填写blog.yc0623.asia</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编写脚本debug.sh</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s --debug</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 把本地blog上传到github</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> github创建仓库blog</span></span><br><span class="line">cd blog</span><br><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git rm -f --cached themes/next</span><br><span class="line">git submodule add https://github.com/next-theme/hexo-theme-next.git themes/next</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将本地项目与远程仓库关联</span></span><br><span class="line">git remote add origin https://github.com/pure-cyc/blog.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 第一次提交需要-u，该-u标志添加了对您推送到的上游服务器的跟踪引用。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一旦你做了一个git push -u origin master，你可以稍后调用git pull，git 就会知道你实际上是指git pull origin master.</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编写pushAndDeployment.sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">git add .</span><br><span class="line">time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)</span><br><span class="line">echo &quot;Site updated: $&#123;time&#125;&quot;</span><br><span class="line">git commit -m &quot;Site updated: $&#123;time&#125;&quot;</span><br><span class="line">echo &quot;Commit success&quot;</span><br><span class="line">git push</span><br><span class="line">echo &quot;Push success&quot;</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">echo &quot;Deployment success&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 部署</span></span><br><span class="line">cd blog</span><br><span class="line">./pushAndDeployment.sh</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/01/09/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="学习前端（上）"><a href="#学习前端（上）" class="headerlink" title="学习前端（上）"></a>学习前端（上）</h1><h2 id="网页："><a href="#网页：" class="headerlink" title="网页："></a>网页：</h2><p>网站：网页集合</p>
-<p>网页：网站中的一页，HTML格式，通过浏览器阅读</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201091630840.png" alt="image-20220109163003802"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201091633659.png" alt="image-20220109163322635"></p>
-<h2 id="web标准"><a href="#web标准" class="headerlink" title="web标准"></a>web标准</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092016828.png" alt="image-20220109201608804"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092020349.png" alt="image-20220109202038322"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211644983.png" alt="image-20220121164413938"></p>
-<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092029750.png" alt="image-20220109202958724"></p>
-<h2 id="HTML语法规范"><a href="#HTML语法规范" class="headerlink" title="HTML语法规范"></a>HTML语法规范</h2> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">所有的标签都必须包含在&lt;&gt;里，大部分成对出现</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">   &lt;head&gt;&lt;/head&gt;</span><br><span class="line">   &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;br /&gt;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">包含、并列关系</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092057481.png" alt="image-20220109205727453"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201092058721.png" alt="image-20220109205833697"></p>
-<h2 id="HTML的基本结构标签"><a href="#HTML的基本结构标签" class="headerlink" title="HTML的基本结构标签"></a>HTML的基本结构标签</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201111543890.png" alt="image-20220111154326862"></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;显示在最上面&lt;title/&gt;</span><br><span class="line">		&lt;body&gt;</span><br><span class="line">			显示在页面上</span><br><span class="line">		&lt;/body&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201111545921.png" alt="image-20220111154528893"></p>
-<h2 id="HTML常用标签"><a href="#HTML常用标签" class="headerlink" title="HTML常用标签"></a>HTML常用标签</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112102667.png" alt="image-20220111210221638"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112105219.png" alt="image-20220111210545191"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112117832.png" alt="image-20220111211752804"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201112135995.png" alt="image-20220111213552964"></p>
-<p> <img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201190954848.png" alt="image-20220119095419815"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191015666.png" alt="image-20220119101528636"></p>
-<h3 id="图像标签和路径（重点）"><a href="#图像标签和路径（重点）" class="headerlink" title="图像标签和路径（重点）"></a>图像标签和路径（重点）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191031745.png" alt="image-20220119103115716"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191031800.png" alt="image-20220119103148771"></p>
-<p>宽度和高度设一个，让他等比缩放</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191151619.png" alt="image-20220119115139582"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191154835.png" alt="image-20220119115413802"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191504761.png" alt="image-20220119150459730"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191513128.png" alt="image-20220119151301104"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191523414.png" alt="image-20220119152355376"></p>
-<p>电脑上的路径，因为每个人电脑不一样，所以只能在自己的电脑上使用</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191528805.png" alt="image-20220119152820779"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191529980.png" alt="image-20220119152928953"></p>
-<p>打开哪一个页面？怎么打开？</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">target	打开窗口的方式，默认值是_self（当前窗口打开页面）_blank(在新窗口打开)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191604357.png" alt="image-20220119160458331"></p>
-<p>空链接：需要链接但是暂时还没有目标时</p>
-<p>下载链接：地址链接是文件.exe或者是zip等压缩包形式</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191602466.png" alt="image-20220119160202436"></p>
-<p>网页元素链接：把网页元素当成文字</p>
-<h2 id="HTML中的注释标签和特殊字符"><a href="#HTML中的注释标签和特殊字符" class="headerlink" title="HTML中的注释标签和特殊字符"></a>HTML中的注释标签和特殊字符</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191630500.png" alt="image-20220119163025458"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191634456.png" alt="image-20220119163435425"></p>
-<h2 id="HTML的常用标签（下）"><a href="#HTML的常用标签（下）" class="headerlink" title="HTML的常用标签（下）"></a>HTML的常用标签（下）</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191645999.png" alt="image-20220119164542966"></p>
-<h3 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191706783.png" alt="image-20220119170615745"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191719628.png" alt="image-20220119171956587"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191727944.png" alt="image-20220119172704905"></p>
-<p>表格：展示数据</p>
-<p>有三个标签：table（表格标签），tr(行标签)，td（单元格）</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191734873.png" alt="image-20220119173459837"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191751428.png" alt="image-20220119175103385"></p>
-<p>这些属性要写在表格标签table里面去</p>
-<p>这些会通过css书写</p>
-<p>align：对齐、border：边框、cellpadding：设置边框和文字之间的距离、cellspacing：单元格与单元格之间 的距离</p>
-<h4 id="案例：小说排行榜"><a href="#案例：小说排行榜" class="headerlink" title="案例：小说排行榜"></a>案例：小说排行榜</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191808303.png" alt="image-20220119180843256"></p>
-<h4 id="表格结构标签"><a href="#表格结构标签" class="headerlink" title="表格结构标签"></a>表格结构标签</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201191824306.png" alt="image-20220119182457266"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201201002302.png" alt="image-20220120100223263"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201201005836.png" alt="image-20220120100512801"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201202104274.png" alt="image-20220120210423236"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201202106334.png" alt="image-20220120210607291"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211052601.png" alt="image-20220121105240559"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211102862.png" alt="image-20220121110224825"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211103515.png" alt="image-20220121110343479"></p>
-<h3 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211108833.png" alt="image-20220121110805793"></p>
-<h4 id="无序列表（重点）"><a href="#无序列表（重点）" class="headerlink" title="无序列表（重点）"></a>无序列表（重点）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211112704.png" alt="image-20220121111226662"></p>
-<h4 id="有序列表（理解）"><a href="#有序列表（理解）" class="headerlink" title="有序列表（理解）"></a>有序列表（理解）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211119333.png" alt="image-20220121111938282"></p>
-<h4 id="自定义列表（重点）"><a href="#自定义列表（重点）" class="headerlink" title="自定义列表（重点）"></a>自定义列表（重点）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211121605.png" alt="image-20220121112125568"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211124732.png" alt="image-20220121112432684"></p>
-<h4 id="列表总结"><a href="#列表总结" class="headerlink" title="列表总结"></a>列表总结</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211129306.png" alt="image-20220121112918254"></p>
-<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><p>使用场景？语法规范？</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211131185.png" alt="image-20220121113143124"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211135284.png" alt="image-20220121113500235"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211137850.png" alt="image-20220121113717795"></p>
-<h4 id="input表单元素"><a href="#input表单元素" class="headerlink" title="input表单元素"></a>input表单元素</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211158930.png" alt="image-20220121115820892"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211154670.png" alt="image-20220121115458621"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211404922.png" alt="image-20220121140424890"></p>
-<h4 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211438151.png" alt="image-20220121143842115"></p>
-<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211445214.png" alt="image-20220121144509175"></p>
-<h4 id="textarea"><a href="#textarea" class="headerlink" title="textarea"></a>textarea</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211451617.png" alt="image-20220121145115578"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211451147.png" alt="image-20220121145155101"></p>
-<h4 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211455097.png" alt="image-20220121145548059"></p>
-<p>1、先想我应该怎么做，用什么做</p>
-<h3 id="查阅文档"><a href="#查阅文档" class="headerlink" title="查阅文档"></a>查阅文档</h3><p>W3C  <a href="http://www.w3school.com.cn/">http://www.w3school.com.cn/</a></p>
-<p>MDN <a href="https://developer.mozilla.org/zh-CN/">https://developer.mozilla.org/zh-CN/</a></p>
-<h1 id="CSS层叠样式表"><a href="#CSS层叠样式表" class="headerlink" title="CSS层叠样式表"></a>CSS层叠样式表</h1><h2 id="CSS简介"><a href="#CSS简介" class="headerlink" title="CSS简介"></a>CSS简介</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211648947.png" alt="image-20220121164847917"></p>
-<p>给谁改？改什么？</p>
-<p>选择器{样式}</p>
-<p>给谁改样式{改什么样式}</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211654557.png" alt="image-20220121165418520"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211656780.png" alt="image-20220121165618734"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211657223.png" alt="image-20220121165713178"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211658358.png" alt="image-20220121165839308"></p>
-<h2 id="CSS基础选择器"><a href="#CSS基础选择器" class="headerlink" title="CSS基础选择器"></a>CSS基础选择器</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211702801.png" alt="image-20220121170232763"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211705726.png" alt="image-20220121170527683"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211710796.png" alt="image-20220121171016747"></p>
-<h3 id="类选择器口诀："><a href="#类选择器口诀：" class="headerlink" title="类选择器口诀："></a>类选择器口诀：</h3><p>样式点定义，  结构类（class）调用，  一个或多个  ，开发最常用</p>
-<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211722924.png" alt="image-20220121172217871"></p>
-<p>多类名</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211736990.png" alt="image-20220121173611936"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201211740648.png" alt="image-20220121174027594"></p>
-<h3 id="id选择器口诀："><a href="#id选择器口诀：" class="headerlink" title="id选择器口诀："></a>id选择器口诀：</h3><p>样式#定义，结构id调用，只能调用一次，别人切勿使用</p>
-<h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212039197.png" alt="image-20220121203924167"></p>
-<h3 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h3><h3 id="基础选择器总结"><a href="#基础选择器总结" class="headerlink" title="基础选择器总结"></a>基础选择器总结</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212047106.png" alt="image-20220121204720077"></p>
-<h2 id="CSS字体属性"><a href="#CSS字体属性" class="headerlink" title="CSS字体属性"></a>CSS字体属性</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212217136.png" alt="image-20220121221743100"></p>
-<p>标题标签比较特殊，需要单独指定文字大小</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201212225765.png" alt="image-20220121222501730"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221020724.png" alt="image-20220122102022689"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221021663.png" alt="image-20220122102126628"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221026002.png" alt="image-20220122102654963"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221034415.png" alt="image-20220122103409378"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221040431.png"></p>
-<h2 id="文本属性"><a href="#文本属性" class="headerlink" title="文本属性"></a>文本属性</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221052068.png" alt="image-20220122105225022"></p>
-<p>文字居中对齐本质上是让h1盒子里面的文字水平居中对齐</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221119397.png" alt="image-20220122111905336"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221131081.png" alt="image-20220122113129035"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221141532.png" alt="image-20220122114144475"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221146948.png" alt="image-20220122114636907"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221150279.png" alt="image-20220122115044223"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221351536.png" alt="image-20220122135133487"></p>
-<h2 id="CSS的引入方式"><a href="#CSS的引入方式" class="headerlink" title="CSS的引入方式"></a>CSS的引入方式</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221354963.png" alt="image-20220122135404907"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221356431.png" alt="image-20220122135629381"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221400173.png" alt="image-20220122140038124"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221404126.png" alt="image-20220122140408060"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221406236.png" alt="image-20220122140604182"></p>
-<h2 id="综合案例（新闻页面）"><a href="#综合案例（新闻页面）" class="headerlink" title="综合案例（新闻页面）"></a>综合案例（新闻页面）</h2><h2 id="Chrome调试工具"><a href="#Chrome调试工具" class="headerlink" title="Chrome调试工具"></a>Chrome调试工具</h2><p>是给我们检查错误的，不是修改错误的</p>
-<p>右键  检查  Elements</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221426604.png" alt="image-20220122142627547"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221428391.png" alt="image-20220122142846331"></p>
-<h2 id="Emmet-语法"><a href="#Emmet-语法" class="headerlink" title="Emmet 语法"></a>Emmet 语法</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221431980.png" alt="image-20220122143130902"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221436699.png" alt="image-20220122143655626"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221439474.png" alt="image-20220122143918394"></p>
-<h3 id="快速格式化代码"><a href="#快速格式化代码" class="headerlink" title="快速格式化代码"></a>快速格式化代码</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221510511.png" alt="image-20220122151059446"></p>
-<h2 id="CSS的复合选择器"><a href="#CSS的复合选择器" class="headerlink" title="CSS的复合选择器"></a>CSS的复合选择器</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221518380.png" alt="image-20220122151811307"></p>
-<h3 id="后代选择器（重要）"><a href="#后代选择器（重要）" class="headerlink" title="后代选择器（重要）"></a>后代选择器（重要）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221534690.png" alt="image-20220122153445632"></p>
-<h3 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221552117.png" alt="image-20220122155234063"></p>
-<p>练习</p>
-<p>![](../../../Library/Application Support/typora-user-images/image-20220122155133413.png)</p>
-<h3 id="并集选择器（重要）"><a href="#并集选择器（重要）" class="headerlink" title="并集选择器（重要）"></a>并集选择器（重要）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221558622.png" alt="image-20220122155857547"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221559088.png" alt="image-20220122155944001"></p>
-<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221608796.png" alt="image-20220122160820705"></p>
-<h4 id="链接伪类选择器"><a href="#链接伪类选择器" class="headerlink" title="链接伪类选择器"></a>链接伪类选择器</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221654164.png" alt="image-20220122165408120"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221656586.png" alt="image-20220122165648529"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201221657941.png" alt="image-20220122165749885"></p>
-<h4 id="focus-伪类选择器"><a href="#focus-伪类选择器" class="headerlink" title=":focus 伪类选择器"></a>:focus 伪类选择器</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231107149.png" alt="image-20220123110737091"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231124428.png" alt="image-20220123112441378"></p>
-<h2 id="CSS的元素显示模式"><a href="#CSS的元素显示模式" class="headerlink" title="CSS的元素显示模式"></a>CSS的元素显示模式</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231143929.png" alt="image-20220123114313887"></p>
-<h3 id="块元素（特点要重点记忆）"><a href="#块元素（特点要重点记忆）" class="headerlink" title="块元素（特点要重点记忆）"></a>块元素（特点要重点记忆）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231146455.png" alt="image-20220123114638396"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231152449.png" alt="image-20220123115232402"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231155249.png" alt="image-20220123115552205"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231157638.png" alt="image-20220123115755593"></p>
-<p>了解他们的特点</p>
-<h3 id="元素显示模式的转换"><a href="#元素显示模式的转换" class="headerlink" title="元素显示模式的转换"></a>元素显示模式的转换</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231203843.png" alt="image-20220123120344797"></p>
-<h3 id="案例：简洁小米侧边栏"><a href="#案例：简洁小米侧边栏" class="headerlink" title="案例：简洁小米侧边栏"></a>案例：简洁小米侧边栏</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231306445.png" alt="image-20220123130611392"></p>
-<h3 id="单行文字垂直居中"><a href="#单行文字垂直居中" class="headerlink" title="单行文字垂直居中"></a>单行文字垂直居中</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231321631.png" alt="image-20220123132128580"></p>
-<h2 id="CSS的背景"><a href="#CSS的背景" class="headerlink" title="CSS的背景"></a>CSS的背景</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231334321.png" alt="image-20220123133418275"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231341683.png" alt="image-20220123134101635"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231347175.png" alt="image-20220123134715126"></p>
-<p>默认情况下，背景图片是平铺的。</p>
-<p>页面元素既可以添加背景图片也可以添加背景颜色 只不过背景图片会压住背景颜色</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231457380.png" alt="image-20220123145700338"></p>
-<p>Background-position:</p>
-<p>超大的背景图片也喜欢用backgound-image做，可以让背景图片水平居中</p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231447906.png" alt="image-20220123144731850"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231459809.png" alt="image-20220123145944760"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231508558.png" alt="image-20220123150812505"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231512299.png" alt="image-20220123151217246"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231514993.png" alt="image-20220123151449936"></p>
-<h2 id="CSS的三大特性"><a href="#CSS的三大特性" class="headerlink" title="CSS的三大特性"></a>CSS的三大特性</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231612716.png" alt="image-20220123161216659"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231614727.png" alt="image-20220123161453669"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231620627.png" alt="image-20220123162035568"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231724942.png" alt="image-20220123172418868"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231724174.png" alt="image-20220123172450118"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231733302.png" alt="image-20220123173345266"></p>
-<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231732903.png" alt="image-20220123173235832"></p>
-<p>所以以后看标签到底执行哪一个样式，就先看这个标签有没有被直接选出来</p>
-<h3 id="CSS权重的叠加"><a href="#CSS权重的叠加" class="headerlink" title="CSS权重的叠加"></a>CSS权重的叠加</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202201231739097.png" alt="image-20220123173942036"></p>
-<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2>]]></content>
   </entry>
 </search>
