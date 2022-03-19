@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ECMAScript (JavaScript基础)初识JavaScript  三种书写位置12345678910&#x2F;&#x2F;1、行内式&#x2F;&#x2F;2、内嵌式&lt;script&gt; &lt;&#x2F;script&gt;&#x2F;&#x2F;3、 外部JS文件&lt;script src&#x3D;&quot;my.js&quot;&gt;&lt;&#x2F;script&gt;&#x2F;&#x2F;JS注释&#x2F;&#x2F;单行注释：快捷键control+&#x2F;&#x2F;*多行注释： 多行注释：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YeChunChen&#39;s Blog">
+<meta property="og:url" content="http://example.com/2022/02/15/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8A%EF%BC%89/index.html">
+<meta property="og:site_name" content="YeChunChen&#39;s Blog">
+<meta property="og:description" content="ECMAScript (JavaScript基础)初识JavaScript  三种书写位置12345678910&#x2F;&#x2F;1、行内式&#x2F;&#x2F;2、内嵌式&lt;script&gt; &lt;&#x2F;script&gt;&#x2F;&#x2F;3、 外部JS文件&lt;script src&#x3D;&quot;my.js&quot;&gt;&lt;&#x2F;script&gt;&#x2F;&#x2F;JS注释&#x2F;&#x2F;单行注释：快捷键control+&#x2F;&#x2F;*多行注释： 多行注释：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151548645.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151549095.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151602159.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151603222.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151600715.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151615149.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151703986.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151710136.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151735296.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151747290.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151756444.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151805393.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151809514.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151811427.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151814583.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151815479.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152041096.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152050750.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152054846.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152057839.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152119435.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152128509.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152133229.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152139972.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152145189.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152148664.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152149159.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152231738.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152242084.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152245004.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152246730.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152310107.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152311893.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152315319.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152322529.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152326215.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162054415.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162105348.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162116430.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162154286.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162206004.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162210379.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162214598.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162254937.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162307435.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172020055.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172201627.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172216239.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172220973.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172229555.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172226867.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172233215.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181613153.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181621167.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181625307.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181636822.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181637723.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181643350.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181656688.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181718031.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181728783.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181810652.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181819546.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181826865.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181826148.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181827878.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181859045.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182148491.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182206770.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182341669.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182337686.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190224935.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190227784.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190259339.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190302090.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190303938.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190306312.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190310324.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190312616.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191541973.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191547041.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191549634.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191638988.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191615313.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191615464.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191628545.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191636462.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191644662.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191644992.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191710236.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191707146.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191720619.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191726120.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191739892.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191822250.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192042029.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192049176.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192052784.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192055804.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192058438.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192101729.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192106411.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202200955852.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202200954576.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202200952492.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201001555.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201007336.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201007797.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201010983.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201119622.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201544072.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201549867.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201600422.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201600075.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201558612.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201612681.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201610157.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201608233.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201611365.png">
+<meta property="article:published_time" content="2022-02-15T07:48:12.408Z">
+<meta property="article:modified_time" content="2022-02-26T11:07:39.161Z">
+<meta property="article:author" content="YeChunChen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151548645.png">
+
+
+<link rel="canonical" href="http://example.com/2022/02/15/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8A%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/15/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8A%EF%BC%89/","path":"2022/02/15/前端/JavaScript（上）/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | YeChunChen's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">YeChunChen's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I love mw.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript-JavaScript%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript (JavaScript基础)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E8%AF%86JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">初识JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E4%B9%A6%E5%86%99%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">三种书写位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">变量的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E8%AF%AD%E6%B3%95%E6%89%A9%E5%B1%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">变量的语法扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.3.</span> <span class="nav-text">变量的命名规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8BNumber"><span class="nav-number">1.3.1.</span> <span class="nav-text">数字型Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2-amp-amp-%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97%E5%9E%8B"><span class="nav-number">1.3.3.</span> <span class="nav-text">转换为字符串&amp;&amp;转换为数字型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">JavaScript运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%A2%9E%E5%92%8C%E9%80%92%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.1.</span> <span class="nav-text">递增和递减运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.2.</span> <span class="nav-text">比较运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%89%E5%8F%B7%E7%9A%84%E5%B0%8F%E7%BB%93"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">等号的小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.3.</span> <span class="nav-text">逻辑运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%EF%BC%88%E9%80%BB%E8%BE%91%E4%B8%AD%E6%96%AD%EF%BC%89"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">短路运算（逻辑中断）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.4.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">1.4.5.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.</span> <span class="nav-text">流程控制分支结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">三元表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">switch</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.6.1.</span> <span class="nav-text">for循环的执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">断点调试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">1.6.2.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E5%80%92%E4%B8%89%E8%A7%92-amp-amp-%E6%AD%A3%E4%B8%89%E8%A7%92-amp-amp-%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">打印倒三角&amp;&amp;正三角&amp;&amp;九九乘法表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.3.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do-while-%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.4.</span> <span class="nav-text">do while 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue"><span class="nav-number">1.6.5.</span> <span class="nav-text">continue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break"><span class="nav-number">1.6.6.</span> <span class="nav-text">break</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83-amp-amp-%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83"><span class="nav-number">1.6.7.</span> <span class="nav-text">命名规范&amp;&amp;书写规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.7.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-1"><span class="nav-number">1.7.1.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.7.2.</span> <span class="nav-text">冒泡排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.8.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">1.8.1.</span> <span class="nav-text">函数的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.8.2.</span> <span class="nav-text">函数的返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#argument"><span class="nav-number">1.8.3.</span> <span class="nav-text">argument</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-2"><span class="nav-number">1.8.4.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">1.9.</span> <span class="nav-text">JavaScript作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E9%A2%84%E8%A7%A3%E6%9E%90%EF%BC%88%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%97%AE%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">JavaScript预解析（面试常问）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.</span> <span class="nav-text">JavaScript对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">1.11.1.</span> <span class="nav-text">创建对象的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.1.1.</span> <span class="nav-text">利用构造函数创建对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.11.2.</span> <span class="nav-text">new关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in-%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.3.</span> <span class="nav-text">for    in 遍历对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.4.</span> <span class="nav-text">内置对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%96%87%E6%A1%A3"><span class="nav-number">1.11.5.</span> <span class="nav-text">查文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.6.</span> <span class="nav-text">Math对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.7.</span> <span class="nav-text">Date对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.11.8.</span> <span class="nav-text">Array数组对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.11.8.1.</span> <span class="nav-text">创建数组元素的两种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E4%B8%BA%E6%95%B0%E7%BB%84"><span class="nav-number">1.11.8.2.</span> <span class="nav-text">检测是否为数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.11.8.3.</span> <span class="nav-text">添加数组元素的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%EF%BC%88%E9%87%8D%E7%82%B9%E6%A1%88%E4%BE%8B%EF%BC%8C%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%97%AE%EF%BC%89"><span class="nav-number">1.11.8.4.</span> <span class="nav-text">数组去重（重点案例，面试常问）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.11.8.5.</span> <span class="nav-text">数组转换为字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.12.</span> <span class="nav-text">字符串对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.12.1.</span> <span class="nav-text">基本包装类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E8%BF%94%E5%9B%9E%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.12.1.1.</span> <span class="nav-text">根据字符返回位置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.13.</span> <span class="nav-text">简单数据类型和复杂数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">1.13.1.</span> <span class="nav-text">复杂数据类型的内存分配</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YeChunChen</p>
+  <div class="site-description" itemprop="description">朝花夕拾 聊以记之</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HuangMingwang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HuangMingwang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/15/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8A%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YeChunChen">
+      <meta itemprop="description" content="朝花夕拾 聊以记之">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YeChunChen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-15 15:48:12" itemprop="dateCreated datePublished" datetime="2022-02-15T15:48:12+08:00">2022-02-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-26 19:07:39" itemprop="dateModified" datetime="2022-02-26T19:07:39+08:00">2022-02-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="ECMAScript-JavaScript基础"><a href="#ECMAScript-JavaScript基础" class="headerlink" title="ECMAScript (JavaScript基础)"></a>ECMAScript (JavaScript基础)</h1><h2 id="初识JavaScript"><a href="#初识JavaScript" class="headerlink" title="初识JavaScript"></a>初识JavaScript</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151548645.png" alt="image-20220215154824606"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151549095.png" alt="image-20220215154955074"></p>
+<h3 id="三种书写位置"><a href="#三种书写位置" class="headerlink" title="三种书写位置"></a>三种书写位置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、行内式</span></span><br><span class="line"><span class="comment">//2、内嵌式</span></span><br><span class="line">&lt;script&gt; &lt;/script&gt;</span><br><span class="line"><span class="comment">//3、 外部JS文件</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;my.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//JS注释</span></span><br><span class="line"><span class="comment">//单行注释：快捷键control+/</span></span><br><span class="line"><span class="comment">/*多行注释： </span></span><br><span class="line"><span class="comment">多行注释：*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151602159.png" alt="image-20220215160227141"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151603222.png" alt="image-20220215160300202"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151600715.png" alt="image-20220215160026692"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151615149.png" alt="image-20220215161521123"></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>是什么？</p>
+<p>内存中的一片空间</p>
+<p>那我怎么样才能找到这片空间？（怎么样？ ）</p>
+<p>通过变量名</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151703986.png" alt="image-20220215170348961"></p>
+<h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151710136.png" alt="image-20220215171001111"></p>
+<ol>
+<li>声明变量，即计算机自动为变量分配内存空间</li>
+<li>赋值，即把值存入这个变量中</li>
+</ol>
+<p>变量初始化，即声明变量的同时赋值</p>
+<p>Var age =18; </p>
+<h3 id="变量的语法扩展"><a href="#变量的语法扩展" class="headerlink" title="变量的语法扩展"></a>变量的语法扩展</h3><ol>
+<li><p>更新变量</p>
+</li>
+<li><p>声明多个变量，逗号隔开</p>
+</li>
+<li><p>声明变量的特殊情况</p>
+<p>只声明不赋值，值为undefined</p>
+<p>不声明不赋值会报错</p>
+<p>不声明直接赋值使用，可以使用但是会变成全局变量</p>
+</li>
+</ol>
+<h3 id="变量的命名规范"><a href="#变量的命名规范" class="headerlink" title="变量的命名规范"></a>变量的命名规范</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151735296.png" alt="image-20220215173502268"></p>
+<p>尽量不要使用name作为变量名，它可能有特殊含义</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151747290.png" alt="image-20220215174747263"></p>
+<p><strong>JS的变量数据类型只有程序在运行过程中，根据等号右边的值才能确定的</strong></p>
+<p><strong>JS是动态语言，变量的数据类型是可以变化的</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151756444.png" alt="image-20220215175628412"></p>
+<h3 id="数字型Number"><a href="#数字型Number" class="headerlink" title="数字型Number"></a>数字型Number</h3><p><strong>JS中八进制前面加0，十六进制前面加0x</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//八进制：程序里面数字前面加 0 表示八进制</span></span><br><span class="line"><span class="keyword">var</span> num1 =<span class="number">010</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num1);<span class="comment">//八进制转换为十进制就是8</span></span><br><span class="line"><span class="comment">//十六进制：数字前面加 0x 表示十六进制</span></span><br><span class="line"><span class="keyword">var</span> num2 =<span class="number">0x9</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num2);<span class="comment">//十六进制转换为十进制就是9</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151805393.png" alt="image-20220215180543364"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151809514.png" alt="image-20220215180934487"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151811427.png" alt="image-20220215181122395"></p>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串型可以是引号中的任意文本，其语法为双引号“ “和单引号‘ ‘</p>
+<p>因为HTML里面的属性使用的是双引号，所以JS这里推荐使用单引号</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151814583.png" alt="image-20220215181421553"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202151815479.png" alt="image-20220215181515445"></p>
+<p><strong>字符串转义字符都是用\开头的，但是这些转义字符必须写到引号里面</strong></p>
+<p><strong>检测获取字符串长度 length</strong></p>
+<p><strong>多个字符串之间可以使用+进行拼接，其拼接方式为：字符串+任何类型=拼接之后的新字符</strong></p>
+<p><strong>拼接前会把与字符串相加的任何类型转成字符串，再拼接成一个新的字符串</strong></p>
+<p><strong>数值相加，字符相连</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152041096.png" alt="image-20220215204100061"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152050750.png" alt="image-20220215205025719"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152054846.png" alt="image-20220215205445808"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152057839.png" alt="image-20220215205735803"></p>
+<p>undefined和数字相加最后的结果是NaN</p>
+<p>null和数字相加，最后返回来的还是那个数字</p>
+<p><strong>prompt取过来的值是字符型的</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//typeof：获取变量的数据类型</span></span><br><span class="line"><span class="keyword">var</span> age =prompt(<span class="string">&#x27;请输入你的年龄&#x27;</span>)；<span class="comment">//这里我输了18</span></span><br><span class="line"><span class="built_in">console</span>.log(age);<span class="comment">//18</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> age)<span class="comment">//string</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="转换为字符串-amp-amp-转换为数字型"><a href="#转换为字符串-amp-amp-转换为数字型" class="headerlink" title="转换为字符串&amp;&amp;转换为数字型"></a>转换为字符串&amp;&amp;转换为数字型</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152119435.png" alt="image-20220215211956399"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152128509.png" alt="image-20220215212843470"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152133229.png" alt="image-20220215213310168"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152139972.png" alt="image-20220215213934933"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152145189.png" alt="image-20220215214502149"></p>
+<p>标识（zhi）符</p>
+<p>就是指开发人员为变量、属性、函数、参数取的名字</p>
+<p><strong>标识符不能是关键字或保留字</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152148664.png" alt="image-20220215214836619"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152149159.png" alt="image-20220215214922117"></p>
+<h2 id="JavaScript运算符"><a href="#JavaScript运算符" class="headerlink" title="JavaScript运算符"></a>JavaScript运算符</h2><p>运算符左右都敲一个空格</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152231738.png" alt="image-20220215223137695"></p>
+<p>![image-20220215223446722](../../../Library/Application Support/typora-user-images/image-20220215223446722.png)浮点数 算术运算会有精度的问题，因为它要先转换为二进制运算，然后再把结果转换为十进制</p>
+<p><strong>我们不能直接拿着浮点数来进行比较是否相等</strong> </p>
+<h3 id="递增和递减运算符"><a href="#递增和递减运算符" class="headerlink" title="递增和递减运算符"></a>递增和递减运算符</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152242084.png" alt="image-20220215224221036"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152245004.png" alt="image-20220215224537952"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152246730.png" alt="image-20220215224648680"></p>
+<p><strong>表达式都是有返回值的</strong></p>
+<p><strong>后置递增（++x），先表达式返回原值，后面变量再自加1</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//++x和x++如果单独使用，他们的效果是一样的</span></span><br><span class="line"><span class="comment">//x++先返回原值，后x自加1</span></span><br><span class="line">ver age =<span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(age++ + <span class="number">10</span>);<span class="comment">//20</span></span><br><span class="line"><span class="comment">//首先age=10，然后这里的age++先把值10赋给age，再+10，然后age再加1</span></span><br><span class="line"><span class="comment">//即这里age++这个表达式返回的值是10</span></span><br><span class="line"><span class="comment">//age++ = 10； age = 11；</span></span><br><span class="line"><span class="comment">//即x++是算完后自己在加1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152310107.png" alt="image-20220215231036059"></p>
+<h4 id="等号的小结"><a href="#等号的小结" class="headerlink" title="等号的小结"></a>等号的小结</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152311893.png" alt="image-20220215231123845"></p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152315319.png" alt="image-20220215231542272"></p>
+<h4 id="短路运算（逻辑中断）"><a href="#短路运算（逻辑中断）" class="headerlink" title="短路运算（逻辑中断）"></a>短路运算（逻辑中断）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152322529.png" alt="image-20220215232231481"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202152326215.png" alt="image-20220215232641183"></p>
+<p><strong>与，返回假的那个值</strong></p>
+<p><strong>或，返回真的那个值</strong></p>
+<p><strong>逻辑中断很重要，先看第一个值，他可能会影响到后面的表达式是否还执行，会影响我们最后的结果</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">123</span> || num++);<span class="comment">//或运算，123为真，这里返回123</span></span><br><span class="line"><span class="built_in">console</span>.log(num);<span class="comment">//上面已经输出了123，逻辑中断，没有再进行num++的运算，所以这里输出的结果为0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162054415.png" alt="image-20220216205412363"></p>
+<h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162105348.png" alt="image-20220216210539292"></p>
+<h2 id="流程控制分支结构"><a href="#流程控制分支结构" class="headerlink" title="流程控制分支结构"></a>流程控制分支结构</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162116430.png" alt="image-20220216211614370"></p>
+<h4 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h4><p>语法结构：</p>
+<p><strong>条件表达式 ？ 表达式1 ：表达式2</strong></p>
+<p>执行思路：</p>
+<p><strong>如果条件表达式为真，则返回表达式1的值，如果条件表达式的结果为假，则返回表达式2 的值</strong></p>
+<p>注意点：</p>
+<p><strong>这是一个表达式，表达式都有返回值</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162154286.png" alt="image-20220216215429226"></p>
+<h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162206004.png" alt="image-20220216220608950"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162210379.png" alt="image-20220216221023306"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162214598.png" alt="image-20220216221450538"></p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for循环的执行过程"><a href="#for循环的执行过程" class="headerlink" title="for循环的执行过程"></a>for循环的执行过程</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162254937.png" alt="image-20220216225439880"></p>
+<h4 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202162307435.png" alt="image-20220216230745376"></p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>一行打印5颗星星</p>
+<p><strong>用追加字符串的方式</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172020055.png" alt="image-20220217202028027"></p>
+<h4 id="打印倒三角-amp-amp-正三角-amp-amp-九九乘法表"><a href="#打印倒三角-amp-amp-正三角-amp-amp-九九乘法表" class="headerlink" title="打印倒三角&amp;&amp;正三角&amp;&amp;九九乘法表"></a>打印倒三角&amp;&amp;正三角&amp;&amp;九九乘法表</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">	 <span class="comment">//打印倒三角</span></span><br><span class="line">	 <span class="keyword">var</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	 <span class="keyword">var</span> rows = prompt(<span class="string">&#x27;请输入行数：&#x27;</span>)</span><br><span class="line">		<span class="comment">// var cols = prompt(&#x27;请输入列数：&#x27;)</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;		<span class="comment">//外层循环控制行数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">1</span> ; j &lt;=rows - i ; j++) &#123;		<span class="comment">//里层循环打印的个数不一样 j = i</span></span><br><span class="line">                str  = str +<span class="string">&#x27;星&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">            str = str +<span class="string">&#x27;\n&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line">        <span class="built_in">console</span>.log(str)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//打印正三角、九九乘法表</span></span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">var</span> rows = prompt(<span class="string">&#x27;请输入行数：&#x27;</span>)</span><br><span class="line">        <span class="comment">// var cols = prompt(&#x27;请输入列数：&#x27;)</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= rows; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                <span class="comment">//1 x 2 = 2</span></span><br><span class="line">                <span class="comment">// str = str + &#x27;星&#x27;</span></span><br><span class="line">	            str += j + <span class="string">&#x27;x&#x27;</span> + i + <span class="string">&#x27;=&#x27;</span> +j*i +<span class="string">&#x27;\t&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">            str = str + <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(str)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*注意：</span></span><br><span class="line"><span class="comment">1、算法思想</span></span><br><span class="line"><span class="comment">2、+拼接字符串</span></span><br><span class="line"><span class="comment">3、&#x27;\t&#x27;是tab键</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172201627.png" alt="image-20220217220146588"></p>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><h3 id="do-while-循环"><a href="#do-while-循环" class="headerlink" title="do while 循环"></a>do while 循环</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172216239.png" alt="image-20220217221604190"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172220973.png" alt="image-20220217222043931"></p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p><strong>continue关键字：退出本次循环，继续执行剩余次数的循环</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172229555.png" alt="image-20220217222953526"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172226867.png" alt="image-20220217222628826"></p>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p><strong>break：退出整个循环</strong></p>
+<h3 id="命名规范-amp-amp-书写规范"><a href="#命名规范-amp-amp-书写规范" class="headerlink" title="命名规范&amp;&amp;书写规范"></a>命名规范&amp;&amp;书写规范</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202172233215.png" alt="image-20220217223321187"></p>
+<p>操作符：</p>
+<ol>
+<li>操作符左右两侧各保留一个空格</li>
+<li> 单行注释前面注意有一个空格</li>
+</ol>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181613153.png" alt="image-20220218161304114"></p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181621167.png" alt="image-20220218162146121"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181625307.png" alt="image-20220218162551274"></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>概念：是封装了一段可以被重复执行调用的代码块。</p>
+<p>目的：让大量的代码重复使用</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181636822.png" alt="image-20220218163657787"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181637723.png" alt="image-20220218163742689"></p>
+<h3 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181643350.png" alt="image-20220218164343307"><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181656688.png" alt="image-20220218165644652"></p>
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><p>一般只能返回一个数，如果想返回多个数，可以用数组表示</p>
+<p>函数都是有返回值的</p>
+<ol>
+<li>函数如果有return 则返回的是return后面的值</li>
+<li>如果函数没有return，则返回undefined</li>
+</ol>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181718031.png" alt="image-20220218171823992"></p>
+<h3 id="argument"><a href="#argument" class="headerlink" title="argument"></a>argument</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181728783.png" alt="image-20220218172804745"></p>
+<h3 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用函数反转任意数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = arr.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        newArr[newArr.length] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr1=reverse([<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,]);</span><br><span class="line"><span class="built_in">console</span>.log(arr1);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//冒泡排序</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt;= arr.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                        <span class="keyword">var</span> temp = arr[j];</span><br><span class="line">                        arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                        arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> newArr =sort([<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,])</span><br><span class="line">        <span class="built_in">console</span>.log(newArr);</span><br></pre></td></tr></table></figure>
+
+<p>函数声明方式</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181810652.png" alt="image-20220218181038611"></p>
+<h2 id="JavaScript作用域"><a href="#JavaScript作用域" class="headerlink" title="JavaScript作用域"></a>JavaScript作用域</h2><p>es6    之前的版本：没有块级作用域</p>
+<p>es6    这个版本：新增了块级作用域</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181819546.png" alt="image-20220218181924496"></p>
+<p>全局变量：</p>
+<ol>
+<li>在全局作用域下的变量 </li>
+<li><strong>如果在函数内部 没有声明直接赋值的变量</strong></li>
+</ol>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181826865.png" alt="image-20220218182626825"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181826148.png" alt="image-20220218182652111"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181827878.png" alt="image-20220218182718821"></p>
+<p>作用域链：内部函数访问外部函数的变量，采取的是链式查找的方式来决定取哪个值</p>
+<p><strong>就近原则</strong></p>
+<h2 id="JavaScript预解析（面试常问）"><a href="#JavaScript预解析（面试常问）" class="headerlink" title="JavaScript预解析（面试常问）"></a>JavaScript预解析（面试常问）</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202181859045.png" alt="image-20220218185916006"></p>
+<p>函数表达式：调用必须写在函数表达式的下面</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182148491.png" alt="image-20220218214856436"></p>
+<h2 id="JavaScript对象"><a href="#JavaScript对象" class="headerlink" title="JavaScript对象"></a>JavaScript对象</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182206770.png" alt="image-20220218220654715"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182341669.png" alt="image-20220218234143639"></p>
+<h3 id="创建对象的三种方法"><a href="#创建对象的三种方法" class="headerlink" title="创建对象的三种方法"></a>创建对象的三种方法</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202182337686.png" alt="image-20220218233717619"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190224935.png" alt="image-20220219022404886"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190227784.png" alt="image-20220219022717726"></p>
+<h4 id="利用构造函数创建对象"><a href="#利用构造函数创建对象" class="headerlink" title="利用构造函数创建对象"></a>利用构造函数创建对象</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190259339.png" alt="image-20220219025920303"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用构造函数创建对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">man</span>(<span class="params">uname,utype,ublood</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = uname;</span><br><span class="line">    <span class="built_in">this</span>.type = utype;</span><br><span class="line">    <span class="built_in">this</span>.blood = ublood;</span><br><span class="line">    <span class="built_in">this</span>.attack = <span class="function"><span class="keyword">function</span> (<span class="params">attacked</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(attacked);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> lp =<span class="keyword">new</span> man(<span class="string">&#x27;廉颇&#x27;</span>,<span class="string">&#x27;力量型&#x27;</span>,<span class="string">&#x27;500血量&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(lp.name)</span><br><span class="line"><span class="built_in">console</span>.log(lp[<span class="string">&#x27;blood&#x27;</span>])</span><br><span class="line">lp.attack(<span class="string">&#x27;近战&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190302090.png" alt="image-20220219030239029"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190303938.png" alt="image-20220219030328878"></p>
+<h3 id="new关键字"><a href="#new关键字" class="headerlink" title="new关键字"></a>new关键字</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190306312.png" alt="image-20220219030641260"></p>
+<h3 id="for-in-遍历对象"><a href="#for-in-遍历对象" class="headerlink" title="for    in 遍历对象"></a>for    in 遍历对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190310324.png" alt="image-20220219031032272"></p>
+<p><strong>注意obj[k]</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202190312616.png" alt="image-20220219031203567"></p>
+<h3 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191541973.png" alt="image-20220219154134919"></p>
+<h3 id="查文档"><a href="#查文档" class="headerlink" title="查文档"></a>查文档</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191547041.png" alt="image-20220219154707985"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191549634.png" alt="image-20220219154936575"></p>
+<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191638988.png" alt="image-20220219163824953"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191615313.png" alt="image-20220219161557277"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191615464.png" alt="image-20220219161510397"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191628545.png" alt="image-20220219162848478"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191636462.png" alt="image-20220219163624409"></p>
+<h3 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191644662.png" alt="image-20220219164401587"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191644992.png" alt="image-20220219164431939"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191710236.png" alt="image-20220219171038198"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191707146.png" alt="image-20220219170710082"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191720619.png" alt="image-20220219172030541"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191726120.png" alt="image-20220219172610041"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191739892.png" alt="image-20220219173902809"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//倒计时</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nowTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//返回的是当前时间的总的毫秒数</span></span><br><span class="line">    <span class="keyword">var</span> inputTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(time);<span class="comment">//返回的是用户输入时间的总的毫秒数</span></span><br><span class="line">    <span class="keyword">var</span> times = (inputTime - nowTime) / <span class="number">1000</span>;<span class="comment">//times 是剩余时间的总的毫秒数</span></span><br><span class="line">    <span class="keyword">var</span> d = <span class="built_in">parseInt</span>(times / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>);<span class="comment">// 天</span></span><br><span class="line">    d = d &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + d : d;</span><br><span class="line">    <span class="keyword">var</span> h = <span class="built_in">parseInt</span>(times / <span class="number">60</span> / <span class="number">60</span> % <span class="number">24</span>);<span class="comment">// 时</span></span><br><span class="line">    h = h &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + h : h;</span><br><span class="line">    <span class="keyword">var</span> m = <span class="built_in">parseInt</span>(times / <span class="number">60</span> % <span class="number">60</span>);<span class="comment">// 分</span></span><br><span class="line">    m = m &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + m : m;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">parseInt</span>(times % <span class="number">60</span>)<span class="comment">// 当前的秒</span></span><br><span class="line">    s = s &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + s : s;</span><br><span class="line">    <span class="keyword">return</span> d + <span class="string">&#x27;天&#x27;</span> + h + <span class="string">&quot;时&quot;</span> + m + <span class="string">&#x27;分&#x27;</span> + s + <span class="string">&#x27;秒&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(countDown(<span class="string">&#x27;2022-2-21 12:00:00&#x27;</span>));<span class="comment">//注意这里输入时间的字符串格式</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//获取当前的时间</span></span><br><span class="line"><span class="built_in">console</span>.log(date);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array数组对象"><a href="#Array数组对象" class="headerlink" title="Array数组对象"></a>Array数组对象</h3><h4 id="创建数组元素的两种方式"><a href="#创建数组元素的两种方式" class="headerlink" title="创建数组元素的两种方式"></a>创建数组元素的两种方式</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202191822250.png" alt="image-20220219182206164"></p>
+<h4 id="检测是否为数组"><a href="#检测是否为数组" class="headerlink" title="检测是否为数组"></a>检测是否为数组</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192042029.png" alt="image-20220219204252963"></p>
+<h4 id="添加数组元素的方法"><a href="#添加数组元素的方法" class="headerlink" title="添加数组元素的方法"></a>添加数组元素的方法</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192049176.png" alt="image-20220219204932128"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192052784.png" alt="image-20220219205238717"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192055804.png" alt="image-20220219205500756"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192058438.png" alt="image-20220219205816389"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192101729.png" alt="image-20220219210157662"></p>
+<h4 id="数组去重（重点案例，面试常问）"><a href="#数组去重（重点案例，面试常问）" class="headerlink" title="数组去重（重点案例，面试常问）"></a>数组去重（重点案例，面试常问）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202192106411.png" alt="image-20220219210628343"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//目标：把旧数组里面不重复的元素取出来放到新数组中，重复的数组只保留一个</span></span><br><span class="line"><span class="comment">//核心算法：遍历旧数组，拿旧数组去查询新数组，如果该元素在新数组中没有出现过，我们就添加，否则不添加</span></span><br><span class="line"><span class="comment">//我们怎么知道该元素有没有存在？利用新数组indexOf(数组元素)，如果返回-1就可以说明数组里面没有该元素</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (newArr.indexOf(arr[i]) === -<span class="number">1</span>) &#123;	<span class="comment">//返回元素索引，没有就返回-1</span></span><br><span class="line">            newArr.push(arr[i]);		<span class="comment">//在数组末尾添加元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数调用：函数名(实参);</span></span><br><span class="line"><span class="keyword">var</span> arr = unique([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;a&#x27;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数组转换为字符串"><a href="#数组转换为字符串" class="headerlink" title="数组转换为字符串"></a>数组转换为字符串</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202200955852.png" alt="image-20220220095555816"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202200954576.png" alt="image-20220220095450517"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202200952492.png" alt="image-20220220095245433"></p>
+<h2 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h2><h3 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201001555.png" alt="image-20220220100145498"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201007336.png" alt="image-20220220100731270"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201007797.png" alt="image-20220220100754705"></p>
+<h4 id="根据字符返回位置"><a href="#根据字符返回位置" class="headerlink" title="根据字符返回位置"></a>根据字符返回位置</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201010983.png" alt="image-20220220101011902"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串对象，根据字符返回位置   str.indexOf(&#x27;要查找的字符&#x27;，[起始的位置])</span></span><br><span class="line"><span class="keyword">var</span> str =<span class="string">&#x27;好好学习，天天向上。学习啦&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">&#x27;学&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">&#x27;学&#x27;</span>,<span class="number">3</span>));<span class="comment">// 从索引号是 3 的位置开始向后查找</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>案例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//核心算法：先查找第一个o出现的位置</span></span><br><span class="line"><span class="comment">//然后只要indexOf 返回的结果不是-1 就继续往后查找</span></span><br><span class="line"><span class="comment">//因为indexOf只能查找到第一个，所以后面的查找一定是当前的索引加1，从而继续查找</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aboduoweopknd&quot;</span></span><br><span class="line"><span class="keyword">var</span> index = str.indexOf(<span class="string">&#x27;o&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (index !== -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(index);</span><br><span class="line">    num++;</span><br><span class="line">    index = str.indexOf(<span class="string">&#x27;o&#x27;</span>, [index + <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;o出现的次数是：&#x27;</span> + num)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201119622.png" alt="image-20220220111959535"></p>
+<p><strong>案例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//核心算法：利用charAt() 遍历这个字符串</span></span><br><span class="line"><span class="comment">//把这个字符串都存储给对象，如果对象没有这个属性，就为1，如果存在了就为+1</span></span><br><span class="line"><span class="comment">//遍历对象，得到最大值和该字符</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;adsjhfkvndkfuhinhjnn&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;;<span class="comment">// 声明一个对象</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">    <span class="comment">// charAt(index)返回指定位置的字符（index是字符串的索引号）</span></span><br><span class="line">    <span class="keyword">var</span> chars = str.charAt(i);<span class="comment">// chars 是字符串的每一个字符</span></span><br><span class="line">    <span class="comment">// 使用对象：(1)对象名.属性名、(2)对象名[&#x27;属性名&#x27;]</span></span><br><span class="line">    <span class="keyword">if</span> (o[chars]) &#123;  <span class="comment">// o[chars]得到的是属性值</span></span><br><span class="line">        o[chars]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        o[chars] = <span class="number">1</span>;<span class="comment">// 利用等号赋值的方法添加对象的属性和方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(o);</span><br><span class="line"><span class="comment">// 遍历对象</span></span><br><span class="line"><span class="keyword">var</span> max = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> ch = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> o) &#123;       <span class="comment">// for  变量 in 对象 遍历对象</span></span><br><span class="line">    <span class="comment">// k得到的是属性名</span></span><br><span class="line">    <span class="comment">//o[k]得到的是属性值</span></span><br><span class="line">    <span class="keyword">if</span> (o[k] &gt; max) &#123;</span><br><span class="line">        max = o[k];</span><br><span class="line">        ch = k;<span class="comment">// k 在for循环里面才有效，把k赋值给这个字符串存起来</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(max);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;最多的字符是：&#x27;</span>+ch)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201544072.png" alt="image-20220220154425987"></p>
+<p>!<img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201549867.png" alt="image-20220220154934782"></p>
+<h2 id="简单数据类型和复杂数据类型"><a href="#简单数据类型和复杂数据类型" class="headerlink" title="简单数据类型和复杂数据类型"></a>简单数据类型和复杂数据类型</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201600422.png" alt="image-20220220160040371"></p>
+<p>简单数据类型null返回的是一个空的对象 object</p>
+<p>如果有个变量我们以后打算存储为对象，暂时还没有想好放什么，这个时候我们就给null</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201600075.png" alt="image-20220220160002027"></p>
+<h3 id="复杂数据类型的内存分配"><a href="#复杂数据类型的内存分配" class="headerlink" title="复杂数据类型的内存分配"></a>复杂数据类型的内存分配</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201558612.png" alt="image-20220220155857529"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201612681.png" alt="image-20220220161222630"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201610157.png" alt="image-20220220161007042"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201608233.png" alt="image-20220220160859128"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201611365.png" alt="image-20220220161114255"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/14/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/%E6%90%AD%E5%BB%BA%E5%90%8E%E7%AB%AFJava%E7%8E%AF%E5%A2%83/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/20/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8B%EF%BC%89/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YeChunChen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

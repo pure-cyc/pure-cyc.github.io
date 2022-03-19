@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Web APIs     DOMDOM简介  获取元素getElementById()获取元素123456789&#x2F;&#x2F; 1、因为我们文档页面从上往下加载，所以我们要先有标签，所以我们script写到标签的下面&#x2F;&#x2F; 2、get获得element元素by通过 驼峰命名法&#x2F;&#x2F; 3、参数 id是大小敏感的字符串&#x2F;&#x2F; 4、返回的是一个元素对象var timer &#x3D;document.getElementById">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YeChunChen&#39;s Blog">
+<meta property="og:url" content="http://example.com/2022/02/20/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8B%EF%BC%89/index.html">
+<meta property="og:site_name" content="YeChunChen&#39;s Blog">
+<meta property="og:description" content="Web APIs     DOMDOM简介  获取元素getElementById()获取元素123456789&#x2F;&#x2F; 1、因为我们文档页面从上往下加载，所以我们要先有标签，所以我们script写到标签的下面&#x2F;&#x2F; 2、get获得element元素by通过 驼峰命名法&#x2F;&#x2F; 3、参数 id是大小敏感的字符串&#x2F;&#x2F; 4、返回的是一个元素对象var timer &#x3D;document.getElementById">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201646588.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201655790.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201657974.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201659415.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201701756.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201703931.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201706499.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201736171.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201743994.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201740617.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201801118.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201806762.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202019550.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202137539.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202141500.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202215789.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202228547.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202233323.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202242899.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202241932.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202308255.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202347152.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202346167.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202210132356.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251217683.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251615051.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251616991.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251624338.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251649649.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251633254.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251645477.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251836959.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251839994.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251843182.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251853482.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251941318.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251947067.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251946043.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251950006.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251951396.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251952118.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251955448.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252000307.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252001276.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252003199.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252004026.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252007705.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252028883.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252029380.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252031147.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252016649.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252021400.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252033727.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252037045.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252038976.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252039003.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252047320.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252055304.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252059424.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252110231.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252109551.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252118133.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202260954116.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261022064.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261043604.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261048043.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261049688.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261050799.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261050886.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261056953.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261102584.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261103164.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261106420.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261108243.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261114015.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261114985.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261114661.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261119855.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261126547.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261133685.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261133028.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261134450.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261148591.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261150079.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261155864.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261201989.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261201289.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261523627.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261530940.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261530881.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261536358.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261538074.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261554821.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261600720.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261603200.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261605694.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261621858.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261621332.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261629047.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261647078.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261653171.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261659734.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261702127.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261700439.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261706835.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261711513.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261712724.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261713983.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261838738.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261842310.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261841479.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261844602.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261910643.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261913509.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261936437.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261937483.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261940717.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261942866.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261947505.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261947378.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261954915.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261951851.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261954751.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262013372.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262017507.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262021261.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262024507.png">
+<meta property="article:published_time" content="2022-02-20T08:14:10.658Z">
+<meta property="article:modified_time" content="2022-02-26T12:36:02.773Z">
+<meta property="article:author" content="YeChunChen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201646588.png">
+
+
+<link rel="canonical" href="http://example.com/2022/02/20/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8B%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/20/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8B%EF%BC%89/","path":"2022/02/20/前端/JavaScript（下）/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | YeChunChen's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">YeChunChen's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I love mw.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-APIs"><span class="nav-number">1.</span> <span class="nav-text">Web APIs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM"><span class="nav-number">1.1.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">DOM简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.2.</span> <span class="nav-text">获取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getElementById-%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">getElementById()获取元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getElementsByTagName"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">getElementsByTagName()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-H5%E6%96%B0%E5%A2%9E%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">2.4     H5新增获取元素的方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="nav-number">1.2.</span> <span class="nav-text">事件基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">执行事件的步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%85%83%E7%B4%A0%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">常用的元素属性操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">样式属性操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%B2%BE%E7%81%B5%E5%9B%BE"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">循环精灵图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6-onfocus-%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6-onblur"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">获得焦点事件 onfocus    失去焦点事件 onblur</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87className%E6%9B%B4%E6%94%B9%E5%85%83%E7%B4%A0%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">通过className更改元素样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E4%BB%96%E6%80%9D%E6%83%B3%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E9%87%8D%E8%A6%81"><span class="nav-number">1.2.1.6.</span> <span class="nav-text">排他思想（算法）重要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">1.2.1.7.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E6%8D%A2%E8%82%A4%E6%A1%88%E4%BE%8B"><span class="nav-number">1.2.1.7.1.</span> <span class="nav-text">百度换肤案例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E9%9A%94%E8%A1%8C%E5%8F%98%E8%89%B2%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.1.7.2.</span> <span class="nav-text">表格隔行变色效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95%E5%85%A8%E9%80%89%E5%92%8C%E5%8F%96%E6%B6%88%E5%85%A8%E9%80%89"><span class="nav-number">1.2.1.7.3.</span> <span class="nav-text">表单全选和取消全选</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.8.</span> <span class="nav-text">自定义属性的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#H5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.2.1.9.</span> <span class="nav-text">H5自定义属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.2.</span> <span class="nav-text">节点操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%B1%82%E7%BA%A7"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">节点层级</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">案例：下拉菜单</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9%E3%80%81%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">创建节点、添加节点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%AE%80%E5%8D%95%E7%89%88%E5%8F%91%E5%B8%83%E7%95%99%E8%A8%80"><span class="nav-number">1.2.2.2.1.</span> <span class="nav-text">案例：简单版发布留言</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%88%A0%E9%99%A4%E7%95%99%E8%A8%80"><span class="nav-number">1.2.2.3.1.</span> <span class="nav-text">案例：删除留言</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">案例：动态生成表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%85%83%E7%B4%A0%E5%8C%BA%E5%88%AB%EF%BC%88%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%97%AE%EF%BC%89"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">三种动态创建元素区别（面试常问）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM%E9%87%8D%E7%82%B9%E6%A0%B8%E5%BF%83"><span class="nav-number">1.2.3.</span> <span class="nav-text">DOM重点核心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7"><span class="nav-number">1.3.</span> <span class="nav-text">事件高级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B3%A8%E5%86%8C%E4%BA%8B%E4%BB%B6%EF%BC%88%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%EF%BC%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.注册事件（绑定事件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%A0%E9%99%A4%E4%BA%8B%E4%BB%B6%EF%BC%88%E8%A7%A3%E7%BB%91%E4%BA%8B%E4%BB%B6%EF%BC%89"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.删除事件（解绑事件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DOM%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.DOM事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#target%E5%92%8Cthis%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">target和this的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">事件对象阻止默认行为</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%EF%BC%88%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%97%AE%E3%80%81%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.阻止事件冒泡（面试常问、常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%EF%BC%88%E4%BB%A3%E7%90%86%E3%80%81%E5%A7%94%E6%89%98%EF%BC%89%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%97%AE"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.事件委托（代理、委托）面试常问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%B8%B8%E7%94%A8%E7%9A%84%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.3.7.</span> <span class="nav-text">7.常用的鼠标事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E8%B7%9F%E9%9A%8F%E9%BC%A0%E6%A0%87%E7%9A%84%E5%A4%A9%E4%BD%BF"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">案例：跟随鼠标的天使</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%B8%B8%E7%94%A8%E7%9A%84%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.3.8.</span> <span class="nav-text">8.常用的键盘事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%A8%A1%E6%8B%9F%E4%BA%AC%E4%B8%9C%E6%8C%89%E4%B8%8B%E8%BE%93%E5%85%A5%E9%94%AE%E8%BE%93%E5%85%A5%E5%86%85%E5%AE%B9"><span class="nav-number">1.3.8.1.</span> <span class="nav-text">案例：模拟京东按下输入键输入内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">BOM浏览器对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-BOM%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.BOM概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-window%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.window对象的常见事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A5%E7%A7%92%E5%90%8E%E5%85%B3%E9%97%AD%E5%B9%BF%E5%91%8A"><span class="nav-number">1.4.3.0.1.</span> <span class="nav-text">案例：5秒后关闭广告</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E5%AE%9A%E6%97%B6%E5%99%A8clearTimeout"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">清除定时器clearTimeout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setInterval-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">setInterval()定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%80%92%E8%AE%A1%E6%97%B6%E6%95%88%E6%9E%9C"><span class="nav-number">1.4.3.2.1.</span> <span class="nav-text">案例：倒计时效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1"><span class="nav-number">1.4.3.2.2.</span> <span class="nav-text">案例：发送短信</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-JS%E7%9A%84%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.JS的执行队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-location%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.5.</span> <span class="nav-text">5.location对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A5%E7%A7%92%E9%92%9F%E4%B9%8B%E5%90%8E%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">案例：5秒钟之后跳转页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E8%8E%B7%E5%8F%96URL%E5%8F%82%E6%95%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">案例：获取URL参数数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-navigator%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.6.</span> <span class="nav-text">6.navigator对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-history%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.7.</span> <span class="nav-text">7.history对象</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YeChunChen</p>
+  <div class="site-description" itemprop="description">朝花夕拾 聊以记之</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HuangMingwang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HuangMingwang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/20/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8B%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YeChunChen">
+      <meta itemprop="description" content="朝花夕拾 聊以记之">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YeChunChen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-20 16:14:10" itemprop="dateCreated datePublished" datetime="2022-02-20T16:14:10+08:00">2022-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-26 20:36:02" itemprop="dateModified" datetime="2022-02-26T20:36:02+08:00">2022-02-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Web-APIs"><a href="#Web-APIs" class="headerlink" title="Web APIs"></a>Web APIs</h1><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201646588.png" alt="image-20220220164643560"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201655790.png" alt="image-20220220165531765"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201657974.png" alt="image-20220220165755948"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201659415.png" alt="image-20220220165934388"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201701756.png" alt="image-20220220170103727"></p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="DOM简介"><a href="#DOM简介" class="headerlink" title="DOM简介"></a>DOM简介</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201703931.png" alt="image-20220220170348903"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201706499.png" alt="image-20220220170616466"></p>
+<h3 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h3><h4 id="getElementById-获取元素"><a href="#getElementById-获取元素" class="headerlink" title="getElementById()获取元素"></a>getElementById()获取元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、因为我们文档页面从上往下加载，所以我们要先有标签，所以我们script写到标签的下面</span></span><br><span class="line"><span class="comment">// 2、get获得element元素by通过 驼峰命名法</span></span><br><span class="line"><span class="comment">// 3、参数 id是大小敏感的字符串</span></span><br><span class="line"><span class="comment">// 4、返回的是一个元素对象</span></span><br><span class="line"><span class="keyword">var</span> timer =<span class="built_in">document</span>.getElementById(<span class="string">&#x27;time&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(timer);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> timer);</span><br><span class="line"><span class="comment">//5、console.dir 打印我们返回的元素对象，更好的查看里面的属性和方法</span></span><br><span class="line"><span class="built_in">console</span>.dir(timer);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName()"></a>getElementsByTagName()</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201736171.png" alt="image-20220220173615137"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201743994.png" alt="image-20220220174345967"></p>
+<p><strong>伪数组元素不能作为父元素，父元素一定要指明是哪一个元素</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201740617.png" alt="image-20220220174044586"></p>
+<h4 id="2-4-H5新增获取元素的方式"><a href="#2-4-H5新增获取元素的方式" class="headerlink" title="2.4     H5新增获取元素的方式"></a>2.4     H5新增获取元素的方式</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201801118.png" alt="image-20220220180154083"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202201806762.png" alt="image-20220220180617727"></p>
+<h2 id="事件基础"><a href="#事件基础" class="headerlink" title="事件基础"></a>事件基础</h2><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202019550.png" alt="image-20220220201913513"></p>
+<h4 id="执行事件的步骤"><a href="#执行事件的步骤" class="headerlink" title="执行事件的步骤"></a>执行事件的步骤</h4><ol>
+<li>获取事件源</li>
+<li>注册事件（绑定事件）</li>
+<li>添加事件处理程序（采取函数赋值的形式 ）</li>
+</ol>
+<p><strong>分析事件三要素</strong></p>
+<h3 id="操作元素"><a href="#操作元素" class="headerlink" title="操作元素"></a>操作元素</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202137539.png" alt="image-20220220213719507"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//element.innerText不识别标签</span></span><br><span class="line"><span class="comment">//element.innerHTML识别标签</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="常用的元素属性操作"><a href="#常用的元素属性操作" class="headerlink" title="常用的元素属性操作"></a>常用的元素属性操作</h4><ol>
+<li>innerText、innerHTML、改变元素的属性内容</li>
+<li>src、href</li>
+<li>id、alt、title</li>
+</ol>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202141500.png" alt="image-20220220214145474"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202215789.png" alt="image-20220220221521761"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202228547.png"></p>
+<h4 id="样式属性操作"><a href="#样式属性操作" class="headerlink" title="样式属性操作"></a>样式属性操作</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202233323.png" alt="image-20220220223317289"></p>
+<h4 id="循环精灵图"><a href="#循环精灵图" class="headerlink" title="循环精灵图"></a>循环精灵图</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202242899.png" alt="image-20220220224208866"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202241932.png" alt="image-20220220224144897"></p>
+<h4 id="获得焦点事件-onfocus-失去焦点事件-onblur"><a href="#获得焦点事件-onfocus-失去焦点事件-onblur" class="headerlink" title="获得焦点事件 onfocus    失去焦点事件 onblur"></a>获得焦点事件 onfocus    失去焦点事件 onblur</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202308255.png" alt="image-20220220230821216"></p>
+<h4 id="通过className更改元素样式"><a href="#通过className更改元素样式" class="headerlink" title="通过className更改元素样式"></a>通过className更改元素样式</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202347152.png" alt="image-20220220234703113"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202202346167.png" alt="image-20220220234646129"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202210132356.png" alt="image-20220221013236309"></p>
+<h4 id="排他思想（算法）重要"><a href="#排他思想（算法）重要" class="headerlink" title="排他思想（算法）重要"></a>排他思想（算法）重要</h4><p>首先排除其他人</p>
+<p>然后再设置自己的样式</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251217683.png" alt="image-20220225121706644"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、获取所有元素（用兼容的方式）</span></span><br><span class="line"><span class="keyword">var</span> btns = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="comment">// btns得到的是伪数组，里面的每一个元素是btn[i]</span></span><br><span class="line"><span class="comment">// 给所有按钮绑定点击事件</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; btns.length; i++) &#123;</span><br><span class="line">    btns[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// (1)我们先把所有的按钮背景颜色去掉</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; btns.length; j++) &#123;</span><br><span class="line">            btns[j].style.backgroundColor = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// (2)然后让当前的被点击的按钮的背景颜色变成粉色</span></span><br><span class="line">        <span class="built_in">this</span>.style.backgroundColor = <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><h5 id="百度换肤案例"><a href="#百度换肤案例" class="headerlink" title="百度换肤案例"></a>百度换肤案例</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       <span class="comment">// 1、获取元素</span></span><br><span class="line">       <span class="comment">// 先获取.baidu这个ul，再获取ul里面的所有的img</span></span><br><span class="line">       <span class="keyword">var</span> imgs = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.baidu&#x27;</span>).querySelectorAll(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">       <span class="comment">// console.log(imgs);</span></span><br><span class="line">       <span class="comment">// 2、循环注册事件</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; imgs.length; i++) &#123;</span><br><span class="line">           <span class="comment">// 点击图片</span></span><br><span class="line">           imgs[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">               <span class="comment">//this.src就是我们点击图片的路径  images/bj2.jpeg</span></span><br><span class="line">               <span class="comment">// console.log(this.src);</span></span><br><span class="line">            <span class="comment">// 把这个路径this.src 给body就可以了</span></span><br><span class="line">            <span class="built_in">document</span>.body.style.backgroundImage=<span class="string">&#x27;url(&#x27;</span>+<span class="built_in">this</span>.src +<span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="表格隔行变色效果"><a href="#表格隔行变色效果" class="headerlink" title="表格隔行变色效果"></a>表格隔行变色效果</h5><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251615051.png" alt="image-20220225161552019"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251616991.png" alt="image-20220225161642958"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251624338.png" alt="image-20220225162459309"></p>
+<h5 id="表单全选和取消全选"><a href="#表单全选和取消全选" class="headerlink" title="表单全选和取消全选"></a>表单全选和取消全选</h5><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251649649.png" alt="image-20220225164654287"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251633254.png" alt="image-20220225163302221"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251645477.png" alt="image-20220225164551447"></p>
+<h4 id="自定义属性的操作"><a href="#自定义属性的操作" class="headerlink" title="自定义属性的操作"></a>自定义属性的操作</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251836959.png" alt="image-20220225183632922"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251839994.png" alt="image-20220225183916953"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251843182.png" alt="image-20220225184325148"></p>
+<p>class特殊，element.setAttribute(‘属性’，’值’ )；这里属性写的就是class</p>
+<p>而element.属性；    这里写的是className</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251853482.png" alt="image-20220225185314446"></p>
+<h4 id="H5自定义属性"><a href="#H5自定义属性" class="headerlink" title="H5自定义属性"></a>H5自定义属性</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251941318.png" alt="image-20220225194142281"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251947067.png" alt="image-20220225194701023"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251946043.png" alt="image-20220225194621002"></p>
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251950006.png" alt="image-20220225195000965"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251951396.png" alt="image-20220225195115354"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251952118.png" alt="image-20220225195242069"></p>
+<h4 id="节点层级"><a href="#节点层级" class="headerlink" title="节点层级"></a>节点层级</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202251955448.png" alt="image-20220225195546395"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252000307.png" alt="image-20220225200003261"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252001276.png" alt="image-20220225200112219"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252003199.png" alt="image-20220225200357169"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252004026.png" alt="image-20220225200455972"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252007705.png" alt="image-20220225200722649"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252028883.png" alt="image-20220225202825821"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252029380.png" alt="image-20220225202954345"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252031147.png" alt="image-20220225203132093"></p>
+<h5 id="案例：下拉菜单"><a href="#案例：下拉菜单" class="headerlink" title="案例：下拉菜单"></a>案例：下拉菜单</h5><p>它的布局通常为</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252016649.png" alt="image-20220225201637610"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>微博<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>私信<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>评论<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>@我<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252021400.png" alt="image-20220225202107342"></p>
+<h4 id="创建节点、添加节点"><a href="#创建节点、添加节点" class="headerlink" title="创建节点、添加节点"></a>创建节点、添加节点</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252033727.png" alt="image-20220225203333671"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252037045.png" alt="image-20220225203713990"></p>
+<h5 id="案例：简单版发布留言"><a href="#案例：简单版发布留言" class="headerlink" title="案例：简单版发布留言"></a>案例：简单版发布留言</h5><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252038976.png" alt="image-20220225203833913"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252039003.png" alt="image-20220225203921942"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252047320.png" alt="image-20220225204730247"></p>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252055304.png" alt="image-20220225205522260"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252059424.png" alt="image-20220225205941388"></p>
+<h5 id="案例：删除留言"><a href="#案例：删除留言" class="headerlink" title="案例：删除留言"></a>案例：删除留言</h5><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252110231.png" alt="image-20220225211047193"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252109551.png" alt="image-20220225210940486"></p>
+<p><strong>样式最好在css中修改，比较好统一</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202252118133.png" alt="image-20220225211806070"></p>
+<h4 id="案例：动态生成表格"><a href="#案例：动态生成表格" class="headerlink" title="案例：动态生成表格"></a>案例：动态生成表格</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202260954116.png" alt="image-20220226095433038"></p>
+<h4 id="三种动态创建元素区别（面试常问）"><a href="#三种动态创建元素区别（面试常问）" class="headerlink" title="三种动态创建元素区别（面试常问）"></a>三种动态创建元素区别（面试常问）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261022064.png" alt="image-20220226102207991"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. innerHTML 创建元素</span></span><br><span class="line"><span class="keyword">var</span> inner = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.inner&#x27;</span>);</span><br><span class="line"><span class="comment">// for (var i = 0; i &lt;= 100; i++) &#123;</span></span><br><span class="line"><span class="comment">//     inner.innerHTML += &#x27;&lt;a href=&quot;#&quot;&gt;百度&lt;/a&gt;&#x27;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 添加数组元素</span></span><br><span class="line">    arr.push(<span class="string">&#x27;&lt;a href=&quot;#&quot;&gt;百度&lt;/a&gt;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 转换为字符串</span></span><br><span class="line">inner.innerHTML = arr.join(<span class="string">&#x27;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DOM重点核心"><a href="#DOM重点核心" class="headerlink" title="DOM重点核心"></a>DOM重点核心</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261043604.png" alt="image-20220226104319534"></p>
+<p>关于dom操作，我们主要针对元素的操作，主要有创建、增、删、改、查、属性操作、事件操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建</span></span><br><span class="line"><span class="number">1.</span><span class="built_in">document</span>.write</span><br><span class="line"><span class="number">2.</span>innerHTML</span><br><span class="line"><span class="number">3.</span>createElrment</span><br><span class="line"><span class="comment">//增</span></span><br><span class="line"><span class="number">1.</span>appendChild</span><br><span class="line"><span class="number">2.</span>insertBefore</span><br><span class="line"><span class="comment">//删</span></span><br><span class="line"><span class="number">1.</span>removeChild</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261048043.png" alt="image-20220226104838970"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261049688.png" alt="image-20220226104941618"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261050799.png" alt="image-20220226105018714"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261050886.png" alt="image-20220226105058820"></p>
+<h2 id="事件高级"><a href="#事件高级" class="headerlink" title="事件高级"></a>事件高级</h2><h3 id="1-注册事件（绑定事件）"><a href="#1-注册事件（绑定事件）" class="headerlink" title="1.注册事件（绑定事件）"></a>1.注册事件（绑定事件）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261056953.png" alt="image-20220226105607883"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261102584.png" alt="image-20220226110219504"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261103164.png" alt="image-20220226110314090"></p>
+<p><strong>传统注册方式没有兼容性问题</strong></p>
+<p><strong>方法监听注册方式，IE9 以上才支持</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261106420.png" alt="image-20220226110653342"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261108243.png" alt="image-20220226110801164"></p>
+<h3 id="2-删除事件（解绑事件）"><a href="#2-删除事件（解绑事件）" class="headerlink" title="2.删除事件（解绑事件）"></a>2.删除事件（解绑事件）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261114015.png" alt="image-20220226111405938"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261114985.png" alt="image-20220226111419908"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261114661.png" alt="image-20220226111453578"></p>
+<p><strong>这里方式监听注册方式的删除事件，需要一个函数名，因此不能用匿名函数</strong></p>
+<h3 id="3-DOM事件流"><a href="#3-DOM事件流" class="headerlink" title="3.DOM事件流"></a>3.DOM事件流</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261119855.png" alt="image-20220226111948775"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261126547.png" alt="image-20220226112620465"></p>
+<h3 id="4-事件对象"><a href="#4-事件对象" class="headerlink" title="4.事件对象"></a>4.事件对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261133685.png" alt="image-20220226113301601"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261133028.png" alt="image-20220226113334938"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261134450.png" alt="image-20220226113400366"></p>
+<h4 id="target和this的区别"><a href="#target和this的区别" class="headerlink" title="target和this的区别"></a>target和this的区别</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261148591.png" alt="image-20220226114725012"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261150079.png" alt="image-20220226115015980"></p>
+<h4 id="事件对象阻止默认行为"><a href="#事件对象阻止默认行为" class="headerlink" title="事件对象阻止默认行为"></a>事件对象阻止默认行为</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261155864.png" alt="image-20220226115544777"></p>
+<h3 id="5-阻止事件冒泡（面试常问、常用）"><a href="#5-阻止事件冒泡（面试常问、常用）" class="headerlink" title="5.阻止事件冒泡（面试常问、常用）"></a>5.阻止事件冒泡（面试常问、常用）</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261201989.png" alt="image-20220226120112895"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261201289.png" alt="image-20220226120145205"></p>
+<h3 id="6-事件委托（代理、委托）面试常问"><a href="#6-事件委托（代理、委托）面试常问" class="headerlink" title="6.事件委托（代理、委托）面试常问"></a>6.事件委托（代理、委托）面试常问</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261523627.png" alt="image-20220226152338584"></p>
+<h3 id="7-常用的鼠标事件"><a href="#7-常用的鼠标事件" class="headerlink" title="7.常用的鼠标事件"></a>7.常用的鼠标事件</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261530940.png" alt="image-20220226153058905"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261530881.png" alt="image-20220226153015843"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261536358.png" alt="image-20220226153653316"></p>
+<h4 id="案例：跟随鼠标的天使"><a href="#案例：跟随鼠标的天使" class="headerlink" title="案例：跟随鼠标的天使"></a>案例：跟随鼠标的天使</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261538074.png" alt="image-20220226153839035"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> pic = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">&#x27;mousemove&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 1. mousemove只要我们鼠标移动1px 就会触发这个事件</span></span><br><span class="line">        <span class="comment">// console.log(1);</span></span><br><span class="line">        <span class="comment">// 2.核心原理： 每次鼠标移动，我们都会获得最新的鼠标坐标， 把这个x和y坐标做为图片的top和left 值就可以移动图片</span></span><br><span class="line">        <span class="keyword">var</span> x = e.pageX;</span><br><span class="line">        <span class="keyword">var</span> y = e.pageY;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;x坐标是&#x27;</span> + x, <span class="string">&#x27;y坐标是&#x27;</span> + y);</span><br><span class="line">        <span class="comment">// 3.千万不要忘记给left 和top 添加px 单位</span></span><br><span class="line">        <span class="comment">// -50和-40是为了让鼠标在图片的中间位置</span></span><br><span class="line">        pic.style.left = x - <span class="number">50</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">        pic.style.top = y - <span class="number">40</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-常用的键盘事件"><a href="#8-常用的键盘事件" class="headerlink" title="8.常用的键盘事件"></a>8.常用的键盘事件</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261554821.png" alt="image-20220226155454780"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261600720.png" alt="image-20220226160007678"></p>
+<h4 id="案例：模拟京东按下输入键输入内容"><a href="#案例：模拟京东按下输入键输入内容" class="headerlink" title="案例：模拟京东按下输入键输入内容"></a>案例：模拟京东按下输入键输入内容</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261603200.png" alt="image-20220226160321159"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261605694.png" alt="image-20220226160548630"></p>
+<p>案例2</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261621858.png" alt="image-20220226162136831"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261621332.png" alt="image-20220226162108278"></p>
+<h2 id="BOM浏览器对象模型"><a href="#BOM浏览器对象模型" class="headerlink" title="BOM浏览器对象模型"></a>BOM浏览器对象模型</h2><h3 id="1-BOM概述"><a href="#1-BOM概述" class="headerlink" title="1.BOM概述"></a>1.BOM概述</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261629047.png" alt="image-20220226162910004"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261647078.png" alt="image-20220226164616532"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261653171.png" alt="image-20220226165321121"></p>
+<h3 id="2-window对象的常见事件"><a href="#2-window对象的常见事件" class="headerlink" title="2.window对象的常见事件"></a>2.window对象的常见事件</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261659734.png" alt="image-20220226165940687"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261702127.png" alt="image-20220226170220096"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261700439.png" alt="image-20220226170023390"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261706835.png" alt="image-20220226170609785"></p>
+<h3 id="3-定时器"><a href="#3-定时器" class="headerlink" title="3.定时器"></a>3.定时器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261711513.png" alt="image-20220226171127440"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261712724.png" alt="image-20220226171206649"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261713983.png" alt="image-20220226171324910"></p>
+<h5 id="案例：5秒后关闭广告"><a href="#案例：5秒后关闭广告" class="headerlink" title="案例：5秒后关闭广告"></a>案例：5秒后关闭广告</h5><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261838738.png" alt="image-20220226183849668"></p>
+<h4 id="清除定时器clearTimeout"><a href="#清除定时器clearTimeout" class="headerlink" title="清除定时器clearTimeout"></a>清除定时器clearTimeout</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261842310.png" alt="image-20220226184200259"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261841479.png" alt="image-20220226184145422"></p>
+<h4 id="setInterval-定时器"><a href="#setInterval-定时器" class="headerlink" title="setInterval()定时器"></a>setInterval()定时器</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261844602.png" alt="image-20220226184424544"></p>
+<p><strong>setTimeout 延时时间到了，就去调用这个回调函数，只调用一次就结束这个定时器</strong></p>
+<p><strong>setInterval 每隔这个延时时间就去调用这个回调函数，会调用很多次，即重复调用这个函数</strong></p>
+<h5 id="案例：倒计时效果"><a href="#案例：倒计时效果" class="headerlink" title="案例：倒计时效果"></a>案例：倒计时效果</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hour&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;minute&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;second&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="comment">// 1. 获取元素 </span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">var</span> hour = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.hour&#x27;</span>); <span class="comment">// 小时的黑色盒子</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">var</span> minute = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.minute&#x27;</span>); <span class="comment">// 分钟的黑色盒子</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">var</span> second = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.second&#x27;</span>); <span class="comment">// 秒数的黑色盒子</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">var</span> inputTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2022-2-26 20:00:00&#x27;</span>); <span class="comment">// 返回的是用户输入时间总的毫秒数</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        countDown(); <span class="comment">// 我们先调用一次这个函数，防止第一次刷新页面有空白 </span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="comment">// 2. 开启定时器</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="comment">// 每隔一秒调用一次countDown</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="built_in">setInterval</span>(countDown, <span class="number">1000</span>);</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="function"><span class="keyword">function</span> <span class="title">countDown</span>(<span class="params"></span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> nowTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// 返回的是当前时间总的毫秒数</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> times = (inputTime - nowTime) / <span class="number">1000</span>; <span class="comment">// times是剩余时间总的秒数 </span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> h = <span class="built_in">parseInt</span>(times / <span class="number">60</span> / <span class="number">60</span> % <span class="number">24</span>); <span class="comment">//时</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            h = h &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + h : h;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            hour.innerHTML = h; <span class="comment">// 把剩余的小时给 小时黑色盒子</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> m = <span class="built_in">parseInt</span>(times / <span class="number">60</span> % <span class="number">60</span>); <span class="comment">// 分</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            m = m &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + m : m;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            minute.innerHTML = m;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> s = <span class="built_in">parseInt</span>(times % <span class="number">60</span>); <span class="comment">// 当前的秒</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            s = s &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + s : s;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            second.innerHTML = s;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>案例2</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261910643.png" alt="image-20220226191053604"></p>
+<p>同时timer定义为一个全局变量，这样其他函数就可以访问timer</p>
+<h5 id="案例：发送短信"><a href="#案例：发送短信" class="headerlink" title="案例：发送短信"></a>案例：发送短信</h5><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261913509.png" alt="image-20220226191333471"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       <span class="comment">// 按钮点击之后，会禁用 disabled 为true </span></span><br><span class="line">       <span class="comment">// 同时按钮里面的内容会变化， 注意 button 里面的内容通过 innerHTML修改</span></span><br><span class="line">       <span class="comment">// 里面秒数是有变化的，因此需要用到定时器</span></span><br><span class="line">       <span class="comment">// 定义一个变量，在定时器里面，不断递减</span></span><br><span class="line">       <span class="comment">// 如果变量为0 说明到了时间，我们需要停止定时器，并且复原按钮初始状态</span></span><br><span class="line">       <span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">       <span class="keyword">var</span> time = <span class="number">3</span>; <span class="comment">// 定义剩下的秒数</span></span><br><span class="line">       btn.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">           btn.disabled = <span class="literal">true</span>;</span><br><span class="line">           <span class="keyword">var</span> timer = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">               <span class="keyword">if</span> (time == <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="comment">// 清除定时器和复原按钮</span></span><br><span class="line">                   <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">                   btn.disabled = <span class="literal">false</span>;</span><br><span class="line">                   btn.innerHTML = <span class="string">&#x27;发送&#x27;</span>;</span><br><span class="line">                   time = <span class="number">3</span>;<span class="comment">// 这个3 =需要重新开始</span></span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   btn.innerHTML = <span class="string">&#x27;还剩下&#x27;</span> + time + <span class="string">&#x27;秒&#x27;</span>;</span><br><span class="line">                   time--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">       &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-JS的执行队列"><a href="#4-JS的执行队列" class="headerlink" title="4.JS的执行队列"></a>4.JS的执行队列</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261936437.png" alt="image-20220226193645395"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261937483.png" alt="image-20220226193712441"></p>
+<p><strong>虽然js是单线程的，但是可以有同步和异步</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261940717.png" alt="image-20220226194039677"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261942866.png" alt="image-20220226194250824"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261947505.png" alt="image-20220226194725439"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261947378.png" alt="image-20220226194754335"></p>
+<h3 id="5-location对象"><a href="#5-location对象" class="headerlink" title="5.location对象"></a>5.location对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261954915.png" alt="image-20220226195449882"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261951851.png" alt="image-20220226195154807"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202261954751.png" alt="image-20220226195431687"></p>
+<h4 id="案例：5秒钟之后跳转页面"><a href="#案例：5秒钟之后跳转页面" class="headerlink" title="案例：5秒钟之后跳转页面"></a>案例：5秒钟之后跳转页面</h4><h4 id="案例：获取URL参数数据"><a href="#案例：获取URL参数数据" class="headerlink" title="案例：获取URL参数数据"></a>案例：获取URL参数数据</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262013372.png" alt="image-20220226201353327"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262017507.png" alt="image-20220226201718462"></p>
+<h3 id="6-navigator对象"><a href="#6-navigator对象" class="headerlink" title="6.navigator对象"></a>6.navigator对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262021261.png" alt="image-20220226202135218"></p>
+<h3 id="7-history对象"><a href="#7-history对象" class="headerlink" title="7.history对象"></a>7.history对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202202262024507.png" alt="image-20220226202454436"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/15/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8A%EF%BC%89/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/25/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/K8S/" rel="next" title="K8S">
+                  K8S <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YeChunChen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

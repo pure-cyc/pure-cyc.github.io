@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="jQueryjQuery入门1.jQuery概述    2.jQuery的基本使用     jQuery常用API1. jQuery选择器  隐式迭代（重要）  jQuery筛选方法（重要s） 新浪下拉菜单案例1234567891011121314&lt;script&gt;    $(function() &amp;#123;        &#x2F;&#x2F; 鼠标经过        $(&quot;.nav&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YeChunChen&#39;s Blog">
+<meta property="og:url" content="http://example.com/2022/03/01/%E5%89%8D%E7%AB%AF/jQuery/index.html">
+<meta property="og:site_name" content="YeChunChen&#39;s Blog">
+<meta property="og:description" content="jQueryjQuery入门1.jQuery概述    2.jQuery的基本使用     jQuery常用API1. jQuery选择器  隐式迭代（重要）  jQuery筛选方法（重要s） 新浪下拉菜单案例1234567891011121314&lt;script&gt;    $(function() &amp;#123;        &#x2F;&#x2F; 鼠标经过        $(&quot;.nav&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010912819.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010913057.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010920580.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010922903.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010926738.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010932222.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010935472.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010942048.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010946061.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011004375.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011009072.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011012190.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011029740.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011047874.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011102781.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011533371.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011541242.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011546533.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011556196.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011558159.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011601969.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011603730.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011604808.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011607747.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011610527.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011615963.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011618900.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011622030.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011627992.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011655535.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011657849.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011659847.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041242371.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041245510.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041246587.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041252479.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041326367.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041337204.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041337443.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081346168.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081348660.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081456006.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081459475.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081502204.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081524178.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081528110.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081530009.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081535446.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081539352.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081542864.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081544216.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081546032.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081556176.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081600305.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081610706.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081616280.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081618231.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081653484.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081704348.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081933876.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081940158.png">
+<meta property="og:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081947406.png">
+<meta property="article:published_time" content="2022-03-01T01:08:59.772Z">
+<meta property="article:modified_time" content="2022-03-08T11:47:58.273Z">
+<meta property="article:author" content="YeChunChen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010912819.png">
+
+
+<link rel="canonical" href="http://example.com/2022/03/01/%E5%89%8D%E7%AB%AF/jQuery/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/01/%E5%89%8D%E7%AB%AF/jQuery/","path":"2022/03/01/前端/jQuery/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | YeChunChen's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">YeChunChen's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I love mw.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">1.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">jQuery入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jQuery%E6%A6%82%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">1.jQuery概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-jQuery%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2.jQuery的基本使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery%E5%B8%B8%E7%94%A8API"><span class="nav-number">3.</span> <span class="nav-text">jQuery常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jQuery%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">1. jQuery选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BF%AD%E4%BB%A3%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="nav-number">3.1.1.</span> <span class="nav-text">隐式迭代（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery%E7%AD%9B%E9%80%89%E6%96%B9%E6%B3%95%EF%BC%88%E9%87%8D%E8%A6%81s%EF%BC%89"><span class="nav-number">3.1.2.</span> <span class="nav-text">jQuery筛选方法（重要s）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E6%B5%AA%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%E6%A1%88%E4%BE%8B"><span class="nav-number">3.1.3.</span> <span class="nav-text">新浪下拉菜单案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">3.1.4.</span> <span class="nav-text">链式编程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-jQuery%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.</span> <span class="nav-text">2.jQuery样式操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jQuery%E6%95%88%E6%9E%9C"><span class="nav-number">3.3.</span> <span class="nav-text">3.jQuery效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">3.3.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-jQuery%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">3.4.</span> <span class="nav-text">4.jQuery属性操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-jQuery%E5%86%85%E5%AE%B9%E6%96%87%E6%9C%AC%E5%80%BC"><span class="nav-number">3.5.</span> <span class="nav-text">5.jQuery内容文本值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-jQuery%E5%85%83%E7%B4%A0%E6%93%8D%E4%BD%9C"><span class="nav-number">3.6.</span> <span class="nav-text">6.jQuery元素操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-jQuery%E5%B0%BA%E5%AF%B8%E3%80%81%E4%BD%8D%E7%BD%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">3.7.</span> <span class="nav-text">7.jQuery尺寸、位置操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">jQuery事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jQuery%E4%BA%8B%E4%BB%B6%E6%B3%A8%E5%86%8C"><span class="nav-number">4.1.</span> <span class="nav-text">1.jQuery事件注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">2.事件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jQuery%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.3.</span> <span class="nav-text">3.jQuery事件对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">jQuery其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jQuery%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D"><span class="nav-number">5.1.</span> <span class="nav-text">1.jQuery对象拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-jQuery%E5%A4%9A%E5%BA%93%E5%85%B1%E5%AD%98"><span class="nav-number">5.2.</span> <span class="nav-text">2.jQuery多库共存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jQuery%E6%8F%92%E4%BB%B6"><span class="nav-number">5.3.</span> <span class="nav-text">3.jQuery插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="nav-number">5.3.1.</span> <span class="nav-text">图片懒加载</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YeChunChen</p>
+  <div class="site-description" itemprop="description">朝花夕拾 聊以记之</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HuangMingwang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HuangMingwang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/%E5%89%8D%E7%AB%AF/jQuery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YeChunChen">
+      <meta itemprop="description" content="朝花夕拾 聊以记之">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YeChunChen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-01 09:08:59" itemprop="dateCreated datePublished" datetime="2022-03-01T09:08:59+08:00">2022-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-08 19:47:58" itemprop="dateModified" datetime="2022-03-08T19:47:58+08:00">2022-03-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><h2 id="jQuery入门"><a href="#jQuery入门" class="headerlink" title="jQuery入门"></a>jQuery入门</h2><h3 id="1-jQuery概述"><a href="#1-jQuery概述" class="headerlink" title="1.jQuery概述"></a>1.jQuery概述</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010912819.png" alt="image-20220301091259790"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010913057.png" alt="image-20220301091355034"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010920580.png" alt="image-20220301092031553"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010922903.png" alt="image-20220301092236872"></p>
+<h3 id="2-jQuery的基本使用"><a href="#2-jQuery的基本使用" class="headerlink" title="2.jQuery的基本使用"></a>2.jQuery的基本使用</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010926738.png" alt="image-20220301092642706"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010932222.png" alt="image-20220301093200184"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010935472.png" alt="image-20220301093523434"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010942048.png" alt="image-20220301094229007"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203010946061.png" alt="image-20220301094612029"></p>
+<h2 id="jQuery常用API"><a href="#jQuery常用API" class="headerlink" title="jQuery常用API"></a>jQuery常用API</h2><h3 id="1-jQuery选择器"><a href="#1-jQuery选择器" class="headerlink" title="1. jQuery选择器"></a>1. jQuery选择器</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011004375.png" alt="image-20220301100455334"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011009072.png" alt="image-20220301100917034"></p>
+<h4 id="隐式迭代（重要）"><a href="#隐式迭代（重要）" class="headerlink" title="隐式迭代（重要）"></a>隐式迭代（重要）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011012190.png" alt="image-20220301101257146"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011029740.png" alt="image-20220301102955689"></p>
+<h4 id="jQuery筛选方法（重要s）"><a href="#jQuery筛选方法（重要s）" class="headerlink" title="jQuery筛选方法（重要s）"></a>jQuery筛选方法（重要s）</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011047874.png" alt="image-20220301104759838"></p>
+<h4 id="新浪下拉菜单案例"><a href="#新浪下拉菜单案例" class="headerlink" title="新浪下拉菜单案例"></a>新浪下拉菜单案例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 鼠标经过</span></span><br><span class="line">        $(<span class="string">&quot;.nav&gt;li&quot;</span>).mouseover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">// $(this) jQuery 当前元素  this不要加引号</span></span><br><span class="line">            <span class="comment">// show() 显示元素  hide() 隐藏元素</span></span><br><span class="line">            $(<span class="built_in">this</span>).children(<span class="string">&quot;ul&quot;</span>).show();</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 鼠标离开</span></span><br><span class="line">        $(<span class="string">&quot;.nav&gt;li&quot;</span>).mouseout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="built_in">this</span>).children(<span class="string">&quot;ul&quot;</span>).hide();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>$(this)     jQuery 当前元素  this不要加引号</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011102781.png" alt="image-20220301110219735"></p>
+<h4 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011533371.png" alt="image-20220301153324326"></p>
+<h3 id="2-jQuery样式操作"><a href="#2-jQuery样式操作" class="headerlink" title="2.jQuery样式操作"></a>2.jQuery样式操作</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011541242.png" alt="image-20220301154120198"></p>
+<p><strong>多个属性值用逗号隔开</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011546533.png" alt="image-20220301154658488"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011556196.png" alt="image-20220301155607146"></p>
+<h3 id="3-jQuery效果"><a href="#3-jQuery效果" class="headerlink" title="3.jQuery效果"></a>3.jQuery效果</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011558159.png" alt="image-20220301155851116"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011601969.png" alt="image-20220301160135921"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011603730.png" alt="image-20220301160348686"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011604808.png" alt="image-20220301160415768"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011607747.png" alt="image-20220301160720701"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011610527.png" alt="image-20220301161014477"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 事件切换 hover 就是鼠标经过和离开的复合写法</span></span><br><span class="line">$(<span class="string">&quot;.nav&gt;li&quot;</span>).hover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="built_in">this</span>).children(<span class="string">&quot;ul&quot;</span>).slideDown(<span class="number">200</span>);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="built_in">this</span>).children(<span class="string">&quot;ul&quot;</span>).slideUp(<span class="number">200</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 事件切换 hover  如果只写一个函数，那么鼠标经过和鼠标离开都会触发这个函数</span></span><br><span class="line">$(<span class="string">&quot;.nav&gt;li&quot;</span>).hover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="built_in">this</span>).children(<span class="string">&quot;ul&quot;</span>).slideToggle();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011615963.png" alt="image-20220301161523883"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011618900.png" alt="image-20220301161820845"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011622030.png" alt="image-20220301162211973"></p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011627992.png" alt="image-20220301162733940"></p>
+<h3 id="4-jQuery属性操作"><a href="#4-jQuery属性操作" class="headerlink" title="4.jQuery属性操作"></a>4.jQuery属性操作</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011655535.png" alt="image-20220301165541475"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011657849.png" alt="image-20220301165717793"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203011659847.png" alt="image-20220301165939794"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. element.prop(&quot;属性名&quot;) 获取元素固有的属性值</span></span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">&quot;a&quot;</span>).prop(<span class="string">&quot;href&quot;</span>));</span><br><span class="line">$(<span class="string">&quot;a&quot;</span>).prop(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;我们都挺好&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;input&quot;</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log($(<span class="built_in">this</span>).prop(<span class="string">&quot;checked&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// console.log($(&quot;div&quot;).prop(&quot;index&quot;));</span></span><br><span class="line"><span class="comment">// 2. 元素的自定义属性 我们通过 attr()</span></span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">&quot;div&quot;</span>).attr(<span class="string">&quot;index&quot;</span>));</span><br><span class="line">$(<span class="string">&quot;div&quot;</span>).attr(<span class="string">&quot;index&quot;</span>, <span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">&quot;div&quot;</span>).attr(<span class="string">&quot;data-index&quot;</span>));</span><br><span class="line"><span class="comment">// 3. 数据缓存 data() 这个里面的数据是存放在元素的内存里面</span></span><br><span class="line">$(<span class="string">&quot;span&quot;</span>).data(<span class="string">&quot;uname&quot;</span>, <span class="string">&quot;andy&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">&quot;span&quot;</span>).data(<span class="string">&quot;uname&quot;</span>));</span><br><span class="line"><span class="comment">// 这个方法获取data-index h5自定义属性 第一个 不用写data-  而且返回的是数字型</span></span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">&quot;div&quot;</span>).data(<span class="string">&quot;index&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041242371.png" alt="image-20220304124241308"></p>
+<h3 id="5-jQuery内容文本值"><a href="#5-jQuery内容文本值" class="headerlink" title="5.jQuery内容文本值"></a>5.jQuery内容文本值</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041245510.png" alt="image-20220304124525456"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041246587.png" alt="image-20220304124649526"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041252479.png" alt="image-20220304125215389"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041326367.png" alt="image-20220304132602303"></p>
+<h3 id="6-jQuery元素操作"><a href="#6-jQuery元素操作" class="headerlink" title="6.jQuery元素操作"></a>6.jQuery元素操作</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041337204.png" alt="image-20220304133746148"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203041337443.png" alt="image-20220304133703366"></p>
+<p>如果想遍历DOM对象（标签等），用语法一比较合适</p>
+<p>如果想遍历数据，数组、对象等，用语法二比较合适</p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081346168.png" alt="image-20220308134511628"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081348660.png" alt="image-20220308134810613"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081456006.png"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081459475.png" alt="image-20220308145903439"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081502204.png" alt="image-20220308150213168"></p>
+<h3 id="7-jQuery尺寸、位置操作"><a href="#7-jQuery尺寸、位置操作" class="headerlink" title="7.jQuery尺寸、位置操作"></a>7.jQuery尺寸、位置操作</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081524178.png" alt="image-20220308152431132"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081528110.png" alt="image-20220308152839072"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081530009.png" alt="image-20220308153038957"></p>
+<p><strong>position（）这个方法只能获取不能设置偏移</strong></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081535446.png" alt="image-20220308153528400"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081539352.png" alt="image-20220308153902309"></p>
+<h2 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h2><h3 id="1-jQuery事件注册"><a href="#1-jQuery事件注册" class="headerlink" title="1.jQuery事件注册"></a>1.jQuery事件注册</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081542864.png" alt="image-20220308154200823"></p>
+<h3 id="2-事件处理"><a href="#2-事件处理" class="headerlink" title="2.事件处理"></a>2.事件处理</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081544216.png" alt="image-20220308154456168"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081546032.png" alt="image-20220308154614992"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081556176.png" alt="image-20220308155637132"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081600305.png" alt="image-20220308160046256"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081610706.png" alt="image-20220308161027663"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081616280.png" alt="image-20220308161633239"></p>
+<p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081618231.png" alt="image-20220308161856179"></p>
+<p><strong>最后一种不会触发元素的默认行为</strong></p>
+<h3 id="3-jQuery事件对象"><a href="#3-jQuery事件对象" class="headerlink" title="3.jQuery事件对象"></a>3.jQuery事件对象</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081653484.png" alt="image-20220308165325432"></p>
+<h2 id="jQuery其他方法"><a href="#jQuery其他方法" class="headerlink" title="jQuery其他方法"></a>jQuery其他方法</h2><h3 id="1-jQuery对象拷贝"><a href="#1-jQuery对象拷贝" class="headerlink" title="1.jQuery对象拷贝"></a>1.jQuery对象拷贝</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081704348.png" alt="image-20220308170405293"></p>
+<p>浅拷贝：会覆盖原来的属性</p>
+<p>深拷贝：如果里面有不冲突的属性，会合并到一起</p>
+<h3 id="2-jQuery多库共存"><a href="#2-jQuery多库共存" class="headerlink" title="2.jQuery多库共存"></a>2.jQuery多库共存</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081933876.png" alt="image-20220308193345828"></p>
+<h3 id="3-jQuery插件"><a href="#3-jQuery插件" class="headerlink" title="3.jQuery插件"></a>3.jQuery插件</h3><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081940158.png" alt="image-20220308194001122"></p>
+<p><strong>推荐第二个</strong></p>
+<h4 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h4><p><img src="https://typora-yc.oss-cn-shenzhen.aliyuncs.com/typora/202203081947406.png" alt="image-20220308194719359"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/26/%E5%89%8D%E7%AB%AF/pc%E7%AB%AF%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/08/%E5%89%8D%E7%AB%AF/vue/" rel="next" title="vue">
+                  vue <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YeChunChen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

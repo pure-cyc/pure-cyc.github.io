@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="K8S设置时间同步123456yum install -y chronysystemctl enable chronydsystemctl start chronydtimedatectl set-ntp truetimedatectl set-timezone Asia&#x2F;Shanghaichronyc activity -v    安装kubernetes和kubesphere123456789">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K8S">
+<meta property="og:url" content="http://example.com/2022/02/25/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/K8S/index.html">
+<meta property="og:site_name" content="YeChunChen&#39;s Blog">
+<meta property="og:description" content="K8S设置时间同步123456yum install -y chronysystemctl enable chronydsystemctl start chronydtimedatectl set-ntp truetimedatectl set-timezone Asia&#x2F;Shanghaichronyc activity -v    安装kubernetes和kubesphere123456789">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203022306780.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030005221.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030239224.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030243839.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030246840.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030250529.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030255479.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030257907.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030315378.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030341233.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202202121510278.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202202040939741.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203032311931.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203072207989.png">
+<meta property="og:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203100119686.png">
+<meta property="article:published_time" content="2022-02-25T14:38:23.000Z">
+<meta property="article:modified_time" content="2022-02-28T14:38:23.000Z">
+<meta property="article:author" content="YeChunChen">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203022306780.png">
+
+
+<link rel="canonical" href="http://example.com/2022/02/25/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/K8S/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/25/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/K8S/","path":"2022/02/25/毕业设计/K8S/","title":"K8S"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>K8S | YeChunChen's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">YeChunChen's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I love mw.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#K8S"><span class="nav-number">1.</span> <span class="nav-text">K8S</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">设置时间同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85kubernetes%E5%92%8Ckubesphere"><span class="nav-number">1.2.</span> <span class="nav-text">安装kubernetes和kubesphere</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDKubesphere-DevOps"><span class="nav-number">1.2.1.</span> <span class="nav-text">卸载Kubesphere DevOps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%AF%E7%94%A8DevOps"><span class="nav-number">1.2.2.</span> <span class="nav-text">在安装后启用DevOps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">1.3.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDhelm"><span class="nav-number">1.4.</span> <span class="nav-text">下载helm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85Mysql"><span class="nav-number">1.5.</span> <span class="nav-text">Helm 安装Mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85Redis"><span class="nav-number">1.6.</span> <span class="nav-text">Helm 安装Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85MongoDB"><span class="nav-number">1.7.</span> <span class="nav-text">Helm 安装MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85Rabbitmq"><span class="nav-number">1.8.</span> <span class="nav-text">Helm 安装Rabbitmq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85ES7-13-4"><span class="nav-number">1.9.</span> <span class="nav-text">Helm 安装ES7.13.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85Nacos"><span class="nav-number">1.10.</span> <span class="nav-text">Helm 安装Nacos</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-%E5%AE%89%E8%A3%85nacos"><span class="nav-number">1.10.1.</span> <span class="nav-text">docker 安装nacos</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm%E5%AE%89%E8%A3%85Skywalking"><span class="nav-number">1.11.</span> <span class="nav-text">Helm安装Skywalking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm%E5%AE%89%E8%A3%85Sentinel"><span class="nav-number">1.12.</span> <span class="nav-text">Helm安装Sentinel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helm-%E5%AE%89%E8%A3%85GrayLog"><span class="nav-number">1.13.</span> <span class="nav-text">Helm 安装GrayLog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#helm"><span class="nav-number">1.13.1.</span> <span class="nav-text">helm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kubesphere-%E4%B8%8A%E5%AE%89%E8%A3%85-2-1-1"><span class="nav-number">1.13.2.</span> <span class="nav-text">Kubesphere 上安装 2.1.1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEV%E7%8E%AF%E5%A2%83"><span class="nav-number">1.14.</span> <span class="nav-text">DEV环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PROD%E7%8E%AF%E5%A2%83"><span class="nav-number">1.15.</span> <span class="nav-text">PROD环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="nav-number">1.16.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9maven%E4%BB%8E%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="nav-number">1.17.</span> <span class="nav-text">修改maven从阿里云下载镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0k8s%E9%9B%86%E7%BE%A4"><span class="nav-number">1.18.</span> <span class="nav-text">部署到k8s集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Devops"><span class="nav-number">1.19.</span> <span class="nav-text">Devops</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chaos"><span class="nav-number">1.20.</span> <span class="nav-text">Chaos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E5%85%B7%E6%9C%89%E5%8F%91%E9%82%AE%E4%BB%B6%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.21.</span> <span class="nav-text">配置系统具有发邮件的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0%E9%80%9A%E7%9F%A5%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.21.1.</span> <span class="nav-text">平台通知系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.21.2.</span> <span class="nav-text">Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEWebhook"><span class="nav-number">1.21.3.</span> <span class="nav-text">配置Webhook</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k8s%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.22.</span> <span class="nav-text">k8s常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E5%92%8C%E9%87%8D%E5%90%AF%E9%9B%86%E7%BE%A4"><span class="nav-number">1.23.</span> <span class="nav-text">关闭和重启集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Es-head"><span class="nav-number">1.24.</span> <span class="nav-text">Es-head</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85dejavu"><span class="nav-number">1.25.</span> <span class="nav-text">安装dejavu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JWT"><span class="nav-number">1.26.</span> <span class="nav-text">JWT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJWT"><span class="nav-number">1.26.1.</span> <span class="nav-text">什么是JWT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT-%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.26.2.</span> <span class="nav-text">JWT 的组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E7%95%8C%E9%9D%A2"><span class="nav-number">1.27.</span> <span class="nav-text">用户操作界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="nav-number">1.28.</span> <span class="nav-text">管理界面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YeChunChen</p>
+  <div class="site-description" itemprop="description">朝花夕拾 聊以记之</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HuangMingwang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HuangMingwang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/25/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/K8S/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YeChunChen">
+      <meta itemprop="description" content="朝花夕拾 聊以记之">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YeChunChen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          K8S
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-25 22:38:23" itemprop="dateCreated datePublished" datetime="2022-02-25T22:38:23+08:00">2022-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-28 22:38:23" itemprop="dateModified" datetime="2022-02-28T22:38:23+08:00">2022-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/k8s/" itemprop="url" rel="index"><span itemprop="name">k8s</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="K8S"><a href="#K8S" class="headerlink" title="K8S"></a>K8S</h1><h2 id="设置时间同步"><a href="#设置时间同步" class="headerlink" title="设置时间同步"></a>设置时间同步</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install -y chrony</span><br><span class="line">systemctl enable chronyd</span><br><span class="line">systemctl start chronyd</span><br><span class="line">timedatectl set-ntp true</span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br><span class="line">chronyc activity -v</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装kubernetes和kubesphere"><a href="#安装kubernetes和kubesphere" class="headerlink" title="安装kubernetes和kubesphere"></a>安装kubernetes和kubesphere</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 单机版</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 能访问github和google</span></span><br><span class="line">curl -sfL https://get-kk.kubesphere.io | VERSION=v1.2.1 sh -</span><br><span class="line"></span><br><span class="line">chmod +x kk</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 不能访问github和google</span></span><br><span class="line">export KKZONE=cn</span><br><span class="line">curl -sfL https://get-kk.kubesphere.io | VERSION=v1.2.1 sh -</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在您下载 KubeKey 后，如果您将其传至新的机器，且访问 Googleapis 同样受限，在您执行以下步骤之前请务必再次执行 <span class="built_in">export</span> KKZONE=cn 命令。</span></span><br><span class="line">chmod +x kk</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">./kk create cluster --with-kubernetes v1.21.5 --with-kubesphere v3.2.1</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 集群版</span></span><br><span class="line">yum update</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 能访问github和google</span></span><br><span class="line">curl -sfL https://get-kk.kubesphere.io | VERSION=v1.2.1 sh -</span><br><span class="line"></span><br><span class="line">chmod +x kk</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 不能访问github和google</span></span><br><span class="line">export KKZONE=cn</span><br><span class="line">curl -sfL https://get-kk.kubesphere.io | VERSION=v1.2.1 sh -</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在您下载 KubeKey 后，如果您将其传至新的机器，且访问 Googleapis 同样受限，在您执行以下步骤之前请务必再次执行 <span class="built_in">export</span> KKZONE=cn 命令。</span></span><br><span class="line">chmod +x kk</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">./kk create config --with-kubernetes v1.21.5 --with-kubesphere v3.2.1</span><br><span class="line"></span><br><span class="line">  - &#123;name: master, address: 119.91.152.136, internalAddress: 172.31.0.10, user: root, password: Ycbaby000623.&#125;</span><br><span class="line">  - &#123;name: node1, address: 106.55.234.52, internalAddress: 172.31.0.2, user: root, password: Ycbaby000623.&#125;</span><br><span class="line">  - &#123;name: node2, address: 159.75.202.203, internalAddress: 172.31.0.11, user: root, password: Ycbaby000623.&#125;</span><br><span class="line"></span><br><span class="line">vim config-sample.yaml</span><br><span class="line"><span class="meta">#</span><span class="bash"> master最好不要做worker node</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启devops</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启商城</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启日志 日志可以等装好了es之后再过来开启</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 默认情况下，如果启用了日志系统，KubeKey 将安装内置 Elasticsearch。对于生产环境，如果您想启用日志系统，强烈建议在 config-sample.yaml 中设置以下值，尤其是 externalElasticsearchUrl 和 externalElasticsearchPort。在安装前提供以下信息后，KubeKey 将直接对接您的外部 Elasticsearch，不再安装内置 Elasticsearch。</span></span><br><span class="line">openpitrix:</span><br><span class="line">  store:</span><br><span class="line">    enabled: true # 将“false”更改为“true”。</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">./kk create cluster -f config-sample.yaml</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">yum install conntrack</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看安装日志</span></span><br><span class="line">kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath=&#x27;&#123;.items[0].metadata.name&#125;&#x27;) -f</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启用kubect自动补全</span></span><br><span class="line">yum install bash-completion</span><br><span class="line"><span class="meta">#</span><span class="bash"> Source the completion script <span class="keyword">in</span> your ~/.bashrc file</span></span><br><span class="line">echo &#x27;source &lt;(kubectl completion bash)&#x27; &gt;&gt;~/.bashrc</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Add the completion script to the /etc/bash_completion.d directory</span></span><br><span class="line">kubectl completion bash &gt;/etc/bash_completion.d/kubectl</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Console: http://192.168.8.200:30880</span><br><span class="line">Account: admin</span><br><span class="line">Password: P@88w0rd</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加节点</span></span><br><span class="line">./kk add nodes -f config-sample.yaml</span><br><span class="line"></span><br><span class="line">./kk delete node &lt;nodeName&gt; -f config-sample.yaml</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除集群</span></span><br><span class="line">./kk delete cluster -f config-sample.yaml</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载Kubesphere-DevOps"><a href="#卸载Kubesphere-DevOps" class="headerlink" title="卸载Kubesphere DevOps"></a>卸载Kubesphere DevOps</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 卸载DevOps</span></span><br><span class="line">helm uninstall -n kubesphere-devops-system devops</span><br><span class="line">kubectl patch -n kubesphere-system cc ks-installer --type=json -p=&#x27;[&#123;&quot;op&quot;: &quot;remove&quot;, &quot;path&quot;: &quot;/status/devops&quot;&#125;]&#x27;</span><br><span class="line">kubectl patch -n kubesphere-system cc ks-installer --type=json -p=&#x27;[&#123;&quot;op&quot;: &quot;replace&quot;, &quot;path&quot;: &quot;/spec/devops/enabled&quot;, &quot;value&quot;: false&#125;]&#x27;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有 DevOps 相关资源</span></span><br><span class="line">for devops_crd in $(kubectl get crd -o=jsonpath=&#x27;&#123;range .items[*]&#125;&#123;.metadata.name&#125;&#123;&quot;\n&quot;&#125;&#123;end&#125;&#x27; | grep &quot;devops.kubesphere.io&quot;); do</span><br><span class="line">    for ns in $(kubectl get ns -ojsonpath=&#x27;&#123;.items..metadata.name&#125;&#x27;); do</span><br><span class="line">        for devops_res in $(kubectl get $devops_crd -n $ns -oname); do</span><br><span class="line">            kubectl patch $devops_res -n $ns -p &#x27;&#123;&quot;metadata&quot;:&#123;&quot;finalizers&quot;:[]&#125;&#125;&#x27; --type=merge</span><br><span class="line">        done</span><br><span class="line">    done</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有 DevOps CRD</span></span><br><span class="line">kubectl get crd -o=jsonpath=&#x27;&#123;range .items[*]&#125;&#123;.metadata.name&#125;&#123;&quot;\n&quot;&#125;&#123;end&#125;&#x27; | grep &quot;devops.kubesphere.io&quot; | xargs -I crd_name kubectl delete crd crd_name</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除 DevOps 命名空间</span></span><br><span class="line">kubectl delete namespace kubesphere-devops-system</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="在安装后启用DevOps"><a href="#在安装后启用DevOps" class="headerlink" title="在安装后启用DevOps"></a>在安装后启用DevOps</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 admin 用户登录控制台，点击左上角的平台管理，选择集群管理。</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 点击 CRD，在搜索栏中输入 clusterconfiguration，点击搜索结果查看其详细页面。</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在该 YAML 文件中，搜索 devops，将 enabled 的 <span class="literal">false</span> 改为 <span class="literal">true</span>。完成后，点击右下角的确定，保存配置。</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在 kubectl 中执行以下命令检查安装过程</span></span><br><span class="line">kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath=&#x27;&#123;.items[0].metadata.name&#125;&#x27;) -f</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 验证组件的安装</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> （方式一）进入系统组件，检查是否 DevOps 标签页中的所有组件都处于健康状态。如果是，组件安装成功。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方式二</span></span><br><span class="line">kubectl get pod -n kubesphere-devops-system</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker 加速 所有机器都需要执行</span></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://82m9ar63.mirror.aliyuncs.com&quot;],</span><br><span class="line">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span><br><span class="line">  &quot;log-driver&quot;: &quot;json-file&quot;,</span><br><span class="line">  &quot;log-opts&quot;: &#123;</span><br><span class="line">    &quot;max-size&quot;: &quot;100m&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;storage-driver&quot;: &quot;overlay2&quot;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line">0 */1 * * * sed -i &quot;/# GitHub520 Host Start/Q&quot; /etc/hosts &amp;&amp; curl https://raw.hellogithub.com/hosts &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="下载helm"><a href="#下载helm" class="headerlink" title="下载helm"></a>下载helm</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 官网下载</span></span><br><span class="line">wget https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz</span><br><span class="line">tar -zxvf helm-v3.8.0-linux-amd64.tar.gz</span><br><span class="line">mv linux-amd64/helm /usr/local/bin/helm</span><br><span class="line"></span><br><span class="line">export version=v3.6.3</span><br><span class="line"><span class="meta">#</span><span class="bash">从华为开源镜像站下载</span></span><br><span class="line">curl -LO https://repo.huaweicloud.com/helm/$&#123;version&#125;/helm-$&#123;version&#125;-linux-amd64.tar.gz</span><br><span class="line">tar -zxvf helm-$&#123;version&#125;-linux-amd64.tar.gz</span><br><span class="line">mv linux-amd64/helm /usr/local/bin/helm</span><br></pre></td></tr></table></figure>
+
+<h2 id="Helm-安装Mysql"><a href="#Helm-安装Mysql" class="headerlink" title="Helm 安装Mysql"></a>Helm 安装Mysql</h2><p>设置密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 应用商城安装5.7.31</span> </span><br><span class="line"></span><br><span class="line">https://github.com/kubernetes/charts</span><br><span class="line"></span><br><span class="line">https://github.com/docker-library/mysql</span><br></pre></td></tr></table></figure>
+
+<p>导入数据：</p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203022306780.png" alt="image-20220302230628653"></p>
+<h2 id="Helm-安装Redis"><a href="#Helm-安装Redis" class="headerlink" title="Helm 安装Redis"></a>Helm 安装Redis</h2><p>无密码</p>
+<p>可以通过kubesphere界面安装，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">helm repo add bitnami https://charts.bitnami.com/bitnami</span><br><span class="line">helm install my-release bitnami/redis</span><br><span class="line"></span><br><span class="line">helm delete my-release</span><br></pre></td></tr></table></figure>
+
+<h2 id="Helm-安装MongoDB"><a href="#Helm-安装MongoDB" class="headerlink" title="Helm 安装MongoDB"></a>Helm 安装MongoDB</h2><p>无密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> bitnami 11.0.6</span></span><br></pre></td></tr></table></figure>
+
+<p>导入数据 yygh_hosps</p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030005221.png" alt="image-20220303000528146"></p>
+<h2 id="Helm-安装Rabbitmq"><a href="#Helm-安装Rabbitmq" class="headerlink" title="Helm 安装Rabbitmq"></a>Helm 安装Rabbitmq</h2><p>设置密码 root</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> bitnami 8.29.3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Helm-安装ES7-13-4"><a href="#Helm-安装ES7-13-4" class="headerlink" title="Helm 安装ES7.13.4"></a>Helm 安装ES7.13.4</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建数据目录</span></span><br><span class="line">mkdir -p /mydata/es-01 &amp;&amp; chmod 777 -R /mydata/es-01</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 容器启动</span></span><br><span class="line">docker run --restart=always -d -p 9200:9200 -p 9300:9300 \</span><br><span class="line">-e &quot;discovery.type=single-node&quot; \</span><br><span class="line">-e ES_JAVA_OPTS=&quot;-Xms512m -Xmx512m&quot; \</span><br><span class="line">-v es-config:/usr/share/elasticsearch/config \</span><br><span class="line">-v /mydata/es-01/data:/usr/share/elasticsearch/data \</span><br><span class="line">--name es-01 \</span><br><span class="line">elasticsearch:7.13.4</span><br></pre></td></tr></table></figure>
+
+
+
+<p>kubesphere上安装工作负载</p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030239224.png" alt="image-20220303023934170"></p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030243839.png" alt="image-20220303024353792"></p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030246840.png" alt="image-20220303024612756"></p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030250529.png" alt="image-20220303025045443"></p>
+<p>添加2个服务</p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030255479.png" alt="image-20220303025555431"></p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030257907.png" alt="image-20220303025729857"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: &quot;docker-cluster&quot;</span><br><span class="line">network.host: 0.0.0.0</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># JVM configuration</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># WARNING: DO NOT EDIT THIS FILE. If you want to override the</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># JVM options in this file, or set any additional options, you</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># should create one or more files in the jvm.options.d</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># directory containing your adjustments.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># See https://www.elastic.co/guide/en/elasticsearch/reference/current/jvm-options.html</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># for more information.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># IMPORTANT: JVM heap size</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># The heap size is automatically configured by Elasticsearch</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># based on the available memory in your system and the roles</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># each node is configured to fulfill. If specifying heap is</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># required, it should be done through a file in jvm.options.d,</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># and the min and max should be set to the same value. For</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># example, to set the heap to 4 GB, create a new file in the</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># jvm.options.d directory containing these lines:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># -Xms4g</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># -Xmx4g</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># for more information</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Expert settings</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># All settings below here are considered expert settings. Do</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># not adjust them unless you understand what you are doing. Do</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># not edit them in this file; instead, create a new file in the</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># jvm.options.d directory containing your adjustments.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># GC configuration</span></span></span><br><span class="line">8-13:-XX:+UseConcMarkSweepGC</span><br><span class="line">8-13:-XX:CMSInitiatingOccupancyFraction=75</span><br><span class="line">8-13:-XX:+UseCMSInitiatingOccupancyOnly</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># G1GC Configuration</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> NOTE: G1 GC is only supported on JDK version 10 or later</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> to use G1GC, uncomment the next two lines and update the version on the</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> following three lines to your version of the JDK</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 10-13:-XX:-UseConcMarkSweepGC</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 10-13:-XX:-UseCMSInitiatingOccupancyOnly</span></span><br><span class="line">14-:-XX:+UseG1GC</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># JVM temporary directory</span></span></span><br><span class="line">-Djava.io.tmpdir=$&#123;ES_TMPDIR&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># heap dumps</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> generate a heap dump when an allocation from the Java heap fails; heap dumps</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> are created <span class="keyword">in</span> the working directory of the JVM unless an alternative path is</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> specified</span></span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> specify an alternative path <span class="keyword">for</span> heap dumps; ensure the directory exists and</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> has sufficient space</span></span><br><span class="line">-XX:HeapDumpPath=data</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> specify an alternative path <span class="keyword">for</span> JVM fatal error logs</span></span><br><span class="line">-XX:ErrorFile=logs/hs_err_pid%p.log</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># JDK 8 GC logging</span></span></span><br><span class="line">8:-XX:+PrintGCDetails</span><br><span class="line">8:-XX:+PrintGCDateStamps</span><br><span class="line">8:-XX:+PrintTenuringDistribution</span><br><span class="line">8:-XX:+PrintGCApplicationStoppedTime</span><br><span class="line">8:-Xloggc:logs/gc.log</span><br><span class="line">8:-XX:+UseGCLogFileRotation</span><br><span class="line">8:-XX:NumberOfGCLogFiles=32</span><br><span class="line">8:-XX:GCLogFileSize=64m</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> JDK 9+ GC logging</span></span><br><span class="line">9-:-Xlog:gc*,gc+age=trace,safepoint:file=logs/gc.log:utctime,pid,tags:filecount=32,filesize=64m</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Helm-安装Nacos"><a href="#Helm-安装Nacos" class="headerlink" title="Helm 安装Nacos"></a>Helm 安装Nacos</h2><p>创建工作负载 </p>
+<p>2.0.3版本</p>
+<p>挂载配置文件 application.properties</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># Copyright 1999-2021 Alibaba Group Holding Ltd.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> you may not use this file except <span class="keyword">in</span> compliance with the License.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> You may obtain a copy of the License at</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#      http://www.apache.org/licenses/LICENSE-2.0</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># Unless required by applicable law or agreed to in writing, software</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> distributed under the License is distributed on an <span class="string">&quot;AS IS&quot;</span> BASIS,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> See the License <span class="keyword">for</span> the specific language governing permissions and</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> limitations under the License.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"></span><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Spring Boot Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Default web context path:</span></span></span><br><span class="line">server.servlet.contextPath=/nacos</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Default web server port:</span></span></span><br><span class="line">server.port=8848</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Network Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If prefer hostname over ip for Nacos server addresses in cluster.conf:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.inetutils.prefer-hostname-over-ip=<span class="literal">false</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Specify local server&#x27;s IP:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.inetutils.ip-address=</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Config Module Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If use MySQL as datasource:</span></span></span><br><span class="line">spring.datasource.platform=mysql</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Count of DB:</span></span></span><br><span class="line">db.num=1</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Connect URL of DB:</span></span></span><br><span class="line">db.url.0=jdbc:mysql://mysql.hospital:3306/nacos?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC</span><br><span class="line">db.user.0=root</span><br><span class="line">db.password.0=ycbaby0623</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Connection pool configuration: hikariCP</span></span></span><br><span class="line">db.pool.config.connectionTimeout=30000</span><br><span class="line">db.pool.config.validationTimeout=10000</span><br><span class="line">db.pool.config.maximumPoolSize=20</span><br><span class="line">db.pool.config.minimumIdle=2</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Naming Module Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Data dispatch task execution period in milliseconds: Will removed on v2.1.X, replace with nacos.core.protocol.distro.data.sync.delayMs</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.distro.taskDispatchPeriod=200</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Data count of batch sync task: Will removed on v2.1.X. Deprecated</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.distro.batchSyncKeyCount=1000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Retry delay in milliseconds if sync task failed: Will removed on v2.1.X, replace with nacos.core.protocol.distro.data.sync.retryDelayMs</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.distro.syncRetryDelay=5000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If enable data warmup. If set to false, the server would accept request without local data preparation:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.data.warmup=<span class="literal">true</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If enable the instance auto expiration, kind like of health check of instance:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.expireInstance=<span class="literal">true</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## will be removed and replaced by `nacos.naming.clean` properties</span></span></span><br><span class="line">nacos.naming.empty-service.auto-clean=true</span><br><span class="line">nacos.naming.empty-service.clean.initial-delay-ms=50000</span><br><span class="line">nacos.naming.empty-service.clean.period-time-ms=30000</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Add in 2.0.0</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The interval to clean empty service, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.clean.empty-service.interval=60000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The expired time to clean empty service, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.clean.empty-service.expired-time=60000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The interval to clean expired metadata, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.clean.expired-metadata.interval=5000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The expired time to clean metadata, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.clean.expired-metadata.expired-time=60000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The delay time before push task to execute from service changed, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.push.pushTaskDelay=500</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The timeout for push task execute, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.push.pushTaskTimeout=5000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The delay time for retrying failed push task, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.push.pushTaskRetryDelay=1000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Since 2.0.3</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The expired time for inactive client, unit: milliseconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.naming.client.expired.time=180000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** CMDB Module Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The interval to dump external CMDB in seconds:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.cmdb.dumpTaskInterval=3600</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The interval of polling data change event in seconds:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.cmdb.eventTaskInterval=10</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The interval of loading labels in seconds:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.cmdb.labelTaskInterval=300</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If turn on data loading task:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.cmdb.loadDataAtStart=<span class="literal">false</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Metrics Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Metrics for prometheus</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">management.endpoints.web.exposure.include=*</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Metrics for elastic search</span></span></span><br><span class="line">management.metrics.export.elastic.enabled=false</span><br><span class="line"><span class="meta">#</span><span class="bash">management.metrics.export.elastic.host=http://localhost:9200</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Metrics for influx</span></span></span><br><span class="line">management.metrics.export.influx.enabled=false</span><br><span class="line"><span class="meta">#</span><span class="bash">management.metrics.export.influx.db=springboot</span></span><br><span class="line"><span class="meta">#</span><span class="bash">management.metrics.export.influx.uri=http://localhost:8086</span></span><br><span class="line"><span class="meta">#</span><span class="bash">management.metrics.export.influx.auto-create-db=<span class="literal">true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">management.metrics.export.influx.consistency=one</span></span><br><span class="line"><span class="meta">#</span><span class="bash">management.metrics.export.influx.compressed=<span class="literal">true</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Access Log Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If turn on the access log:</span></span></span><br><span class="line">server.tomcat.accesslog.enabled=true</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The access log pattern:</span></span></span><br><span class="line">server.tomcat.accesslog.pattern=%h %l %u %t &quot;%r&quot; %s %b %D %&#123;User-Agent&#125;i %&#123;Request-Source&#125;i</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The directory of access log:</span></span></span><br><span class="line">server.tomcat.basedir=</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Access Control Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If enable spring security, this option is deprecated in 1.2.0:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">spring.security.enabled=<span class="literal">false</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The ignore urls of auth, is deprecated in 1.2.0:</span></span></span><br><span class="line">nacos.security.ignore.urls=/,/error,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-ui/public/**,/v1/auth/**,/v1/console/health/**,/actuator/**,/v1/console/server/**</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The auth system to use, currently only &#x27;nacos&#x27; and &#x27;ldap&#x27; is supported:</span></span></span><br><span class="line">nacos.core.auth.system.type=nacos</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If turn on auth system:</span></span></span><br><span class="line">nacos.core.auth.enabled=false</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## worked when nacos.core.auth.system.type=ldap，&#123;0&#125; is Placeholder,replace login username</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.auth.ldap.url=ldap://localhost:389</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.auth.ldap.userdn=cn=&#123;0&#125;,ou=user,dc=company,dc=com</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The token expiration in seconds:</span></span></span><br><span class="line">nacos.core.auth.default.token.expire.seconds=18000</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The default token:</span></span></span><br><span class="line">nacos.core.auth.default.token.secret.key=SecretKey012345678901234567890123456789012345678901234567890123456789</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Turn on/off caching of auth information. By turning on this switch, the update of auth information would have a 15 seconds delay.</span></span></span><br><span class="line">nacos.core.auth.caching.enabled=true</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Since 1.4.1, Turn on/off white auth for user-agent: nacos-server, only for upgrade from old version.</span></span></span><br><span class="line">nacos.core.auth.enable.userAgentAuthWhite=false</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Since 1.4.1, worked when nacos.core.auth.enabled=true and nacos.core.auth.enable.userAgentAuthWhite=false.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## The two properties is the white list for auth and used by identity the request from other server.</span></span></span><br><span class="line">nacos.core.auth.server.identity.key=serverIdentity</span><br><span class="line">nacos.core.auth.server.identity.value=security</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Istio Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## If turn on the MCP server:</span></span></span><br><span class="line">nacos.istio.mcp.server.enabled=false</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Core Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## set the WorkerID manually</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.snowflake.worker-id=</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Member-MetaData</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.member.meta.site=</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.member.meta.adweight=</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.member.meta.weight=</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## MemberLookup</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Addressing pattern category, If set, the priority is highest</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.member.lookup.type=[file,address-server]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Set the cluster list with a configuration file or command-line argument</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.member.list=192.168.16.101:8847?raft_port=8807,192.168.16.101?raft_port=8808,192.168.16.101:8849?raft_port=8809</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># for AddressServerMemberLookup</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Maximum number of retries to query the address server upon initialization</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.address-server.retry=5</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Server domain name address of [address-server] mode</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> address.server.domain=jmenv.tbsite.net</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Server port of [address-server] mode</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> address.server.port=8080</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Request address of [address-server] mode</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> address.server.url=/nacos/serverlist</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** JRaft Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Sets the Raft cluster election timeout, default value is 5 second</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.raft.data.election_timeout_ms=5000</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Sets the amount of time the Raft snapshot will execute periodically, default is 30 minute</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.raft.data.snapshot_interval_secs=30</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## raft internal worker threads</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.raft.data.core_thread_num=8</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Number of threads required for raft business request processing</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.raft.data.cli_service_thread_num=4</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## raft linear read strategy. Safe linear reads are used by default, that is, the Leader tenure is confirmed by heartbeat</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.raft.data.read_index_type=ReadOnlySafe</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## rpc request timeout, default 5 seconds</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.raft.data.rpc_request_timeout_ms=5000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">*************** Distro Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Distro data sync delay time, when sync task delayed, task will be merged for same data key. Default 1 second.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.distro.data.sync.delayMs=1000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Distro data sync timeout for one sync data, default 3 seconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.distro.data.sync.timeoutMs=3000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Distro data sync retry delay time when sync data failed or timeout, same behavior with delayMs, default 3 seconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.distro.data.sync.retryDelayMs=3000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Distro data verify interval time, verify synced data whether expired for a interval. Default 5 seconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.distro.data.verify.intervalMs=5000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Distro data verify timeout for one verify, default 3 seconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.distro.data.verify.timeoutMs=3000</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## Distro data load retry delay when load snapshot data failed, default 30 seconds.</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> nacos.core.protocol.distro.data.load.retryDelayMs=30000</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>单机版可以不用配置</p>
+<p>cluster.conf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">192.168.169.147:8848</span></span><br><span class="line"><span class="meta">#</span><span class="bash">192.168.169.154:8848</span></span><br><span class="line"><span class="meta">#</span><span class="bash">192.168.169.186:8848</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建工作负载</p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030315378.png" alt="image-20220303031545261"></p>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203030341233.png" alt="image-20220303034121145"></p>
+<h3 id="docker-安装nacos"><a href="#docker-安装nacos" class="headerlink" title="docker 安装nacos"></a>docker 安装nacos</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker search nacos</span><br><span class="line">docker pull nacos/nacos-server:v2.0.3</span><br><span class="line">docker run -d -p 8848:8848 --env MODE=standalone  --name nacos  nacos/nacos-server:v2.0.3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>添加服务</p>
+<h2 id="Helm安装Skywalking"><a href="#Helm安装Skywalking" class="headerlink" title="Helm安装Skywalking"></a>Helm安装Skywalking</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1</span> </span><br><span class="line">helm repo add choerodon https://openchart.choerodon.com.cn/choerodon/c7n</span><br><span class="line">helm repo list</span><br><span class="line">helm search repo skywalking</span><br><span class="line">helm pull choerodon/skywalking</span><br><span class="line">tar -zxvf skywalking-6.6.0.tgz</span><br><span class="line">vim skywalking/values.yaml</span><br><span class="line"></span><br><span class="line">helm install skywalking skywalking -n sre</span><br><span class="line"></span><br><span class="line">helm uninstall skywalking -n sre</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2 (可) 4.2.0</span></span><br><span class="line">git clone https://github.com/apache/skywalking-kubernetes</span><br><span class="line">cd skywalking-kubernetes/chart/skywalking/</span><br><span class="line"></span><br><span class="line">export SKYWALKING_RELEASE_NAME=skywalking  # change the release name according to your scenario</span><br><span class="line">export SKYWALKING_RELEASE_NAMESPACE=hospital  # change the namespace to where you want to install SkyWalking</span><br><span class="line">export REPO=skywalking</span><br><span class="line">helm repo add $&#123;REPO&#125; https://apache.jfrog.io/artifactory/skywalking-helm</span><br><span class="line">cd chart/</span><br><span class="line">vim ./skywalking/values-my-es.yaml</span><br><span class="line">helm install &quot;$&#123;SKYWALKING_RELEASE_NAME&#125;&quot; $&#123;REPO&#125;/skywalking -n &quot;$&#123;SKYWALKING_RELEASE_NAMESPACE&#125;&quot;  -f ./skywalking/values-my-es.yaml</span><br><span class="line"></span><br><span class="line">helm uninstall skywalking -n hospital</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3 kubesphere界面上安装，把values-es7.yaml的值填到配置文件中</span></span><br><span class="line"></span><br><span class="line">oap:</span><br><span class="line">  image:</span><br><span class="line">    tag: 8.8.1</span><br><span class="line">  storageType: elasticsearch</span><br><span class="line"></span><br><span class="line">ui:</span><br><span class="line">  image:</span><br><span class="line">    tag: 8.8.1</span><br><span class="line"></span><br><span class="line">elasticsearch:</span><br><span class="line">  imageTag: &quot;7.5.1&quot;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">-javaagent:/Users/huangmingwang/Documents/yygh-parent/skywalking-agent/skywalking-agent.jar</span><br><span class="line">-Dskywalking.agent.service_name=server-gateway</span><br><span class="line">-Dskywalking.collector.backend_service=yc0623.asia:32208</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-javaagent:skywalking-agent/skywalking-agent.jar </span><br><span class="line">-Dskywalking.agent.service_name=server-gateway </span><br><span class="line">-Dskywalking.collector.backend_service=skywalking-oap.hospital:11800</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wget https://github.com/apache/skywalking/archive/refs/tags/v8.9.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="Helm安装Sentinel"><a href="#Helm安装Sentinel" class="headerlink" title="Helm安装Sentinel"></a>Helm安装Sentinel</h2><p>选有状态副本集</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leifengyang/sentinel:1.8.2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Helm-安装GrayLog"><a href="#Helm-安装GrayLog" class="headerlink" title="Helm 安装GrayLog"></a>Helm 安装GrayLog</h2><h3 id="helm"><a href="#helm" class="headerlink" title="helm"></a>helm</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">helm repo add graylog https://charts.kong-z.com/</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改密码(最少16位)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭service</span></span><br><span class="line">helm install --namespace &quot;hospital&quot; graylog kong-z/graylog \</span><br><span class="line">  --set tags.install-mongodb=false\</span><br><span class="line">  --set tags.install-elasticsearch=false\</span><br><span class="line">  --set graylog.mongodb.uri=mongodb://mongodb.hospital:27017/graylog \</span><br><span class="line">  --set graylog.elasticsearch.hosts=http://hospital-es.hospital:9200 \</span><br><span class="line">  --set graylog.elasticsearch.version=7</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">helm delete graylog</span><br></pre></td></tr></table></figure>
+
+<h3 id="Kubesphere-上安装-2-1-1"><a href="#Kubesphere-上安装-2-1-1" class="headerlink" title="Kubesphere 上安装 2.1.1"></a>Kubesphere 上安装 2.1.1</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tags:</span><br><span class="line"><span class="meta">  #</span><span class="bash"> If <span class="literal">true</span>, this chart will install Elasticsearch from requirement dependencies</span></span><br><span class="line">  install-elasticsearch: false</span><br><span class="line"><span class="meta">  #</span><span class="bash"> If <span class="literal">true</span>, this chart will install MongoDB replicaset from requirement dependencies</span></span><br><span class="line">  install-mongodb: false</span><br><span class="line">    master:</span><br><span class="line">      ## Enable Graylog master service</span><br><span class="line">      ##</span><br><span class="line">      enabled: false</span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">  input: </span><br><span class="line">    # tcp:</span><br><span class="line">    #   service:</span><br><span class="line">    #     name: your-tcp-service-name</span><br><span class="line">    #     type: LoadBalancer</span><br><span class="line">    #     loadBalancerIP:</span><br><span class="line">    #   ports:</span><br><span class="line">    #     - name: gelf</span><br><span class="line">    #       port: 12222</span><br><span class="line">    udp:</span><br><span class="line">      service:</span><br><span class="line">        name: graylog-udp</span><br><span class="line">        type: ClusterIP</span><br><span class="line">      ports:</span><br><span class="line">        - name: syslog</span><br><span class="line">          port: 12222</span><br><span class="line"><span class="meta">  #</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">  rootPassword: &quot;admin12345678910&quot;</span><br><span class="line"></span><br><span class="line">  elasticsearch:</span><br><span class="line">    ## Major version of the Elasticsearch version used.</span><br><span class="line">    ## It is required by Graylog 4. See https://docs.graylog.org/en/4.0/pages/configuration/elasticsearch.html#available-elasticsearch-configuration-tunables</span><br><span class="line">    version: &quot;7&quot;</span><br><span class="line">    ## List of Elasticsearch hosts Graylog should connect to.</span><br><span class="line">    ## Need to be specified as a comma-separated list of valid URIs for the http ports of your elasticsearch nodes.</span><br><span class="line">    ## If one or more of your elasticsearch hosts require authentication, include the credentials in each node URI that</span><br><span class="line">    ## requires authentication.</span><br><span class="line">    ##</span><br><span class="line">    # hosts: http://elasticsearch-client.graylog.svc.cluster.local:9200</span><br><span class="line">    hosts: &quot;http://hospital-es.hospital:9200&quot;</span><br><span class="line">    </span><br><span class="line">  mongodb:</span><br><span class="line">    ## MongoDB connection string</span><br><span class="line">    ## See https://docs.mongodb.com/manual/reference/connection-string/ for details</span><br><span class="line">    # uri: mongodb://user:pass@host1:27017,host2:27017,host3:27017/graylog?replicaSet=rs01</span><br><span class="line">    uri: &quot;mongodb://mongodb.hospital:27017/graylog&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202202121510278.png" alt="image-20220212151013085"></p>
+<h2 id="DEV环境"><a href="#DEV环境" class="headerlink" title="DEV环境"></a>DEV环境</h2><table>
+<thead>
+<tr>
+<th>中间件</th>
+<th>集群内地址</th>
+<th>外部访问地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Nacos</td>
+<td>hospital-nacos.hospital:8848</td>
+<td>yc0623.asia:31352/nacos</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>mysql.hospital:3306</td>
+<td>yc0623.asia:30170</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>redis-master.hospital:6379</td>
+<td>yc0623.asia:32071</td>
+</tr>
+<tr>
+<td>Sentinel</td>
+<td>hospital-sentinel.hospital:8080</td>
+<td>yc0623.asia:31498</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>mongodb.hospital:27017</td>
+<td>yc0623.asia:30705</td>
+</tr>
+<tr>
+<td>RabbitMQ</td>
+<td>rabbitmq.hospital:5672</td>
+<td>yc0623.asia:30810 30248</td>
+</tr>
+<tr>
+<td>ElasticSearch</td>
+<td>hospital-es.hospital:9200</td>
+<td>yc0623.asia:31114</td>
+</tr>
+<tr>
+<td>GrayLog</td>
+<td>graylog.hospital:12201</td>
+<td>yc0623.asia:32759  30334</td>
+</tr>
+<tr>
+<td>Skywalking</td>
+<td>skywalking-oap.hospital:11800</td>
+<td>yc0623.asia:32348  31655</td>
+</tr>
+<tr>
+<td>yygh-admin</td>
+<td>80</td>
+<td>yc0623.asia:32248</td>
+</tr>
+<tr>
+<td>yygh-site</td>
+<td>300</td>
+<td>yc0623.asia:32070</td>
+</tr>
+</tbody></table>
+<h2 id="PROD环境"><a href="#PROD环境" class="headerlink" title="PROD环境"></a>PROD环境</h2><table>
+<thead>
+<tr>
+<th>中间件</th>
+<th>集群内地址</th>
+<th>外部访问地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Nacos</td>
+<td>hospital-nacos.hospital:8848</td>
+<td>yechunzi.cn:31865/nacos</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>mysql.hospital:3306</td>
+<td>yechunzi.cn:31930</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>redis-master.hospital:6379</td>
+<td>yechunzi.cn:31902</td>
+</tr>
+<tr>
+<td>Sentinel</td>
+<td>hospital-sentinel.hospital:8080</td>
+<td>yechunzi.cn:32075</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>mongodb.hospital:27017</td>
+<td>yechunzi.cn:30439</td>
+</tr>
+<tr>
+<td>RabbitMQ</td>
+<td>rabbitmq.hospital:5672</td>
+<td>yechunzi.cn:31253</td>
+</tr>
+<tr>
+<td>ElasticSearch</td>
+<td>hospital-es.hospital:9200</td>
+<td>yechunzi.cn:31294</td>
+</tr>
+<tr>
+<td>GrayLog</td>
+<td>graylog.hospital:12201</td>
+<td>yechunzi.cn:30223</td>
+</tr>
+<tr>
+<td>Skywalking</td>
+<td>skywalking-oap.hospital:11800</td>
+<td>yechunzi.cn:31098 30186</td>
+</tr>
+<tr>
+<td>yygh-site</td>
+<td>300</td>
+<td>yechunzi.cn:32070</td>
+</tr>
+<tr>
+<td>yygh-admin</td>
+<td>80</td>
+<td>yechunzi.cn:32248</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/huang_mingwang/yygh-site.git</span><br><span class="line">git clone https://gitee.com/huang_mingwang/yygh-parent.git</span><br><span class="line">git clone https://gitee.com/huang_mingwang/yygh-admin.git</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">https://github.com/Jiangw2020/Hospital.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改maven从阿里云下载镜像"><a href="#修改maven从阿里云下载镜像" class="headerlink" title="修改maven从阿里云下载镜像"></a>修改maven从阿里云下载镜像</h2><ul>
+<li><p>使用admin登陆ks</p>
+</li>
+<li><p>进入集群管理</p>
+</li>
+<li><p>进入配置中心</p>
+</li>
+<li><p>找到配置</p>
+</li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="http://139.198.165.238:30880/clusters/default/projects/kubesphere-devops-system/configmaps/ks-devops-agent">ks-devops-agent</a></li>
+<li>修改这个配置。加入maven阿里云镜像加速地址</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="部署到k8s集群"><a href="#部署到k8s集群" class="headerlink" title="部署到k8s集群"></a>部署到k8s集群</h2><ul>
+<li><p>给每一个微服务准备一个 deploy.yaml（k8s的部署配置文件）。</p>
+</li>
+<li><p>传入 deploy.yaml 的位置就能部署（要添加凭证，执行kubectl需要密钥）。</p>
+</li>
+<li><p>kubectl apply -f xxxx。</p>
+</li>
+<li><p>一定在项目里面（hospital，不是流水线项目），找到配置–密钥，配置一个阿里云的访问账号密码（<strong>密钥类型选镜像仓库信息</strong>）。</p>
+</li>
+<li><p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202202040939741.png" alt="img"></p>
+</li>
+</ul>
+<h2 id="Devops"><a href="#Devops" class="headerlink" title="Devops"></a>Devops</h2><p>在流水线里添加gitee-id凭证、aliyun-docker-registry凭证和demo-kubeconfig凭证</p>
+<h2 id="Chaos"><a href="#Chaos" class="headerlink" title="Chaos"></a>Chaos</h2><p>配置就绪探针 actuator/health</p>
+<p>把项目编码全部改为UTF-8</p>
+<p>升级springboot版本为2.3或2.4</p>
+<h2 id="配置系统具有发邮件的功能"><a href="#配置系统具有发邮件的功能" class="headerlink" title="配置系统具有发邮件的功能"></a>配置系统具有发邮件的功能</h2><h3 id="平台通知系统"><a href="#平台通知系统" class="headerlink" title="平台通知系统"></a>平台通知系统</h3><p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203032311931.png" alt="image-20220303231109846"></p>
+<h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>内置 Jenkins 无法与平台通知系统共享相同的电子邮件配置。需要单独为 KubeSphere DevOps 流水线配置电子邮件服务器设置。</p>
+<ul>
+<li>平台管理</li>
+<li>集群管理</li>
+<li>工作负载- kubesphere-devops-system 。点击 devops-jenkins 并选择编辑 YAML 以编辑其 YAML 配置文件。</li>
+</ul>
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203072207989.png" alt="image-20220307220745732"></p>
+<p>eiaytyevtuffhbce</p>
+<h3 id="配置Webhook"><a href="#配置Webhook" class="headerlink" title="配置Webhook"></a>配置Webhook</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">http://yechunzi.cn:30880/devops_webhook/git/?url=https://gitee.com/huang_mingwang/yygh-parent.git</span><br><span class="line"></span><br><span class="line">http://yechunzi.cn:30880/devops_webhook/git/?url=https://gitee.com/huang_mingwang/yygh-admin.git</span><br><span class="line"></span><br><span class="line">http://yechunzi.cn:30880/devops_webhook/git/?url=https://gitee.com/huang_mingwang/yygh-site.git</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="k8s常用命令"><a href="#k8s常用命令" class="headerlink" title="k8s常用命令"></a>k8s常用命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kubectl get namespace</span><br><span class="line"></span><br><span class="line">kubectl get pods -n hospital</span><br><span class="line"></span><br><span class="line">kubectl logs mysql-0 -n hospital</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在pod中执行命令</span></span><br><span class="line">kubectl exec mysql-0 env</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="关闭和重启集群"><a href="#关闭和重启集群" class="headerlink" title="关闭和重启集群"></a>关闭和重启集群</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nodes=$(kubectl get nodes -o name)</span><br><span class="line"></span><br><span class="line">for node in $&#123;nodes[@]&#125;</span><br><span class="line">do</span><br><span class="line">    echo &quot;==== Shut down $node ====&quot;</span><br><span class="line">    ssh $node sudo shutdown -h 1</span><br><span class="line">done</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Es-head"><a href="#Es-head" class="headerlink" title="Es-head"></a>Es-head</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/mobz/elasticsearch-head.git</span><br><span class="line">cd elasticsearch-head</span><br><span class="line">npm install</span><br><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装dejavu"><a href="#安装dejavu" class="headerlink" title="安装dejavu"></a>安装dejavu</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 3.4.0</span></span><br><span class="line">helm repo add dejavu https://ygqygq2.github.io/charts/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">helm install dejavu dejavu/dejavu -n hospital</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker</span></span><br><span class="line">docker run -p 1358:1358 -d appbaseio/dejavu</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><h3 id="什么是JWT"><a href="#什么是JWT" class="headerlink" title="什么是JWT"></a>什么是JWT</h3><p>JWT（JSON WEB TOKEN）是通信双方之间以 JSON对象的形式安全传递信息的方法。</p>
+<p>其实可以理解为使用非对称算法来进行前后端校验。</p>
+<h3 id="JWT-的组成"><a href="#JWT-的组成" class="headerlink" title="JWT 的组成"></a>JWT 的组成</h3><p>JWT 由三部分组成</p>
+<p><strong>头部-Header</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># alg是签名算法，默认是HS256，</span><br><span class="line"># typ是token类型，一般JWT默认为JWT</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;alg&quot;</span>: <span class="string">&quot;HS256&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;typ&quot;</span>: <span class="string">&quot;JWT&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后按照此规则将头部信息进行base64编码，构成JWT第一部分</p>
+<p><strong>载荷-payload</strong></p>
+<p>payload 就是存放有效信息的地方</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key0&quot;</span>: <span class="string">&quot;value0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload 中有一些参数字段是建议使用的 （仅列出几个）</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iat</td>
+<td>jwt的签发时间</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>jwt的过期时间，这个过期时间必须要大于签发时间</td>
+</tr>
+<tr>
+<td>nbf</td>
+<td>定义在什么时间之前，该jwt都是不可用的</td>
+</tr>
+</tbody></table>
+<p>JWT规定了7个官方字段：</p>
+<ul>
+<li>iss(issuer)：签发人</li>
+<li>exp (expiration time)：过期时间</li>
+<li>sub (subject)：主题</li>
+<li>aud (audience)：受众</li>
+<li>nbf (Not Before)：生效时间</li>
+<li>iat (Issued At)：签发时间</li>
+<li>jti (JWT ID)：编号</li>
+</ul>
+<p>比如来定义一个payload</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;exp&quot;</span>: Math.floor(Date.now() / <span class="number">1000</span>) + (<span class="number">60</span> * <span class="number">60</span>),</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;John Doe&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload 会进行base64编码，构成JWT第二部分</p>
+<p><strong>签证-Singnature</strong></p>
+<p>Signature 部分是对前两部分的签名，防止数据篡改。</p>
+<p>需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256）。</p>
+<p>signature 是JWT的第三部分。</p>
+<p>将以上三部分拼接起来（中间用.分隔），就是最后的JWT。</p>
+<h2 id="用户操作界面"><a href="#用户操作界面" class="headerlink" title="用户操作界面"></a>用户操作界面</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用低版本node 14</span></span><br><span class="line">nvm i v14</span><br><span class="line">npm install -g rimraf</span><br><span class="line">rimraf node_modules</span><br><span class="line">npm cache clean --force</span><br><span class="line"></span><br><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br><span class="line"><span class="meta">#</span><span class="bash">npm run build</span></span><br><span class="line">npm run dev</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动失败看这个 https://segmentfault.com/a/1190000015274463</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name: &quot;18296962694&quot;</span><br><span class="line">token: &quot;eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSCjAK0A0Ndg1S0lFKrShQsjI0M7cwtjA0NDfUUSotTi3yTAGKQZh-ibmpQB2GFkaWZpZmRmaWJkq1AIM8FQxHAAAA.VLZypbQYDnXwMlsppJZlTCWn6ioFUnBAhEpUyxoq0tiYClo-XZOKYgBLVSfXx3l7wCS1d-QBZ28thg4SZ_CMrg&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p><img src="https://typora-mingwhuang.oss-cn-shenzhen.aliyuncs.com/typora/202203100119686.png" alt="image-20220310011949610"></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a></p>
+<p>TypeError</p>
+<p>renderContext.renderResourceHints is not a function</p>
+<p><a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DT2JPQUVvb015RHVB?_t=1643637431786">https://docs.qq.com/doc/DT2JPQUVvb015RHVB?_t=1643637431786</a></p>
+<p>第27个问题</p>
+<h2 id="管理界面"><a href="#管理界面" class="headerlink" title="管理界面"></a>管理界面</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">nvm i v10</span><br><span class="line">npm install -g rimraf</span><br><span class="line">rimraf node_modules</span><br><span class="line">npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br><span class="line"><span class="meta">#</span><span class="bash">npm run build</span></span><br><span class="line">npm run dev</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> m1版本</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Nvm 是一个管理 Node 版本的工具，当项目多了以后，总会碰到需要切换 Node 环境的时候，所以推荐大家使用 Nvm 来安装 Node。</span></span><br><span class="line">brew install nvm</span><br><span class="line"></span><br><span class="line">mkdir ~/.nvm</span><br><span class="line"></span><br><span class="line">vi ~/.bash_profile</span><br><span class="line"></span><br><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">[ -s &quot;/usr/local/opt/nvm/nvm.sh&quot; ] &amp;&amp; \. &quot;/usr/local/opt/nvm/nvm.sh&quot;  # This loads nvm</span><br><span class="line">[ -s &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot; ] &amp;&amp; \. &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot;</span><br><span class="line"></span><br><span class="line">nvm i v10</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 通过这个命令可以让 shell 运行在Rosetta2下</span></span><br><span class="line">arch -x86_64 zsh</span><br><span class="line"></span><br><span class="line">nvm install v10</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/56057325/how-to-fix-typeerror-fsevents-is-not-a-constructor-react-error">How to fix “TypeError: fsevents is not a constructor” react error</a></p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/k8s/" rel="tag"># k8s</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/20/%E5%89%8D%E7%AB%AF/JavaScript%EF%BC%88%E4%B8%8B%EF%BC%89/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/26/%E5%89%8D%E7%AB%AF/pc%E7%AB%AF%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YeChunChen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
